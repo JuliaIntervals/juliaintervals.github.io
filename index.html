@@ -1,0 +1,119 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>JuliaIntervals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+    </script>
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="/css/minimal-mistakes.css">
+    <link rel="icon" href="/assets/logo.svg">
+    <!--[if IE ]>
+      <style>
+        /* old IE unsupported flexbox fixes */
+        .greedy-nav .site-title {
+          padding-right: 3em;
+        }
+        .greedy-nav button {
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 100%;
+        }
+      </style> 
+    <![endif]-->
+    <!-- start custom head snippets -->
+    <!-- insert favicons. use https://realfavicongenerator.net/ -->
+    <!-- end custom head snippets -->
+  </head>
+<body class="layout--splash">
+{{ insert masthead.html }}
+
+<div class="initial-content">
+  <div class="page__hero--overlay"
+    style="background-color: #5e616c; background-image: url('/assets/minimal-mistakes/mm-home-page-feature.jpg');">
+    <div class="wrapper">
+      <!--<h1 id="page-title" class="page__title" itemprop="headline">JuliaIntervals</h1>-->
+      <!--<p class="page__lead">Guaranteed computations</p>-->
+      <img class="logo-img" src="/assets/logo2.svg" alt="julia logo">
+    </div>
+  </div>
+
+  <div id="main" role="main">
+    <article class="splash" itemscope itemtype="https://schema.org/CreativeWork">
+      <meta itemprop="description" content="A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios. Latest release v4.16.4">
+      <section class="page__content" itemprop="text">
+        <div class="intro">
+          <h1>Welcome to JuliaIntervals</h1>
+          <p>This is the webpage of JuliaIntervals, the umbrella package for all Julia packages related to interval arithmetic. Here you will find plenty of materials to learn how to use our packages and much more. Based on your needs, we offer you four different types of content:</p>
+        </div>
+        <div class="feature__wrapper">
+          <div class="feature__item">
+            <div class="archive__item">
+              <div class="archive__item-teaser">
+                <img src="/assets/minimal-mistakes/tutorials_teaser1.png" alt="tutorials" />
+              </div>
+              <div class="archive__item-body">
+                <h2 class="archive__item-title">Tutorials</h2>
+                <div class="archive__item-excerpt">
+                  <p>The fundamentals of our packages</p>
+                </div>
+                <p><a href="/pages/tutorials/" class="btn btn--primary">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="feature__item">
+            <div class="archive__item">
+              <div class="archive__item-teaser">
+                <img src="/assets/minimal-mistakes/ring2.png" alt="how-to guides" />
+              </div>  
+              <div class="archive__item-body">
+                <h2 class="archive__item-title">How-To Guides</h2>
+                <div class="archive__item-excerpt">
+                  <p>Application examples of our packages</p>
+                </div>
+                <p><a href="/pages/howTo/" class="btn btn--primary">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="feature__item">
+            <div class="archive__item">
+              <div class="archive__item-teaser">
+                <img src="/assets/minimal-mistakes/explanations1.png" alt="explanations" />
+              </div>
+              <div class="archive__item-body">
+                <h2 class="archive__item-title">Explanations</h2>
+                <div class="archive__item-excerpt">
+                  <p>The theory behind our packages</p>
+                </div>
+                <p><a href="/pages/explanations/" class="btn btn--primary">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="feature__item">
+            <div class="archive__item">
+              <div class="archive__item-teaser">
+                <img src="/assets/minimal-mistakes/explanations1.png" alt="api docs" />
+              </div>
+              <div class="archive__item-body">
+                <h2 class="archive__item-title">API docs</h2>
+                <div class="archive__item-excerpt">
+                  <p>Full and detailed documentation of our packages</p>
+                </div>
+                <p><a href="/pages/apiDocs/" class="btn btn--primary">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    {{ insert foot.html }}

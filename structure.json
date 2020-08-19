@@ -1,0 +1,37 @@
+[
+    {"name": "Tutorials",
+     "folder": "tutorials",
+     "pages": [
+         {"file": "tutorialArithmetic",
+          "name": "IntervalArithmetic.jl"},
+         {"file": "tutorialRootFinding",
+          "name": "IntervalRootFinding.jl"},
+         {"file": "tutorialConstraintProgramming",
+          "name": "IntervalConstraintProgramming.jl"},
+         {"file": "tutorialOptimisation",
+          "name": "IntervalOptimisation.jl"}
+     ]},
+
+    {"name": "Applications",
+     "folder": "howTo",
+     "pages": [
+        {"file": "funcRange",
+         "name": "Function Range"},
+         {"file": "rigorousPi",
+          "name": "Rigorous Approximation of π"}
+     ]},
+
+     {"name": "Explanations",
+        "folder": "explanations",
+        "pages": [
+           {"file": "intervalAnalysisIntro",
+            "name": "Introduction to Interval Analysis"}
+        ]},
+
+        {"name": "API",
+            "folder": "apiDocs",
+            "pages": [
+               {"file": "apiIntervalArithmetic",
+                "name": "IntervalArithmetic.jl"}
+            ]}
+]

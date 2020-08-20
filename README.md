@@ -1,8 +1,10 @@
 # JuliaIntervals Webpage
 
-This gitlab repository contains the first draft for the JuliaIntervals webpage. It will moved public to github once it's decent
+This github repository contains the first draft for the JuliaIntervals webpage. It is constantly under active development. This webpage is being developed as a JSoD project by me (Luca Ferranti, aka besselj in the JSoD page aka @luca on slack). 
 
-## Testing webpage on your machine
+If you have suggestions on how to improve the webpage, be it content or appearance related, feel free to open an issue or a PR or contact me on slack
+
+## Opening the webpage on your local machine
 
 Clone the repository, open a julia session in the root directory and run the following command
 
@@ -12,11 +14,3 @@ julia> using Franklin
 julia> serve()
 ```
 The webpage can then be opened in your local host
- 
-## TODO - LIST
-
-1. APIDOCS: integrate documenter as subpage in franklin or use similar solution as in symbolicutils.jl
-
-2. WRITE! WRITE! WRITE!
-
-3. Aesthetic fixes in homepage

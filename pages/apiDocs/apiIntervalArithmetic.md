@@ -19,10 +19,8 @@
 {{doc isatomic}}
 {{doc iscommon}}
 {{doc isthin}}
-
 {{doc mince}}
 {{doc nai}}
 {{doc pow}}
 {{doc radius}}
 {{doc setformat}}
-{{doc IntervalArithmetic.==}}

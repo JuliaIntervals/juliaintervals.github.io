@@ -1,4 +1,4 @@
-# # Interal Optimisation Tutorial
+# # Interval Optimisation Tutorial
 
 #!nb # \toc
 

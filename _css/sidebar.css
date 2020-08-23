@@ -2,6 +2,18 @@
   height: 100%;
 }
 
+.sidebar-title {
+  padding-bottom:1rem;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.sidebar-link:hover {
+  color:#000;
+}
 
 .show-menu {
   cursor: pointer;

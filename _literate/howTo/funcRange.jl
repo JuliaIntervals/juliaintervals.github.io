@@ -2,15 +2,15 @@
 
 #!nb # \toc
 
+# Download the interactive notebook from [here](/notebooks/funcRange.ipynb)
+
 # ## Introduction
 
 # The range of a function $f$ is defined as the set $f(X) = \{f(x) | x\in X\}$, where $X$ is the domain of the function.
 # This tutorial will show how to to exploit interval arithmetic to give a rigorous estimate of the function range.
 
-# Download the interactive notebook from [here](/notebooks/funcRange.ipynb)
-
 # First, let's import all the packages we need
-using IntervalArithmetic, Interact, Plots
+using IntervalArithmetic, Plots
 
 # ## A first example
 f(x) = x^2+2x
@@ -18,7 +18,7 @@ X = -5..5
 
 plot(f, -5, 5, leg=false)
 plot!(IntervalBox(X, f(X)))
-savefig(joinpath(@OUTPUT, "range1.svg")) # hide
+#!nb savefig(joinpath(@OUTPUT, "range1.svg")) # hide
 
 # \fig{range1}
 
@@ -34,8 +34,9 @@ savefig(joinpath(@OUTPUT, "range1.svg")) # hide
 using Plots
 f1(x) = (x+1)^2-1
 plot(f1, -5, 5, leg=false)
-plot!(IntervalBox(X, f1(X)))
-savefig(joinpath(@OUTPUT, "range2.svg")) # hide
+plot!
+(IntervalBox(X, f1(X)))
+#!nb savefig(joinpath(@OUTPUT, "range2.svg")) # hide
 range_f = f1(X)
 # \fig{range2}
 
@@ -48,7 +49,7 @@ Xs = mince(X, 10)
 Y = f.(Xs)
 plot(f, -5, 5, leg=false)
 plot!(IntervalBox.(Xs, f.(Xs)))
-savefig(joinpath(@OUTPUT, "range3.svg")) # hide
+#!nb savefig(joinpath(@OUTPUT, "range3.svg")) # hide
 
 range_f1 = reduce(∪, Y)
 overestimate1 = round((diam(f(X))-diam(range_f))/diam(range_f)*100)
@@ -56,3 +57,13 @@ overestimate2 = round((diam(range_f1)-diam(range_f))/diam(range_f)*100)
 overestimate1, overestimate2
 
 # \fig{range3}
+
+anim = @animate for i=1:50
+    Xs = mince(X, i)
+    plot(f, -5, 5, leg=false)
+    plot!(IntervalBox.(Xs, f.(Xs)))
+end
+#!nb gif(anim, joinpath(@OUTPUT, "anim_fps15.gif"), fps = 10); # hide
+nothing # hide
+
+# \fig{anim_fps15.gif}

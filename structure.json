@@ -16,16 +16,18 @@
      "folder": "howTo",
      "pages": [
         {"file": "funcRange",
-         "name": "Function Range"},
+         "name": "Rigorous computation of function range"},
+        {"file": "funcRangePluto",
+        "name": "Rigorous computation of function range PLUTO"},
          {"file": "rigorousPi",
-          "name": "Rigorous Approximation of π"}
+          "name": "Rigorous approximation of π"}
      ]},
 
      {"name": "Explanations",
         "folder": "explanations",
         "pages": [
            {"file": "intervalAnalysisIntro",
-            "name": "Introduction to Interval Analysis"}
+            "name": "Introduction to interval analysis"}
         ]},
 
         {"name": "API",

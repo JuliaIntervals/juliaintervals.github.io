@@ -15,3 +15,5 @@
 # Once the package is installed, it can be imported. Note that you will need also the `IntervalArithmetic.jl` package.
 
 using IntervalArithmetic, IntervalRootFinding
+
+# I am a text

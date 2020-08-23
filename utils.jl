@@ -1,6 +1,6 @@
 using IntervalArithmetic, IntervalRootFinding, IntervalOptimisation
 
-using Markdown, Documenter
+using Markdown, Documenter, JSON
 
 function hfun_doc(params)
     fname = params[1]
@@ -43,7 +43,7 @@ function create_sidebar(sidebarName="_layout/sidebar2.html", siteName="structure
     open(sidebarName, "w") do f
         write(f, "<h3><label for=\"show-menu\" class=\"show-menu\">Index</label></h3>\n<input type=\"checkbox\" id=\"show-menu\" role=\"button\">\n<div class=\"menu\" id=\"side-menu\">\n")
         for section in s
-            write(f, "{{ispage pages/$(section["folder"])/*}}<h2>$(section["name"])</h2>{{end}}\n")
+            write(f, "{{ispage pages/$(section["folder"])/*}}<h2 class=\"sidebar-title\"><a href=\"/pages/$(section["folder"])\" class=\"sidebar-link\">$(section["name"])</a></h2>{{end}}\n")
         end
 
         write(f, "<ul class=\"menu-list\">\n")

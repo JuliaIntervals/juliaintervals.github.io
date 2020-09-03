@@ -1,6 +1,6 @@
 @def title = "Tutorial Interval Arithmetic"
 
-# IntervalArithmetic.jl Tutorial
+# IntervalArithmetic.jl tutorial
 
 \toc
 
@@ -18,7 +18,7 @@ The package is now ready to use and it can be imported typing
 julia> using IntervalArithmetic
 ```
 
-## Defining Intervals
+## Defining intervals
 
 ### Dot notation
 An interval $[a,b]$, with $a\leq b$  can be easily defined with the syntax `a..b`.
@@ -76,7 +76,7 @@ julia> @interval sin(0.2)+cos(1.3)-exp(0.4)
 
 This is equivalent to `sin(interval(0.2))+cos(interval(1.3))-exp(interval(0.4))`.
 
-### Midpoint Notation
+### Midpoint notation
 
 An interval can be created also using the *midpoint notation*, i.e. $m± r$, where $m=\frac{a+b}{2}$ is the midpoint of the interval and $r=\frac{b-a}{2}$ is the radius. In julia, the symbol $\pm$ can be typed writing `\pm+TAB`.
 This method is equivalent to `(m-r)..(m+r)`
@@ -87,7 +87,7 @@ julia> 2 ± 1
 
 ```
 
-### Interval() Constructor
+### Interval() constructor
 
 You can create an interval also using the `Interval(a, b)` constructor, or `Interval(a)` for degenerated interal. However, **this method should be avoided**, mainly for two reasons.
 
@@ -123,7 +123,7 @@ The function `big(a)` reveals that $0.1$ is actually slightly bigger than $0.1$.
 
 The `Interval()` constructor is used in the internals of the package and it is called only after rounding and sanity checks have been done. For efficiency reasons, the constructor does not perform any more checks. The user should **not** use this constructor directly, but prefer any of the above exposed methods.
 
-## Operations on Intervals
+## Operations on intervals
 
 In general, a binary operation $\circ$ between two intervals $X$ and $Y$ is defined as
 
@@ -131,7 +131,7 @@ $$X\circ Y = \{x\circ y: x\in X, y\in Y\}$$
 
 Bearing this definition in mind, traditional arithmetic operations can be defined for intervals. These operations are already implemented in IntervalArihtmetic and can be used with the traditional operators `+, -, *, /`. A deeper discussion about how these operations are defined can be found [here](/pages/explanations/intervalAnalysisIntro/index.html).
 
-### Arithmetic Operations
+### Arithmetic operations
 
 Basic arithmetic operations can be performed using the arithmetic operators `+ - * /`.
 
@@ -200,7 +200,7 @@ julia> Z*X+Z*Y
 
 Particularly, the last two rows show that the distributivity property does not hold. In general, interval arithmetic is *subdistributive*, meaning $X(Y+Z)\subseteq XY+XZ$.
 
-### Set Operations
+### Set operations
 
 As an interval is a set of real numbers, the classical set operations union ($∪$) and intersection ($∩$) can be applied.
 In Julia, these operators can be typed by `\cup+TAB` and `\cap+TAB`, respectively. The inclusion of an interval
@@ -282,6 +282,6 @@ julia> f(-2.. -1.5) ∪ f(-1.5.. 2)
 
 As can be noticed, the overestimate is now reduced. [Here](/pages/howTo/funcRange/) you will find a more detailed discussion on how to estimate the range of a function.
 
-## Multidimensional Intervals
+## Multidimensional intervals
 
 Similarly to 

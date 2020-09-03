@@ -15,12 +15,12 @@
     {"name": "Applications",
      "folder": "howTo",
      "pages": [
+        {"file": "rigorousPi",
+         "name": "Rigorous approximation of π"},
         {"file": "funcRange",
          "name": "Rigorous computation of function range"},
         {"file": "funcRangePluto",
-        "name": "Rigorous computation of function range PLUTO"},
-         {"file": "rigorousPi",
-          "name": "Rigorous approximation of π"}
+        "name": "Rigorous computation of function range PLUTO"}
      ]},
 
      {"name": "Explanations",

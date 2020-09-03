@@ -3,4 +3,4 @@
 # Function range computation
 
 Download the pluto notebook [here](/_pluto/funcRangePluto.jl)
-{{insert funcRangePluto.html}}   
+{{ insert ../_pluto/funcRangePluto.html }}   

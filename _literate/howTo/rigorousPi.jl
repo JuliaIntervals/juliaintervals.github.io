@@ -1,14 +1,13 @@
 # # Calculating rigorous bounds on $\pi$ with interval arithmetic
-
+# @def reeval = true
 #!nb # \toc
+
+#!nb # Download the interactive notebook of this tutorial [here](/notebooks/rigorousPi.ipynb)
 
 # ## Introduction
 
 # Following the book Validated Numerics (Princeton, 2011) by Warwick Tucker, we find *rigorous* (i.e., guaranteed, or validated) bounds on $\pi$ using interval arithmetic, via the `IntervalArithmetic.jl` package.
-
-#!nb # Download the interactive notebook of this tutorial [here](/notebooks/rigorousPi.ipynb)
-
-# First, we need to import the package
+# First, let's import the package
 
 using IntervalArithmetic
 
@@ -35,13 +34,11 @@ function forward_sum_naive(N)
     S_N
 end
 
-#-
-
 S = forward_sum_naive(10000)
 err = abs(S - pi^2/6.)  # error
 @show S, err
 
-# ## Interval Method
+# ## Interval method
 
 # To find rigorous bounds for $S_N$, we use interval arithmetic: each term is enclosed in an interval that is guaranteed to contain the true real value. A first idea is simply to wrap each term in the @interval macro, which converts its arguments into containing intervals:
 
@@ -109,7 +106,7 @@ N = 10^6
 @show S, diam(S)
 
 # Note that the sqrt function is guaranteed (by the [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) standard) to give correctly-rounded results, so the resulting bounds on $\pi$ are guaranteed to be correct.
-
+#
 # Note also that due to the way that the IntervalArithmetic package works, we can make the code simpler, at the expense of some performance. Only two explicit calls to the `@interval` macro are now required:
 
 function reverse_sum2(N)

@@ -16,7 +16,7 @@
 
 using IntervalArithmetic, IntervalOptimisation
 
-# ## Function Minimisation
+# ## Function minimisation
 
 # The package two main functions are `minimise` and `maximise`. Here we will use `minimise` as example, however `maximise` behaves in an analog way.
 # The main syntax is
@@ -37,7 +37,7 @@ xmin, [diam(x) for x in xmin]
 
 # Now the diameter of the minimiser is only $10^{-10}$ and the minimum is guaranteed to be in that interval.
 
-# ## Multivariate Function Minimisation
+# ## Multivariate function minimisation
 
 # The package can also be used to minimise multivariate functions. Now, the function $f$ will take an array, and $X$ will be an interval box of dimension $n$.
 # As an example, let us find the minimum of the paraboloid $z=(x-3)^2+(y-3)^2$ over the box $[-100, 100]×[-100, 100]$. First let's define the function
@@ -55,7 +55,7 @@ zmin, xmin = minimise(paraboloid, X, tol=1e-10)
 
 [diam(x) for x in xmin]
 
-# ### Griewank Function Minimisation
+# ### Griewank function minimisation
 
 # The $n$-dimensional Griewank function is defined as
 # $$ G_n(\mathbf{x})=1+\frac{1}{4000}\sum_{i=1}^n x_i^2 -∏_{i=1}^n \cos\left(\frac{x_i}{\sqrt{i}}\right),$$

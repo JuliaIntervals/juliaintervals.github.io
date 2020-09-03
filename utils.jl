@@ -1,6 +1,6 @@
 using IntervalArithmetic, IntervalRootFinding, IntervalOptimisation
 
-using Markdown, Documenter, JSON
+using Markdown, Documenter, JSON, Gumbo
 
 function hfun_doc(params)
     fname = params[1]
@@ -37,7 +37,7 @@ function lx_baz(com, _)
   return uppercase(brace_content)
 end
 
-function create_sidebar(sidebarName="_layout/sidebar2.html", siteName="structure.json")
+function create_sidebar(sidebarName="_layout/sidebar.html", siteName="structure.json")
     s = read(siteName, String)
     s = JSON.parse(s)
     open(sidebarName, "w") do f
@@ -55,5 +55,16 @@ function create_sidebar(sidebarName="_layout/sidebar2.html", siteName="structure
             write(f, "{{end}}\n")
         end
         write(f, "</ul></div>")
+    end
+    nothing
+end
+
+function extract_pluto(filename)
+    doc = parsehtml(read(filename, String))
+    mainTag = string(doc.root[2][1])
+    svgTag = string(doc.root[2][2]) # needed to render maths apparently
+    open(filename, "w") do io
+        write(io, mainTag)
+        write(io, svgTag)
     end
 end

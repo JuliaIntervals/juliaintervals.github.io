@@ -1,8 +1,4 @@
-# # Calculating rigorous bounds on $\pi$ with interval arithmetic
-# @def reeval = true
-#!nb # \toc
-
-#!nb # Download the interactive notebook of this tutorial [here](/notebooks/rigorousPi.ipynb)
+#nb # Rigorous approximation of $\pi$
 
 # ## Introduction
 

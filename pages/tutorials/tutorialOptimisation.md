@@ -1,3 +1,1 @@
-@def title = "Tutorial Interval Optimisation"
-
-\literate{/_literate/tutorials/intervalOptimisationTutorial.jl}
+\tutorial{tutorials/intervalOptimisationTutorial}{Interval optimisation tutorial}

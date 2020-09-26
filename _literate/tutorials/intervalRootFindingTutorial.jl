@@ -1,8 +1,4 @@
-# # Interval Root Finding Tutorial
-
-#!nb # \toc
-
-#!nb # Download the interactive notebook of this tutorial [here](/notebooks/intervalRootFindingTutorial.ipynb)
+#nb # Interval root finding tutorial
 
 # ## Setup
 
@@ -16,6 +12,10 @@
 
 using IntervalArithmetic, IntervalRootFinding
 
+# ## Introduction
+
+# The `IntervalRootFinding.jl` can be used to rigorously compute the zeros of a function $f: \mathbb{R}^m\rightarrow\mathbb{R}^n$ over a given
+# interval (or interval box) $X\subset\mathbb{R}^m$.
 # ## Basic Usage
 
 # To get started, let's compute the roots of the simple function $f(x)=x^2-2x$ over the interval $[-4, -4]$.
@@ -41,7 +41,7 @@ rts = roots(f, X) # using newton method
 
 roots(f, X, Bisection)
 
-# Note also how the Bisection method may return some extra intervals not containing the root.
+# Note also how the Bisection method may return some extra intervals not containing the roots.
 
 # ## Explicit derivatives
 
@@ -58,7 +58,7 @@ using BenchmarkTools
 
 @btime roots(log, -2..2)
 
-# ## Multidimensional
+# ## Multidimensional example
 
 # The function `roots` works also for multidimensional functions $\mathbb{R}^m\rightarrow\mathbb{R}^n$, with a few adjustments:
 # - the function should return a `SVector`, an efficient data structure for arrays whose size is known at compile time. SVector requires the package `StaticArrays`.

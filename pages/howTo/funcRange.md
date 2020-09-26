@@ -1,1 +1,1 @@
-\literate{/_literate/howTo/funcRange.jl}
+\tutorial{howTo/funcRange}{Rigorous computation of function range}

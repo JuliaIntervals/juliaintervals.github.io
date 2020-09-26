@@ -1,10 +1,4 @@
-#!nb # @def title = "Rigorous computation of function range"
-
-# # Rigorous Computation of function range
-
-#!nb # \toc
-
-#!nb # Download the interactive notebook from [here](/notebooks/funcRange.ipynb)
+#nb # Rigorous computation of function range
 
 # ## Introduction
 

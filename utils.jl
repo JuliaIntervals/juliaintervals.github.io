@@ -1,6 +1,18 @@
 using IntervalArithmetic, IntervalRootFinding, IntervalOptimisation
 
-using Markdown, Documenter, JSON, Gumbo
+using Markdown, Documenter, JSON, Gumbo, Literate
+
+function generate_notebooks()
+    nbpath = joinpath("notebooks")
+    for (root, _, files) in walkdir("_literate")
+        for file in files
+            subpath = splitpath(root)[2:end]
+            outpath = joinpath(nbpath, subpath...)
+            litpath = joinpath(root, file)
+            Literate.notebook(litpath, outpath, execute=false, documenter=false)
+        end
+    end
+end
 
 function hfun_doc(params)
     fname = params[1]

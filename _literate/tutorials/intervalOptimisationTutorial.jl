@@ -1,8 +1,4 @@
-# # Interval Optimisation Tutorial
-
-#!nb # \toc
-
-#!nb # Download the interactive notebook of this tutorial [here](/notebooks/IntervalOptimisationTutorial.ipynb)
+#nb # Interval optimisation tutorial
 
 # ## Setup
 

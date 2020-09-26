@@ -29,3 +29,18 @@ For instance:
 \newcommand{\R}{\mathbb R}
 \newcommand{\scal}[1]{\langle #1 \rangle}
 \newcommand{\mymath}[1]{~~~\( #1 \)~~~}
+
+\newcommand{\tutorial}[2]{
+@def title = !#2
+# !#2
+
+\toc
+
+Download the [notebook](/notebooks/!#1.ipynb) for this tutorial.
+
+
+\literate{/_literate/!#1.jl}}
+
+<!--
+https://raw.githubusercontent.com/tlienart/MLJTutorials/gh-pages/notebooks/!#1.ipynb
+-->

@@ -1,1 +1,1 @@
-\tutorial{tutorials/intervalOptimisationTutorial}{Interval optimisation tutorial}
+\tutorial{tutorials/tutorialOptimisation}{Interval optimisation tutorial}

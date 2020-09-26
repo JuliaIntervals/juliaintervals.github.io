@@ -3,37 +3,46 @@
      "folder": "tutorials",
      "pages": [
          {"file": "tutorialArithmetic",
-          "name": "IntervalArithmetic.jl"},
+          "name": "IntervalArithmetic.jl",
+          "notebook": true},
          {"file": "tutorialRootFinding",
-          "name": "IntervalRootFinding.jl"},
+          "name": "IntervalRootFinding.jl",
+          "notebook": true},
          {"file": "tutorialConstraintProgramming",
-          "name": "IntervalConstraintProgramming.jl"},
+          "name": "IntervalConstraintProgramming.jl",
+          "notebook": true},
          {"file": "tutorialOptimisation",
-          "name": "IntervalOptimisation.jl"}
+          "name": "IntervalOptimisation.jl",
+          "notebook": true}
      ]},
 
     {"name": "Applications",
      "folder": "howTo",
      "pages": [
         {"file": "rigorousPi",
-         "name": "Rigorous approximation of π"},
+         "name": "Rigorous approximation of π",
+         "notebook": true},
         {"file": "funcRange",
-         "name": "Rigorous computation of function range"},
+         "name": "Rigorous computation of function range",
+         "notebook": true},
         {"file": "funcRangePluto",
-        "name": "Rigorous computation of function range PLUTO"}
+        "name": "Rigorous computation of function range PLUTO",
+        "notebook": false}
      ]},
 
      {"name": "Explanations",
         "folder": "explanations",
         "pages": [
            {"file": "intervalAnalysisIntro",
-            "name": "Introduction to interval analysis"}
+            "name": "Introduction to interval analysis",
+            "notebook": false}
         ]},
 
         {"name": "API",
             "folder": "apiDocs",
             "pages": [
                {"file": "apiIntervalArithmetic",
-                "name": "IntervalArithmetic.jl"}
+                "name": "IntervalArithmetic.jl",
+                "notebook": false}
             ]}
 ]

@@ -14,6 +14,25 @@ function generate_notebooks()
     end
 end
 
+function hfun_index(params)
+    section = params[1]
+    site = read("structure.json", String)
+    site = JSON.parse(site)
+    index = "<ol>"
+    for sec in site
+        if sec["folder"] == section
+            for page in sec["pages"]
+                filepath = joinpath("/pages", sec["folder"], page["file"])
+                nbpath = joinpath("/notebooks", sec["folder"], page["file"])
+                nblink = page["notebook"] ? " <a href=\"$(nbpath).ipynb\">[notebook]</a>" : ""
+                index *= "<li><p><a href=\"$(filepath)\">$(page["name"])</a>$(nblink)</p></li>"
+            end
+        end
+    end
+    index *= "</ol>"
+    return index
+end
+
 function hfun_doc(params)
     fname = params[1]
     # type = length(params) > 1 ? params[2] : Documenter.Utilities.doccat(eval(Meta.parse(fname)))

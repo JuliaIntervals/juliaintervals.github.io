@@ -1,1 +1,1 @@
-\tutorial{tutorials/intervalRootFindingTutorial}{Interval root finding tutorial}
+\tutorial{tutorials/tutorialRootFinding}{Interval root finding tutorial}

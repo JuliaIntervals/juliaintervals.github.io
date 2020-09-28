@@ -1,1 +1,1 @@
-@def title = "Tutorial Interval Constraint Programming"
+\tutorial{tutorials/tutorialConstraintProgramming}{Interval constraint programming tutorial}

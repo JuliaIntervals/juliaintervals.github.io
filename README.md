@@ -13,4 +13,4 @@ julia> using Franklin
 
 julia> serve()
 ```
-The webpage can then be opened in your local host
+This will activate the environment and open the webpage in your browser.

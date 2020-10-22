@@ -26,7 +26,7 @@ using IntervalArithmetic, IntervalOptimisation
 minimise(x->(x-3)^2, -∞..∞)
 
 # The first value of the results tells us that the minimum value of the function is in the interval $[0, 7.39292e-09]$. The second value tells us that
-# this minimum is achieved in the interval $[2.99964, 3.00019]$. If we want to narrow down this interval, we can use a smaller tollerance
+# this minimum is achieved in the interval $[2.99964, 3.00019]$. If we want to narrow down this interval, we can use a smaller tolerance
 
 minVal, xmin = minimise(x->(x-3)^2, -∞..∞, tol=1e-9)
 xmin, [diam(x) for x in xmin]

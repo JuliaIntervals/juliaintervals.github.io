@@ -81,10 +81,10 @@ end
 @btime roots(g, X)
 nothing # hide
 
-# ## Tollerance
+# ## Tolerance
 
-# By default, the roots are found with a tollerance of `1e-15`. This can be changed by giving the solver an extra parameter.
-# A Higher tollerance can significantly speed up the computations. However, as a drawback, more intervals might have an `:unknown` status.
+# By default, the roots are found with a tolerance of `1e-15`. This can be changed by giving the solver an extra parameter.
+# A Higher tolerance can significantly speed up the computations. However, as a drawback, more intervals might have an `:unknown` status.
 # Observe the following example
 
 h(x) = cos(x) * sin(1 / x)

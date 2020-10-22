@@ -1,6 +1,4 @@
-using IntervalArithmetic, IntervalRootFinding, IntervalOptimisation
-
-using Markdown, Documenter, JSON, Literate
+using Markdown, JSON, Literate
 
 function generate_notebooks()
     nbpath = joinpath("notebooks")
@@ -51,11 +49,6 @@ function hfun_doc(params)
     """
 end
 
-function hfun_bar(vname)
-  val = Meta.parse(vname[1])
-  return round(sqrt(val), digits=2)
-end
-
 function hfun_m1fill(vname)
   var = vname[1]
   return pagevar("index", var)
@@ -88,14 +81,4 @@ function create_sidebar(sidebarName="_layout/sidebar.html", siteName="structure.
         write(f, "</ul></div>")
     end
     nothing
-end
-
-function extract_pluto(filename)
-    doc = parsehtml(read(filename, String))
-    mainTag = string(doc.root[2][1])
-    svgTag = string(doc.root[2][2]) # needed to render maths apparently
-    open(filename, "w") do io
-        write(io, mainTag)
-        write(io, svgTag)
-    end
 end

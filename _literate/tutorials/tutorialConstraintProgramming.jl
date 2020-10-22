@@ -75,7 +75,7 @@ S = @constraint 1 <= x^2+y^2 <= 3
 # ```
 # pave(S, X, tol)
 # ```
-# where $S$ is our Separator, $X$ is our starting box and $tol$ is a tollerance parameter. This function returns an object of type `SubPaving`, which stores  a list of boxes guaranteed
+# where $S$ is our Separator, $X$ is our starting box and $tol$ is a tolerance parameter. This function returns an object of type `SubPaving`, which stores  a list of boxes guaranteed
 # to be into the feasible set in the attribute `inner`, as well as a list of boxes on the boundary in the attribute `boundary`.
 
 X = IntervalBox(-100..100, 2) # our starting box
@@ -95,8 +95,8 @@ plot!(paving.boundary, c="gray", label="boundary")
 # The smallest the tolerance parameter, the better the approximation of the feasible set will be, as the following animation shows
 
 
-tollerances =  append!(collect(1:-0.1:0.1), collect(0.09:-0.01:0.01))
-anim = @animate for tol in tollerances
+tolerances =  append!(collect(1:-0.1:0.1), collect(0.09:-0.01:0.01))
+anim = @animate for tol in tolerances
     paving = pave(S, X, tol)
     plot(paving.inner, c="green", legend=false, title="tol=$tol", aspect_ratio=:equal)
     plot!(paving.boundary, c="gray")

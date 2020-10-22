@@ -72,7 +72,7 @@ end
 
 # As can be seen, the more intervals we use, the closer the range estimate will get to the actual range.
 # We are now ready to write our function `range(f, X, tol)` which estimates the range of a function $f$ over an interval $X$.
-# The function will take a third parameter an error tollerance `tol` and keep increasing the number of intervals until the relative change will become smaller than `tol`.
+# The function will take a third parameter an error tolerance `tol` and keep increasing the number of intervals until the relative change will become smaller than `tol`.
 # Denoting by $Y_i$ the range estimate using $i$ intervals, the relative change can be computed as $\frac{Y_{i-1}-Y_{i}}{Y_{i-1}}$.
 
 function range(f, X, N, tol=0.01)
@@ -130,4 +130,4 @@ end
 #!nb nothing # hide
 #nb gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2)
 
-#!nb # \fig{anim_range.gif}
+#!nb # \fig{anim_range2.gif}

@@ -24,10 +24,7 @@
          "notebook": true},
         {"file": "funcRange",
          "name": "Rigorous computation of function range",
-         "notebook": true},
-        {"file": "funcRangePluto",
-        "name": "Rigorous computation of function range PLUTO",
-        "notebook": false}
+         "notebook": true}
      ]},
 
      {"name": "Explanations",

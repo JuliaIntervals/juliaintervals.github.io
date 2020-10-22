@@ -1,6 +1,6 @@
 using IntervalArithmetic, IntervalRootFinding, IntervalOptimisation
 
-using Markdown, Documenter, JSON, Gumbo, Literate
+using Markdown, Documenter, JSON, Literate
 
 function generate_notebooks()
     nbpath = joinpath("notebooks")

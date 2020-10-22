@@ -215,12 +215,17 @@ body { counter-reset: eqnum; }
 ================================================================== */
 
 code {
-    background-color: rgba(27,31,35,0.05);
+    background-color: rgba(27,31,35,0.05); 
     padding: 0.1em 0.2em;
     border-radius: 2px;
     font-size: 90%;
 }
 
+.plaintext {
+    background-color: rgba(27,31,35,0.05)  !important;
+    color: #333 !important;
+
+}
 /* .franklin-content code { */
     /* background-color: rgba(27,31,35,0.05); */
     /* padding: 0.1em 0.2em; */

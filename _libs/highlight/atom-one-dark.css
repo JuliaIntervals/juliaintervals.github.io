@@ -95,11 +95,6 @@ hue-6-2: #e6c07b
   text-decoration: underline;
 }
 
-.hljs td {
-  border-bottom: none;
-  padding: 0.5em !important;
-}
-
 .hljs-ln-numbers{
   border-right: 1px solid #b6b6b6 !important;
 }

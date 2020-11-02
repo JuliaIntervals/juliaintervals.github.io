@@ -29,7 +29,6 @@ At the moment the tutorials are generated using Literate+Franklin. This works ni
 
 - Homepage:
     1. Improve reactiveness: when reducing the window size, the buttons on the masthead get hidden behind the hamburger button. This is nice, however the current settings hide the buttons too early, maybe reduce the `max-width` somewhere in the css
-    2. there's an extra bottom padding in the figures when they are on hover
     3. remove the grey bar on the homepage and put the logo in the middle on white background (change logo font from white to black logically)?
     4. change figures to svg
     5. Fix logo (fix font, thicker black line)

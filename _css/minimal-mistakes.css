@@ -3875,10 +3875,9 @@ a.reversefootnote:hover {
 
 .archive__item {
   position: relative;
-  margin-bottom: 2em !important;
 }
 
-.archive__item:hover {
+.feature__item:hover {
   border: 2px solid #898c8f;
   border-radius: 5px;
 }

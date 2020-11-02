@@ -13,6 +13,9 @@
           "notebook": true},
          {"file": "tutorialOptimisation",
           "name": "IntervalOptimisation.jl",
+          "notebook": true},
+         {"file": "tutorialTaylorModels",
+          "name": "TaylorModels.jl",
           "notebook": true}
      ]},
 

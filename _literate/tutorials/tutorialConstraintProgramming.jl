@@ -1,4 +1,4 @@
-#nb # Interval constraint programming optimisation
+#nb # Interval constraint programming tutorial
 
 # ## Setup
 

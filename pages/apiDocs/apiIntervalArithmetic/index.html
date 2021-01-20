@@ -1,0 +1,267 @@
+<!doctype html> <!-- Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes Free for personal and commercial use under the MIT license https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE --> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/libs/highlight/atom-one-dark.css"> <style> .hljs td { border-bottom: none; padding-bottom: 0em !important; padding-left: 0.5em !important; padding-right: 0.5em !important; padding-top: 0.2em !important;} </style> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/minimal-mistakes.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=stylesheet  href="/css/sidebar.css"> <link rel=stylesheet  href="/css/documentation.css"> <link rel=icon  href="/assets/logo.svg"> <!--[if IE ]> <style> /* old IE unsupported flexbox fixes */ .greedy-nav .site-title { padding-right: 3em; } .greedy-nav button { position: absolute; top: 0; right: 0; height: 100%; } </style> <![endif]--> <title>IntervalArithmetic.jl API docs</title> <script src="/libs/lunr/lunr.min.js"></script> <script src="/libs/lunr/lunr_index.js"></script> <script src="/libs/lunr/lunrclient.min.js"></script> <body class=layout--single > <div class=masthead > <div class=masthead__inner-wrap > <div class=masthead__menu > <nav id=site-nav  class=greedy-nav > <a class=site-logo  href="/"><img src="/assets/logo1.svg" class=logo1  alt="julia logo"></a> <form id=lunrSearchForm  name=lunrSearchForm > <input class=search-input  name=q  placeholder="Enter search term" type=text  > <input type=submit  class=search-button  value=Search  formaction="/search/index.html" > </form> <ul class=visible-links > <li class=masthead__menu-item ><a href="/pages/tutorials/" >Tutorials</a> <li class=masthead__menu-item ><a href="/pages/howTo/" >Applications</a> <li class=masthead__menu-item ><a href="/pages/explanations/" >Explanations</a> <li class=masthead__menu-item ><a href="/pages/apiDocs/">API docs</a> <li class=masthead__menu-item ><a href="/pages/faq/">FAQ</a> </ul> <button class="greedy-nav__toggle hidden" type=button > <span class=visually-hidden >Toggle menu</span> <div class=navicon ></div> </button> <ul class="hidden-links hidden"></ul> </nav> </div> </div> </div> <div class=initial-content > <div id=main  role=main > <div class="sidebar sticky"> <div itemscope itemtype="https://schema.org/Person"> <h3><label for=show-menu  class=show-menu >Index</label></h3> <input type=checkbox  id=show-menu  role=button > <div class=menu  id=side-menu > <h2 class=sidebar-title ><a href="/pages/apiDocs" class=sidebar-link >API</a></h2> <ul class=menu-list > <li class="menu-list-item active"><a href="/pages/apiDocs/apiIntervalArithmetic/" class="menu-list-link active">IntervalArithmetic.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiRootFinding/" class="menu-list-link ">IntervalRootFinding.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalOptimisation/" class="menu-list-link ">IntervalArithmetic.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalConstraintProgramming/" class="menu-list-link ">IntervalConstraintProgramming.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiTaylorModels/" class="menu-list-link ">TaylorModels.jl</a> </ul></div> </div> </div> <div class=franklin-content ><p> <div class=docstring > <div class=doc-header  id=DecoratedInterval > <a href="#DecoratedInterval">DecoratedInterval</a></div> <div class=doc-content ><pre><code class=language-julia >DecoratedInterval</code></pre>
+<p>A <code>DecoratedInterval</code> is an interval, together with a <em>decoration</em>, i.e. a flag that records the status of the interval when thought of as the result of a previously executed sequence of functions acting on an initial interval.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=IntervalBox >
+        <a href="#IntervalBox">IntervalBox</a></div>
+      <div class=doc-content ><p>An <code>IntervalBox</code> is an <code>N</code>-dimensional rectangular box, given by a Cartesian product of a vector of <code>N</code> <code>Interval</code>s.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id="@biginterval">
+        <a href="#@biginterval">@biginterval</a></div>
+      <div class=doc-content ><p>The <code>@biginterval</code> macro constructs an interval with <code>BigFloat</code> entries.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id="@floatinterval">
+        <a href="#@floatinterval">@floatinterval</a></div>
+      <div class=doc-content ><p>The <code>@floatinterval</code> macro constructs an interval with <code>Float64</code> entries.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id="@format">
+        <a href="#@format">@format</a></div>
+      <div class=doc-content ><pre><code class=language-julia >@format &#91;style::Symbol&#93; &#91;decorations::Bool&#93; &#91;sigfigs::Integer&#93;</code></pre>
+<p>The <code>@format</code> macro provides a simple interface to control the output format for intervals. These options are passed to the <code>setformat</code> function. It returns the new <code>DisplayParameters</code> object.</p>
+<p>The arguments may be in any order and of type:</p>
+<ul>
+<li><p><code>Symbol</code>: the output format &#40;<code>:full</code>, <code>:standard</code> or <code>:midpoint</code>&#41;</p>
+
+<li><p><code>Bool</code>: whether to display decorations</p>
+
+<li><p><code>Integer</code>: the number of significant figures</p>
+
+</ul>
+<p>E.g.</p>
+<pre><code class=language-julia >julia&gt; x &#61; 0.1..0.3
+@&#91;0.0999999, 0.300001&#93;
+
+julia&gt; @format full
+Display parameters:
+- format: full
+- decorations: false
+- significant figures: 6
+
+julia&gt; x
+Interval&#40;0.09999999999999999, 0.30000000000000004&#41;
+
+julia&gt; @format standard 3
+Display parameters:
+- format: standard
+- decorations: false
+- significant figures: 3
+
+julia&gt; x
+&#91;0.0999, 0.301&#93;</code></pre>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id="@interval">
+        <a href="#@interval">@interval</a></div>
+      <div class=doc-content ><p>The <code>@interval</code> macro is the main method to create an interval. It converts each expression into a narrow interval that is guaranteed to contain the true value passed by the user in the one or two expressions passed to it. When passed two expressions, it takes the hull of the resulting intervals to give a guaranteed containing interval.</p>
+<p>Examples:</p>
+<pre><code class=language-julia >@interval&#40;0.1&#41;
+
+    @interval&#40;0.1, 0.2&#41;
+
+    @interval&#40;1/3, 1/6&#41;
+
+    @interval&#40;1/3^2&#41;</code></pre>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=bisect >
+        <a href="#bisect">bisect</a></div>
+      <div class=doc-content ><pre><code class=language-julia >bisect&#40;X::Interval, α&#61;0.49609375&#41;</code></pre>
+<p>Split the interval <code>X</code> at position α; α&#61;0.5 corresponds to the midpoint. Returns a tuple of the new intervals.</p>
+<pre><code class=language-julia >bisect&#40;X::IntervalBox, α&#61;0.49609375&#41;</code></pre>
+<p>Bisect the <code>IntervalBox</code> <code>X</code> at position α ∈ &#91;0,1&#93; along its longest side.</p>
+<pre><code class=language-julia >bisect&#40;X::IntervalBox, i::Integer, α&#61;0.49609375&#41;</code></pre>
+<p>Bisect the <code>IntervalBox</code> in side number <code>i</code>.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=cancelminus >
+        <a href="#cancelminus">cancelminus</a></div>
+      <div class=doc-content ><pre><code class=language-julia >cancelminus&#40;a, b&#41;</code></pre>
+<p>Return the unique interval <code>c</code> such that <code>b&#43;c&#61;a</code>.</p>
+<p>See Section 12.12.5 of the IEEE-1788 Standard for Interval Arithmetic.</p>
+<pre><code class=language-julia >cancelminus&#40;xx, yy&#41;</code></pre>
+<p>Decorated interval extension; the result is decorated as <code>trv</code>, following the IEEE-1788 Standard &#40;see Sect. 11.7.1, pp 47&#41;.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=cancelplus >
+        <a href="#cancelplus">cancelplus</a></div>
+      <div class=doc-content ><pre><code class=language-julia >cancelplus&#40;a, b&#41;</code></pre>
+<p>Returns the unique interval <code>c</code> such that <code>b-c&#61;a</code>; it is equivalent to <code>cancelminus&#40;a, −b&#41;</code>.</p>
+<pre><code class=language-julia >cancelplus&#40;xx, yy&#41;</code></pre>
+<p>Decorated interval extension; the result is decorated as <code>trv</code>, following the IEEE-1788 Standard &#40;see Sect. 11.7.1, pp 47&#41;.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=diam >
+        <a href="#diam">diam</a></div>
+      <div class=doc-content ><pre><code class=language-julia >diam&#40;a::Interval&#41;</code></pre>
+<p>Return the diameter &#40;length&#41; of the <code>Interval</code> <code>a</code>.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=emptyinterval >
+        <a href="#emptyinterval">emptyinterval</a></div>
+      <div class=doc-content ><p><code>emptyinterval</code>s are represented as the interval &#91;∞, -∞&#93;; note that this interval is an exception to the fact that the lower bound is larger than the upper one.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=entireinterval >
+        <a href="#entireinterval">entireinterval</a></div>
+      <div class=doc-content ><p><code>entireinterval</code>s represent the whole Real line: &#91;-∞, ∞&#93;.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=hull >
+        <a href="#hull">hull</a></div>
+      <div class=doc-content ><pre><code class=language-julia >hull&#40;a, b&#41;</code></pre>
+<p>Returns the &quot;interval hull&quot; of the intervals <code>a</code> and <code>b</code>, considered as &#40;extended&#41; sets of real numbers, i.e. the smallest interval that contains all of <code>a</code> and <code>b</code>.</p>
+<pre><code class=language-julia >hull&#40;xx, yy&#41;</code></pre>
+<p>Decorated interval extension; the result is decorated as <code>trv</code>, following the IEEE-1788 Standard &#40;see Sect. 11.7.1, pp 47&#41;.</p>
+</div>
+  </div>
+</p>
+<p>  <div class=docstring >
+      <div class=doc-header  id=interval >
+        <a href="#interval">interval</a></div>
+      <div class=doc-content ><pre><code class=language-julia >interval&#40;a, b&#41;</code></pre>
+<p><code>interval&#40;a, b&#41;</code> checks whether &#91;a, b&#93; is a valid <code>Interval</code>, which is the case if <code>-∞ &lt;&#61; a &lt;&#61; b &lt;&#61; ∞</code>, using the &#40;non-exported&#41; <code>is_valid_interval</code> function. If so, then an <code>Interval&#40;a, b&#41;</code> object is returned; if not, then an error is thrown.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=isatomic >
+        <a href="#isatomic">isatomic</a></div>
+      <div class=doc-content ><pre><code class=language-julia >isatomic&#40;x::Interval&#41;</code></pre>
+<p>Check whether an interval <code>x</code> is <em>atomic</em>, i.e. is unable to be split. This occurs when the interval is empty, or when the upper bound equals the lower bound or the <code>nextfloat</code> of the lower bound.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=iscommon >
+        <a href="#iscommon">iscommon</a></div>
+      <div class=doc-content ><pre><code class=language-julia >iscommon&#40;x&#41;</code></pre>
+<p>Checks if <code>x</code> is a <strong>common interval</strong>, i.e. a non-empty, bounded, real interval.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=isthin >
+        <a href="#isthin">isthin</a></div>
+      <div class=doc-content ><pre><code class=language-julia >isthin&#40;x&#41;</code></pre>
+<p>Checks if <code>x</code> is the set consisting of a single exactly representable float. Any float which is not exactly representable does <em>not</em> yield a thin interval. Corresponds to <code>isSingleton</code> of the standard.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=mince >
+        <a href="#mince">mince</a></div>
+      <div class=doc-content ><pre><code class=language-julia >mince&#40;x::Interval, n&#41;</code></pre>
+<p>Splits <code>x</code> in <code>n</code> intervals of the same diameter, which are returned as a vector.</p>
+<pre><code class=language-julia >mince&#40;x::IntervalBox, n&#41;</code></pre>
+<p>Splits <code>x</code> in <code>n</code> intervals in each dimension of the same diameter. These intervals are combined in all possible <code>IntervalBox</code>-es, which are returned as a vector.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=nai >
+        <a href="#nai">nai</a></div>
+      <div class=doc-content ><p><code>NaI</code> not-an-interval: &#91;NaN, NaN&#93;.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=pow >
+        <a href="#pow">pow</a></div>
+      <div class=doc-content ><pre><code class=language-julia >pow&#40;x::Interval, n::Integer&#41;</code></pre>
+<p>A faster implementation of <code>x^n</code>, currently using <code>power_by_squaring</code>. <code>pow&#40;x, n&#41;</code> will usually return an interval that is slightly larger than that calculated by <code>x^n</code>, but is guaranteed to be a correct enclosure when using multiplication with correct rounding.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=radius >
+        <a href="#radius">radius</a></div>
+      <div class=doc-content ><pre><code class=language-julia >radius&#40;a::Interval&#41;</code></pre>
+<p>Return the radius of the <code>Interval</code> <code>a</code>, such that <code>a ⊆ m ± radius</code>, where <code>m &#61; mid&#40;a&#41;</code> is the midpoint.</p>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=setformat >
+        <a href="#setformat">setformat</a></div>
+      <div class=doc-content ><pre><code class=language-julia >setformat&#40;format&#61;none; decorations&#61;none, sigfigs&#61;none&#41;</code></pre>
+<p><code>setformat</code> changes how intervals are displayed. It returns the new <code>DisplayParameters</code> object.</p>
+<p>Note that The <code>@format</code> macro is more user-friendly.</p>
+<p>The following options are available:</p>
+<ul>
+<li><p><code>format</code>: interval output format</p>
+<ul>
+<li><p><code>:standard</code>: <code>&#91;1, 2&#93;</code></p>
+
+<li><p><code>:full</code>: <code>Interval&#40;1, 2&#41;</code></p>
+
+<li><p><code>:midpoint</code>: 1.5 ± 0.5</p>
+
+</ul>
+
+<li><p><code>sigfigs</code>: number of significant figures to show in <code>standard</code> mode; the default is 6</p>
+
+<li><p><code>decorations</code> &#40;boolean&#41;:  show decorations or not</p>
+
+</ul>
+<p>Example:</p>
+<pre><code class=language-julia >julia&gt; setformat&#40;:full, decorations&#61;true&#41;
+Display parameters:
+- format: full
+- decorations: true
+- significant figures: 6</code></pre>
+</div>
+  </div>
+   <div class=docstring >
+      <div class=doc-header  id=Region >
+        <a href="#Region">Region</a></div>
+      <div class=doc-content ><pre><code class=language-julia >Region&#123;T&#125; &#61; Union&#123;Interval&#123;T&#125;, IntervalBox&#123;T&#125;&#125;</code></pre>
+</div>
+  </div>
+</p>
+<div class=page-foot >
+  <div class=copyright >
+    &copy; Luca Ferranti. Last modified: January 20, 2021. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+  </div>
+</div>
+</div>
+
+      </div> 
+    </div>   
+
+    <div class=page__footer >
+      <footer>
+        
+        
+        <div class=page__footer-follow >
+          <ul class=social-icons >
+            <li><strong>Follow:</strong>
+            <li><a href="https://github.com/JuliaIntervals" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a>
+          </ul>
+        </div>
+        <div class=page__footer-copyright >&copy; Luca Ferranti. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel=nofollow >Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/libs/minimal-mistakes/main.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin=anonymous ></script>
+
+    
+        
+
+
+
+    
+    
+        <script src="/libs/highlight/highlight.pack.js"></script>
+<script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+<script>hljs.initHighlightingOnLoad();hljs.configure({tabReplace: '    '});</script>
+<script>hljs.initLineNumbersOnLoad({
+    singleLine: true
+});</script>

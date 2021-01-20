@@ -1,0 +1,2 @@
+a = [1, 2]
+ArgumentError: `[2.0, 1.0]` is not a valid interval. Need `a ≤ b` to construct `interval(a, b)`.

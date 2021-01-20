@@ -1,0 +1,63 @@
+[
+    {"name": "Tutorials",
+     "folder": "tutorials",
+     "pages": [
+         {"file": "tutorialArithmetic",
+          "name": "IntervalArithmetic.jl",
+          "notebook": true},
+         {"file": "tutorialRootFinding",
+          "name": "IntervalRootFinding.jl",
+          "notebook": true},
+         {"file": "tutorialConstraintProgramming",
+          "name": "IntervalConstraintProgramming.jl",
+          "notebook": true},
+         {"file": "tutorialOptimisation",
+          "name": "IntervalOptimisation.jl",
+          "notebook": true},
+         {"file": "tutorialTaylorModels",
+          "name": "TaylorModels.jl",
+          "notebook": true}
+     ]},
+
+    {"name": "Applications",
+     "folder": "howTo",
+     "pages": [
+        {"file": "rigorousPi",
+         "name": "Rigorous approximation of π",
+         "notebook": true},
+        {"file": "funcRange",
+         "name": "Rigorous computation of function range",
+         "notebook": true}
+     ]},
+
+     {"name": "Explanations",
+        "folder": "explanations",
+        "pages": [
+           {"file": "intervalFunctionsGrimoire",
+            "name": "Interval functions grimoire",
+            "notebook": false},
+            {"file": "explanationNewton",
+             "name": "Newton method for interval root finding",
+             "notebook": true}
+        ]},
+
+        {"name": "API",
+            "folder": "apiDocs",
+            "pages": [
+               {"file": "apiIntervalArithmetic",
+                "name": "IntervalArithmetic.jl",
+                "notebook": false},
+                {"file": "apiRootFinding",
+                    "name": "IntervalRootFinding.jl",
+                    "notebook": false},
+                {"file": "apiIntervalOptimisation",
+                    "name": "IntervalArithmetic.jl",
+                    "notebook": false},
+                {"file": "apiIntervalConstraintProgramming",
+                    "name": "IntervalConstraintProgramming.jl",
+                    "notebook": false},
+                {"file": "apiTaylorModels",
+                "name":"TaylorModels.jl",
+                 "notebook":false}
+            ]}
+]

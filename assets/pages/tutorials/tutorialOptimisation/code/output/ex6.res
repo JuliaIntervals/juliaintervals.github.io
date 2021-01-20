@@ -1,0 +1,1 @@
+([0, 4.24526e-22], IntervalArithmetic.IntervalBox{2,Float64}[[2.99999, 3.00001] × [2.99999, 3.00001]])

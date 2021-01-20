@@ -35,8 +35,8 @@ rts &#61; roots&#40;f, X&#41; # using newton method</code></pre><pre><code class
 <pre><code class=language-julia >using BenchmarkTools
 @btime roots&#40;log, x-&gt;1/x, -2..2&#41;
 
-@btime roots&#40;log, -2..2&#41;</code></pre><pre><code class=plaintext >  4.214 μs (54 allocations: 4.17 KiB)
-  4.714 μs (70 allocations: 4.67 KiB)
+@btime roots&#40;log, -2..2&#41;</code></pre><pre><code class=plaintext >  3.586 μs (54 allocations: 4.17 KiB)
+  3.900 μs (70 allocations: 4.67 KiB)
 1-element Array{IntervalRootFinding.Root{IntervalArithmetic.Interval{Float64}},1}:
  Root([0.999999, 1.00001], :unique)</code></pre>
 <h2 id=multidimensional_example ><a href="#multidimensional_example">Multidimensional example</a></h2>
@@ -62,14 +62,14 @@ rts &#61; roots&#40;g, X&#41;</code></pre><pre><code class=plaintext >2-element 
 end
 
 @btime roots&#40;g, dg, X&#41;
-@btime roots&#40;g, X&#41;</code></pre><pre><code class=plaintext >  49.900 μs (461 allocations: 25.36 KiB)
-  53.001 μs (462 allocations: 25.41 KiB)
+@btime roots&#40;g, X&#41;</code></pre><pre><code class=plaintext >  43.103 μs (461 allocations: 25.36 KiB)
+  45.703 μs (462 allocations: 25.41 KiB)
 </code></pre>
 <h2 id=tolerance ><a href="#tolerance">Tolerance</a></h2>
 <p>By default, the roots are found with a tolerance of <code>1e-15</code>. This can be changed by giving the solver an extra parameter. A Higher tolerance can significantly speed up the computations. However, as a drawback, more intervals might have an <code>:unknown</code> status. Observe the following example</p>
 <pre><code class=language-julia >h&#40;x&#41; &#61; cos&#40;x&#41; * sin&#40;1 / x&#41;
 
-@btime roots&#40;h, 0.05..1&#41;</code></pre><pre><code class=plaintext >  42.900 μs (140 allocations: 12.98 KiB)
+@btime roots&#40;h, 0.05..1&#41;</code></pre><pre><code class=plaintext >  35.403 μs (140 allocations: 12.98 KiB)
 6-element Array{IntervalRootFinding.Root{IntervalArithmetic.Interval{Float64}},1}:
  Root([0.106103, 0.106104], :unique)
  Root([0.318309, 0.31831], :unique)
@@ -77,7 +77,7 @@ end
  Root([0.0636619, 0.063662], :unique)
  Root([0.0530516, 0.0530517], :unique)
  Root([0.159154, 0.159155], :unique)</code></pre>
-<pre><code class=language-julia >@btime roots&#40;h, 0.05..1, Newton, 1e-2&#41;</code></pre><pre><code class=plaintext >  24.500 μs (101 allocations: 10.20 KiB)
+<pre><code class=language-julia >@btime roots&#40;h, 0.05..1, Newton, 1e-2&#41;</code></pre><pre><code class=plaintext >  20.401 μs (101 allocations: 10.20 KiB)
 6-element Array{IntervalRootFinding.Root{IntervalArithmetic.Interval{Float64}},1}:
  Root([0.317179, 0.319299], :unique)
  Root([0.157209, 0.165989], :unknown)
@@ -85,7 +85,7 @@ end
  Root([0.0515382, 0.0531049], :unique)
  Root([0.0785458, 0.0797755], :unknown)
  Root([0.0570253, 0.0641614], :unknown)</code></pre>
-<pre><code class=language-julia >@btime roots&#40;h, 0.05..1, Newton, 1e-1&#41;</code></pre><pre><code class=plaintext >  9.000 μs (46 allocations: 3.92 KiB)
+<pre><code class=language-julia >@btime roots&#40;h, 0.05..1, Newton, 1e-1&#41;</code></pre><pre><code class=plaintext >  7.567 μs (46 allocations: 3.92 KiB)
 3-element Array{IntervalRootFinding.Root{IntervalArithmetic.Interval{Float64}},1}:
  Root([0.107541, 0.165989], :unknown)
  Root([0.283803, 0.3555], :unknown)

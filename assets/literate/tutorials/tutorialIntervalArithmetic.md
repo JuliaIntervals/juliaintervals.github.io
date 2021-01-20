@@ -7,7 +7,7 @@ As floating point arithmetic introduces numerical error, interval arithmetic off
 meaning the output of the computation, be it solving a system of equations or an optimisation problem, will be an interval that is guaranteed to contain the correct solution.
 Before we dive into interval arithmetic, let's have a motivational example.
 
-Observe the graph below, at first sight, it seems to have a small cuspid at $x=\frac{1}{3}$, zooming closer also seems to confirm it.
+Observe the graph below, at first sight, it seems to have a small cuspid at $x=\frac{4}{3}$, zooming closer also seems to confirm it.
 
 ```julia:ex1
 f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1 # hide
@@ -21,13 +21,13 @@ savefig(joinpath(@OUTPUT, "intMotivation.svg")) # hide
 
 \fig{intMotivation}
 
-However, the function in the figure is (this example is due to William Kahan, the father of floating point arithmetic himself)
+However, the function in the figure is (this example is due to William Kahan, the father of floating point arithmetic)
 
 $$
 f(x) = (1/80) * \frac{1}{80}\log(|3(1 - x) + 1|) + x^2 + 1
 $$
 
-From the expression is now evident that the function has a vertical asympote at $x=\frac{1}{3}$ So what is going on?
+From the expression is now evident that the function has a vertical asympote at $x=\frac{4}{3}$ So what is going on?
 First, you may think that using more points might help, however the issue is nastier. First, floating point system cannot represent all real numbers,
 i.e. whenever you do real computations using floating points, you introduce a discretization error. Particularly, the number $\frac{4}{3}$ itself is not
 exactly representable with floating point arithmetic, hence when you type `x=4/3` in your code, you actually get a number close to it. Observe
@@ -53,7 +53,7 @@ the final result of the computation will be an approximate solution which is (ho
 Interval arithmetic on the other side will output an interval which is *guaranteed*
 to contain the correct theoretical result of the computation. This tutorial will show
 you how to perform interval computations in Julia using the `IntervalArithmetic.jl` package.
-After this tutorial, you will be ready to harness the power of interval arithmetic and learn how to apply it to root finding, optimisation or differential equations. TODO: links
+After this tutorial, you will be ready to harness the power of interval arithmetic and learn how to apply it to root finding, optimisation or differential equations.
 
 ## Setup
 

@@ -1,7 +1,7 @@
 <!--This file was generated, do not modify it.-->
 ## Setup
 
-The `IntervalOptimisation.jl` package can be installed with
+The `IntervalConstraintProgramming.jl` package can be installed with
 
 ```julia
 using Pkg; Pkg.add("IntervalConstraintProgramming")

@@ -32,7 +32,7 @@ err &#61; abs&#40;S - pi^2/6.&#41;  # error
 end
 
 N &#61; 10^5
-@time rigorous_approx_S_N &#61; forward_S_N&#40;N&#41;</code></pre><pre><code class=plaintext >  2.471159 seconds (16.08 M allocations: 687.521 MiB, 7.18% gc time)
+@time rigorous_approx_S_N &#61; forward_S_N&#40;N&#41;</code></pre><pre><code class=plaintext >  2.361516 seconds (16.08 M allocations: 687.525 MiB, 8.25% gc time)
 [1.64492, 1.64493]</code></pre>
 <p>We incorporate the respective bound on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">T_N</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.83333em;vertical-align:-0.15em;"></span><span class=mord ><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class=msupsub ><span class="vlist-t vlist-t2"><span class=vlist-r ><span class=vlist  style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class=pstrut  style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class=vlist-s >​</span></span><span class=vlist-r ><span class=vlist  style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> to obtain the bounds on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>, and hence on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span>. We can also optimize the code by creating the interval <code>@interval&#40;1&#41;</code> only once:</p>
 <pre><code class=language-julia >function forward_sum&#40;N&#41;
@@ -51,7 +51,7 @@ end
 
 N &#61; 10^6
 @time S &#61; forward_sum&#40;N&#41;
-@show S, diam&#40;S&#41;</code></pre><pre><code class=plaintext >  0.366967 seconds (3.55 M allocations: 100.478 MiB, 7.21% gc time)
+@show S, diam&#40;S&#41;</code></pre><pre><code class=plaintext >  0.368087 seconds (3.55 M allocations: 100.478 MiB, 7.78% gc time)
 (S, diam(S)) = ([3.14159, 3.1416], 2.1298829366855898e-10)
 </code></pre>
 <p>We can ask for the midpoint–radius representation, which shows that the calculated bounds are correct to around 10 decimal places:</p>
@@ -75,7 +75,7 @@ end
 
 N &#61; 10^6
 @time S &#61; reverse_sum&#40;N&#41;
-@show S, diam&#40;S&#41;</code></pre><pre><code class=plaintext >  0.173281 seconds (3.03 M allocations: 77.608 MiB, 15.39% gc time)
+@show S, diam&#40;S&#41;</code></pre><pre><code class=plaintext >  0.172245 seconds (3.03 M allocations: 77.608 MiB, 17.52% gc time)
 (S, diam(S)) = ([3.14159, 3.1416], 9.57456336436735e-13)
 </code></pre>
 <p>Note that the sqrt function is guaranteed &#40;by the <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> standard&#41; to give correctly-rounded results, so the resulting bounds on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span> are guaranteed to be correct.</p>
@@ -95,7 +95,7 @@ end
 
 N &#61; 10^6
 @time S &#61; reverse_sum2&#40;N&#41;
-@show S, diam&#40;S&#41;</code></pre><pre><code class=plaintext >  0.118905 seconds (2.06 M allocations: 48.470 MiB, 11.78% gc time)
+@show S, diam&#40;S&#41;</code></pre><pre><code class=plaintext >  0.109870 seconds (2.06 M allocations: 48.470 MiB, 12.58% gc time)
 (S, diam(S)) = ([3.14159, 3.1416], 9.57456336436735e-13)
 </code></pre>
 

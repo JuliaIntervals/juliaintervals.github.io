@@ -1,10 +1,10 @@
 <!--This file was generated, do not modify it.-->
 ## Setup
 
-The `IntervalOptimisation.jl` package can be installed with
+The `TaylorModels.jl` package can be installed with
 
 ```julia
-using Pkg; Pkg.add("IntervalConstraintProgramming")
+using Pkg; Pkg.add("TaylorModels")
 ```
 
 Once the package is installed, it can be imported. Note that you will need also the `IntervalArithmetic.jl` package.

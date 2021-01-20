@@ -5,3 +5,4 @@ franklin.pub
 node_modules/
 sandBox.jl
 *.log
+.ipynb_checkpoints/

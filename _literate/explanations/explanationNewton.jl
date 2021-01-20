@@ -1,4 +1,4 @@
-#nb # Interval Newton method for root finding
+#nb # # Interval Newton method for root finding
 
 # ## Introduction
 

@@ -1,4 +1,4 @@
-#nb # Rigorous approximation of $\pi$
+#nb # # Rigorous approximation of $\pi$
 
 # ## Introduction
 

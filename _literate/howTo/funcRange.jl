@@ -1,4 +1,4 @@
-#nb # Rigorous computation of function range
+#nb # # Rigorous computation of function range
 
 # ## Introduction
 

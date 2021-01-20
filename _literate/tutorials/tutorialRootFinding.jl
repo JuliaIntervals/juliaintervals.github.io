@@ -1,4 +1,4 @@
-#nb # Interval root finding tutorial
+#nb # # Interval root finding tutorial
 
 # ## Setup
 

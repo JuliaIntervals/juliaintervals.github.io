@@ -1,4 +1,4 @@
-#nb # Interval optimisation tutorial
+#nb # # Interval optimisation tutorial
 
 # ## Setup
 

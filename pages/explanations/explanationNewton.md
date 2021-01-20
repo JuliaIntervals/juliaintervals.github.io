@@ -1,0 +1,1 @@
+\tutorial{explanations/explanationNewton}{Newton method for interval root finding}

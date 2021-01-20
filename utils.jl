@@ -39,12 +39,12 @@ function hfun_doc(params)
     txt = Markdown.plain(doc)
     # possibly further processing here
     body = Franklin.fd2html(txt; internal=true)
-    #body = replace(body, "<h1"=>s"<h3")
-    #body = replace(body, "</h1"=>s"</h3")
+    body = replace(body, "<h1"=>s"<h3")
+    body = replace(body, "</h1"=>s"</h3")
     return """
       <div class="docstring">
-          <h2 class="doc-header" id="$fname">
-            <a href="#$fname">$fname</a></h2>
+          <div class="doc-header" id="$fname">
+            <a href="#$fname">$fname</a></div>
           <div class="doc-content">$body</div>
       </div>
     """

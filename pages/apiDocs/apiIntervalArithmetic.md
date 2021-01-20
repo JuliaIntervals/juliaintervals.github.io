@@ -1,7 +1,5 @@
 @def title = "IntervalArithmetic.jl API docs"
 
-\toc
-
 {{doc DecoratedInterval IntervalArithmetic}}
 {{doc IntervalBox IntervalArithmetic}}
 {{doc @biginterval IntervalArithmetic}}
@@ -25,3 +23,4 @@
 {{doc pow IntervalArithmetic}}
 {{doc radius IntervalArithmetic}}
 {{doc setformat IntervalArithmetic}}
+{{doc Region IntervalArithmetic}}

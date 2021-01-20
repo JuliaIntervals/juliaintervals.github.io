@@ -33,9 +33,12 @@
      {"name": "Explanations",
         "folder": "explanations",
         "pages": [
-           {"file": "intervalAnalysisIntro",
-            "name": "Introduction to interval analysis",
-            "notebook": false}
+           {"file": "intervalFunctionsGrimoire",
+            "name": "Interval functions grimoire",
+            "notebook": false},
+            {"file": "explanationNewton",
+             "name": "Newton method for interval root finding",
+             "notebook": true}
         ]},
 
         {"name": "API",
@@ -43,6 +46,18 @@
             "pages": [
                {"file": "apiIntervalArithmetic",
                 "name": "IntervalArithmetic.jl",
-                "notebook": false}
+                "notebook": false},
+                {"file": "apiRootFinding",
+                    "name": "IntervalRootFinding.jl",
+                    "notebook": false},
+                {"file": "apiIntervalOptimisation",
+                    "name": "IntervalArithmetic.jl",
+                    "notebook": false},
+                {"file": "apiIntervalConstraintProgramming",
+                    "name": "IntervalConstraintProgramming.jl",
+                    "notebook": false},
+                {"file": "apiTaylorModels",
+                "name":"TaylorModels.jl",
+                 "notebook":false}
             ]}
 ]

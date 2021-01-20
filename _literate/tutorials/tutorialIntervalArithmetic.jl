@@ -2,9 +2,51 @@
 
 # ## Introduction
 
+# This tutorial will show you how to perform interval computations in Julia using the `IntervalArithmetic.jl` package.
+# Interval arithmetic, opposed to traditional floating point arithmetic, uses intervals instead of single numbers.
+# As floating point arithmetic introduces numerical error, interval arithmetic offers a framework to perform *rigorous* computations,
+# meaning the output of the computation, be it solving a system of equations or an optimisation problem, will be an interval that is guaranteed to contain the correct solution.
+# Before we dive into interval arithmetic, let's have a motivational example.
+
+# Observe the graph below, at first sight, it seems to have a small cuspid at $x=\frac{1}{3}$, zooming closer also seems to confirm it.
+
+f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1 # hide
+using Plots # hide
+p1 = plot(0.5:0.01:2.0, f, leg=false) # hide
+p2 = plot(1.2:0.0001:1.5, f, leg=false) # hide
+plot(p1, p2, layout=(1,2), leg=false) # hide
+
+#!nb savefig(joinpath(@OUTPUT, "intMotivation.svg")) # hide
+#!nb # \fig{intMotivation}
+
+# However, the function in the figure is (this example is due to William Kahan, the father of floating point arithmetic himself)
+
+# $$
+# f(x) = (1/80) * \frac{1}{80}\log(|3(1 - x) + 1|) + x^2 + 1
+# $$
+
+# From the expression is now evident that the function has a vertical asympote at $x=\frac{1}{3}$ So what is going on?
+# First, you may think that using more points might help, however the issue is nastier. First, floating point system cannot represent all real numbers,
+# i.e. whenever you do real computations using floating points, you introduce a discretization error. Particularly, the number $\frac{4}{3}$ itself is not
+# exactly representable with floating point arithmetic, hence when you type `x=4/3` in your code, you actually get a number close to it. Observe
+
+x = 4/3
+f(x) = 1/80 * log(abs(3*(1 - x) + 1)) + x^2 + 1
+@show f(x)
+
+# Hence using floating point arithmetic the function seems to be defined at `4/3`, which is obviously an absurd. Let us try to evaluate now the function at the previous and next floating point number.
+
+f(prevfloat(x))
+f(nextfloat(x))
+
+# Again, the function seems perfectly finite and well behaving. Conclusion: there is nothing you can do with floating point arithmetic to detect the singularity.
+# Interval arithmetic will offer a framework to perform rigorous computations with real numbers and avoid this kind of issues. In this tutorial you will also see how interval arithmetic can detect the singularity for this function.
+
 # Interval arithmetic offers a methematical framework to performs *rigorous* computations. Computations with traditional floating point arithmetic introduce rounding error and hence
-# the final result of the computation will be an approximate solution which is (hopefully!) close to the correct value. Interval arithmetic on the other side will output an interval which is * guaranteed*
-# to contain the correct theoretical result of the computation. This tutorial will show you how to perform interval computations in Julia using the `IntervalArithmetic.jl` package.
+# the final result of the computation will be an approximate solution which is (hopefully!) close to the correct value.
+# Interval arithmetic on the other side will output an interval which is *guaranteed*
+# to contain the correct theoretical result of the computation. This tutorial will show
+# you how to perform interval computations in Julia using the `IntervalArithmetic.jl` package.
 # After this tutorial, you will be ready to harness the power of interval arithmetic and learn how to apply it to root finding, optimisation or differential equations. TODO: links
 
 # ## Setup
@@ -32,7 +74,7 @@ a = 1..2
 b = 2..1
 
 
-# Note that the if the upper bound is negative, then it should be within parentheses `-5..(-2)` or adding a space before it `-5.. -2`.
+# **Note** that the if the upper bound is negative, then it should be within parentheses `-5..(-2)` or adding a space before it `-5.. -2`.
 # However, the expression `-5..-2` will throw a syntax error.
 
 # ### `@interval` macro and `interval` method
@@ -87,7 +129,7 @@ correct = big"0.1"
 @show correct ∈ II
 
 
-# The function `big(a)` reveals that the float $a$ is actually slightly bigger than $0.1$. Since `Interval(0.1)` does not perform any proper rounding, the interval will be above $0.1$. The best possible approximation of the number can be obtained using arbitrary-precision arithmetic insead of floating-point, this is achieved with `big"0.1"` (Note that we give `"0.1"` as a string). It can now be observed that this number is not included in `Interval(0.1)`. However, creating the interval with `@interval 0.1` performs direct rounding (lower bound rounded down and upper bound rounded up), obtaining an interval that does indeed contain the wanted number.
+# The function `big(a)` reveals that the float $a$ is actually slightly bigger than $0.1.$ Since `Interval(0.1)` does not perform any proper rounding, the interval will be above $0.1$. The best possible approximation of the number can be obtained using arbitrary-precision arithmetic insead of floating-point, this is achieved with `big"0.1"` (Note that we give `"0.1"` as a string). It can now be observed that this number is not included in `Interval(0.1)`. However, creating the interval with `@interval 0.1` performs direct rounding (lower bound rounded down and upper bound rounded up), obtaining an interval that does indeed contain the wanted number.
 
 # The `Interval()` constructor is used in the internals of the package and it is called only after rounding and sanity checks have been done. For efficiency reasons, the constructor does not perform any more checks. The user should **not** use this constructor directly, but prefer any of the above exposed methods.
 
@@ -148,12 +190,19 @@ Z*X+Z*Y
 
 @show sin(0..2/3*π)
 
-
 @show  log(-3.. -2)
 
 @show log(-3..2)
 
 @show  √(-3..4)
+
+# Now that we have discussed basic interval arithmetic operations, we are ready to return to Kahan's example. Let us create a small interval around `4/3`and evaluate the function there.
+
+f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1
+x = @interval 4/3
+@show f(x)
+
+# As we can notice, interval arithmetic can successfully detect the singularity in the function, which we could not do with floating point arithmetic.
 
 # ### A note on functions: overestimation
 
@@ -172,3 +221,94 @@ X = -2..2
 @show f(-2.. -1.5) ∪ f(-1.5.. 2)
 
 # As can be noticed, the overestimate is now reduced. [Here](/pages/howTo/funcRange/) you will find a more detailed discussion on how to estimate the range of a function and deal with function overestimates.
+
+# ## First application: existence of zeros of a function
+
+# In this section we will briefly show some first applications of interval arithmetic. More can be found in [applications](/pages/howTo/index/) section.
+
+# Interval arithmetic can be used to determine whether a function has at least a root in a given interval. Suppose we want to find the zeros of the function $f(x)=x^2-2$.
+# Suppose we want to know whether the function has a zero in the interval $[3, \infty]$.
+
+f(x) = x^2 - 2
+@show f(3..∞)
+@show 0 ∈ f(3..∞)
+
+# As can be seen, $0$  is not in  the interval $[3, \infty]$, hence our computations proves rigorously, that the function has no roots in that interval.
+
+# Unfortunately, the converse is not true. As discussed before, the resulting interval might sometimes be an overestimate of the true one.
+# Hence, if $0$ is in the interval, we cannot directly conclude that the function has a root, as this might be due to overestimate.
+
+f(1..2)
+
+# Now the function *might* have a root in the interval $[1,2]$, but how can we be sure? Automatic differentiation comes to the rescue!
+
+using ForwardDiff
+
+df(x) = ForwardDiff.derivative(f, x)
+@show df(1..2)
+
+# The function `df` will now compute the derivative of `f` at a given point `x`. The last row tells us that the derivative is strictly positive in the interval, i.e. the function is monotone. From this we can conclude two things:
+# 1. Since the function is monotone, no overestimate occurs, and the computed range is the true range, i.e. the function has indeed one root in the interval
+# 2. Since the function is monotone in that interval, the root is unique.
+
+# Using interval arithmetic we could prove rigorously the existence and uniqueness of the root. If you think doing all this work by hand is boring, the package [`IntervalRootFinding.jl`](/pages/tutorials/tutorialRootFinding/)
+# has implemented several functionalities to compute roots of functions in a rigorous way.
+
+# ## Interval Boxes
+
+# Interval boxes generalize the concept of interval to higher dimensions. More formally an interval box $X$ is a subset of $\R^n$ defined as the cartesian product of $n$ intervals, i.e.
+
+# $$
+# X = X_1\times\cdots\times X_n
+# $$
+
+# In julia, interval boxes can be created using the constructor `IntervalBox`, which takes the single intervals `X1,X2,...,Xn` as arguments. For the special case when $X_1=\cdots=X_n$ you can also use
+# the shorter signature `IntervalBox(x, n)`. Observe the following examples
+
+X1 = IntervalBox(1..2, 2..3, 3..4)
+X2 = IntervalBox(1..2, 3..4)
+X3 = IntervalBox(1..2, 5)
+
+@show X1
+@show X2
+@show X3
+
+# Note that an interval box is a vector of intervals and as such, only operations which are well defined for vectors (addition and scalar multiplication) are implemented.
+# Particularly, product of interval boxes or elementary functions are not well defined. If you want to apply a function to each component of the box, use broadcasting.
+
+X1 = IntervalBox(1..2, 2..3)
+X2 = IntervalBox(-1..1, 0..2)
+
+@show X1 + X2
+@show sin.(X1)
+
+# 2D interval boxes are particularly handy for visualization. We can give the function `plot` (and `plot!`) a 2D interval box, or an array of boxes, to visualize these boxes in the cartesian plane.
+# Recall our example from before
+
+f(x) = x^2 + 3x - 1
+X = -2..2
+f1 = f(X)
+
+X2 = [-2.. -1.5, -1.5..2]
+f2 = f.(X2)
+
+# We had discussed that evaluated the function over the inverval overestimates the range, and splitting the interval helps reducing the overestimate. To help visualizing this, we first create the interval boxes $X×f(X)$, note you can
+# use broadcasting to create an array of boxes from arrays of interval
+
+box1 = IntervalBox(X, f1)
+box2 = IntervalBox.(X2, f2)
+
+nothing # hide
+
+# now we can plot the boxes to visualize the overestimate
+
+using Plots
+plot(box1)
+plot!(box2)
+plot!(f, -2, 2, leg=false, color=:black, linewidth=2)
+
+#!nb savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide
+
+#!nb # \fig{plotBoxes}
+
+# As you can see, evaluating the range using two boxes reduces the overestimate of the range.

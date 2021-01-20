@@ -2,10 +2,10 @@
 
 # ## Setup
 
-# The `IntervalOptimisation.jl` package can be installed with
+# The `IntervalRootFinding.jl` package can be installed with
 
 # ```julia
-# using Pkg; Pkg.add("IntervalOptimisation");
+# using Pkg; Pkg.add("IntervalRootFinding");
 # ```
 
 # Once the package is installed, it can be imported. Note that you will need also the `IntervalArithmetic.jl` package.

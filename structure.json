@@ -51,7 +51,7 @@
                     "name": "IntervalRootFinding.jl",
                     "notebook": false},
                 {"file": "apiIntervalOptimisation",
-                    "name": "IntervalArithmetic.jl",
+                    "name": "IntervalOptimisation.jl",
                     "notebook": false},
                 {"file": "apiIntervalConstraintProgramming",
                     "name": "IntervalConstraintProgramming.jl",

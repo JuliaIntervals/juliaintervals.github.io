@@ -1,8 +1,12 @@
 # JuliaIntervals Webpage
 
-This github repository contains the first draft for the JuliaIntervals webpage. It is constantly under active development. This webpage is being developed as a JSoD project by me (Luca Ferranti, aka besselj in the JSoD page aka @luca on slack). 
+This github repository contains the webpage for the JuliaIntervals organizations. The webpage can be found at [juliaintervals.github.io](juliaintervals.github.io).
 
-If you have suggestions on how to improve the webpage, be it content or appearance related, feel free to open an issue or a PR or contact me on slack
+If you have suggestions on how to improve the webpage, be it content or appearance related, feel free to open an issue or a PR or contact me on slack (@luca).
+
+## Author
+
+- Luca Ferranti
 
 ## Opening the webpage on your local machine
 

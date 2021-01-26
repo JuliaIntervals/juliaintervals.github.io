@@ -7,6 +7,19 @@
   font-family: Georgia,Times,serif
 }
 
+.masthead.sticky {
+    clear: both;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0
+}
+
+.logo-img {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .intro {
   text-align: center;
   font-size: 22px;
@@ -1713,7 +1726,8 @@ tr,td,th {
   animation: intro 0.3s both;
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
-  z-index: 20
+  z-index: 20;
+  background-color: white;
 }
 
 .masthead__inner-wrap {
@@ -3208,7 +3222,7 @@ body:hover .visually-hidden a,body:hover .visually-hidden input,body:hover .visu
     clear: both;
     position: -webkit-sticky;
     position: sticky;
-    top: 2em
+    top: 4em
   }
 
   .sticky::after {
@@ -3877,6 +3891,11 @@ a.reversefootnote:hover {
   position: relative;
 }
 
+.feature__item {
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
 .feature__item:hover {
   border: 2px solid #898c8f;
   border-radius: 5px;
@@ -3937,7 +3956,6 @@ a.reversefootnote:hover {
   position: relative;
   border-radius: 4px;
   overflow: hidden;
-  height: 300px;
 }
 
 .archive__item-teaser img {

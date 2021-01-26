@@ -254,7 +254,7 @@ df(x) = ForwardDiff.derivative(f, x)
 # Using interval arithmetic we could prove rigorously the existence and uniqueness of the root. If you think doing all this work by hand is boring, the package [`IntervalRootFinding.jl`](/pages/tutorials/tutorialRootFinding/)
 # has implemented several functionalities to compute roots of functions in a rigorous way.
 
-# ## Interval Boxes
+# ## Interval boxes
 
 # Interval boxes generalize the concept of interval to higher dimensions. More formally an interval box $X$ is a subset of $\R^n$ defined as the cartesian product of $n$ intervals, i.e.
 

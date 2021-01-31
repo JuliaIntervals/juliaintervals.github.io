@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500pt" height="500pt" viewBox="0 0 500 500" version="1.1">
+<g id="surface135">
+<path style="fill:none;stroke-width:18;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(22%,59.6%,14.9%);stroke-opacity:1;stroke-miterlimit:10;" d="M 143.75 462.5 L 37.5 462.5 L 37.5 37.5 L 143.75 37.5 "/>
+<path style="fill:none;stroke-width:18;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(22%,59.6%,14.9%);stroke-opacity:1;stroke-miterlimit:10;" d="M 356.25 462.5 L 462.5 462.5 L 462.5 37.5 L 356.25 37.5 "/>
+<path style="fill:none;stroke-width:18;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(79.6%,23.5%,20%);stroke-opacity:1;stroke-miterlimit:10;" d="M 168.75 412.5 L 87.5 412.5 L 87.5 87.5 L 168.75 87.5 "/>
+<path style="fill:none;stroke-width:18;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(79.6%,23.5%,20%);stroke-opacity:1;stroke-miterlimit:10;" d="M 331.25 412.5 L 412.5 412.5 L 412.5 87.5 L 331.25 87.5 "/>
+<path style="fill:none;stroke-width:18;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(58.4%,34.5%,69.8%);stroke-opacity:1;stroke-miterlimit:10;" d="M 193.75 362.5 L 137.5 362.5 L 137.5 137.5 L 193.75 137.5 "/>
+<path style="fill:none;stroke-width:18;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(58.4%,34.5%,69.8%);stroke-opacity:1;stroke-miterlimit:10;" d="M 306.25 362.5 L 362.5 362.5 L 362.5 137.5 L 306.25 137.5 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(79.6%,23.5%,20%);fill-opacity:1;" d="M 246.519531 265 C 246.519531 277.425781 236.445313 287.5 224.019531 287.5 C 211.59375 287.5 201.519531 277.425781 201.519531 265 C 201.519531 252.574219 211.59375 242.5 224.019531 242.5 C 236.445313 242.5 246.519531 252.574219 246.519531 265 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(22%,59.6%,14.9%);fill-opacity:1;" d="M 272.5 220 C 272.5 232.425781 262.425781 242.5 250 242.5 C 237.574219 242.5 227.5 232.425781 227.5 220 C 227.5 207.574219 237.574219 197.5 250 197.5 C 262.425781 197.5 272.5 207.574219 272.5 220 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(58.4%,34.5%,69.8%);fill-opacity:1;" d="M 298.480469 265 C 298.480469 277.425781 288.40625 287.5 275.980469 287.5 C 263.554688 287.5 253.480469 277.425781 253.480469 265 C 253.480469 252.574219 263.554688 242.5 275.980469 242.5 C 288.40625 242.5 298.480469 252.574219 298.480469 265 "/>
+</g>
+</svg>

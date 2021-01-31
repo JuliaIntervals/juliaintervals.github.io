@@ -2,9 +2,19 @@
 @def maxtoclevel = 2
 # Contributors
 
-This page contains a list of authors, contributors and acknowledgements for each package of the organization
+This page contains a list of authors and contributors in the JuliaIntervals organization. The list of contributors for each package is obtained taking the people with at least 100 row insertions. If you feel your name should be listed, do not hesitate to contact us, e.g. opening an issue to the [repository](https://github.com/JuliaIntervals/juliaintervals.github.io) of this webpage.
 
 \toc
+
+## JuliaIntervals Webpage
+
+### Authors
+
+- [Luca Ferranti](https://www.linkedin.com/in/luca-ferranti/), University of Vaasa, Vaasa, Finland
+
+### Contributors
+
+- [Cormullion](https://github.com/cormullion): Designer of the JuliaIntervals logo
 
 ## IntervalArithmetic.jl
 
@@ -15,15 +25,13 @@ This page contains a list of authors, contributors and acknowledgements for each
 
 ### Contributors
 
-- Oliver Heimlich
-- Nikolay Kryukov
-- John Verzani
-
-### Acknowledgements
-
-This project was developed in a masters' course in the postgraduate programs in Physics and in Mathematics at UNAM during the second semester of 2013 and the first semester of 2015. We thank the participants of the courses for putting up with the half-baked material and contributing energy and ideas.
-
-Financial support is acknowledged from DGAPA-UNAM PAPIME grants PE-105911 and PE-107114, and DGAPA-UNAM PAPIIT grant IN-117214. LB acknowledges support through a Cátedra Marcos Moshinsky (2013). DPS acknowledges a sabbatical fellowship from CONACYT and thanks Alan Edelman and the Julia group at MIT for hosting his sabbatical visit.
+- [krish8484](https://github.com/krish8484)
+- [yashrajgupta](https://github.com/yashrajgupta)
+- [eeshan9815](https://github.com/eeshan9815)
+- [Kolaru](https://github.com/Kolaru)
+- [wormell](https://github.com/wormell)
+- [tkoolen](https://github.com/tkoolen)
+- [mfherbst](https://github.com/mfherbst)
 
 ## IntervalRootFinding.jl
 
@@ -32,9 +40,11 @@ Financial support is acknowledged from DGAPA-UNAM PAPIME grants PE-105911 and PE
 - [Luis Benet](http://www.cicc.unam.mx/~benet/), Instituto de Ciencias Físicas, Universidad Nacional Autónoma de México (UNAM)
 - [David P. Sanders](http://sistemas.fciencias.unam.mx/~dsanders/), Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM)
 
-### Acknowledgements
+### Contributors
 
-Financial support is acknowledged from DGAPA-UNAM PAPIME grants PE-105911 and PE-107114, and DGAPA-UNAM PAPIIT grants IN-117214 and IN-117117. LB acknowledges support through a Cátedra Moshinsky (2013).
+- [Kolaru](https://github.com/Kolaru)
+- [eeshan9815](https://github.com/eeshan9815)
+- [gwater](https://github.com/gwater)
 
 ## IntervalOptimisation.jl
 
@@ -42,9 +52,9 @@ Financial support is acknowledged from DGAPA-UNAM PAPIME grants PE-105911 and PE
 
 - [David P. Sanders](http://sistemas.fciencias.unam.mx/~dsanders/), Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM)
 
-### Acknowledgements
+### Contributors
 
-Financial support is acknowledged from DGAPA-UNAM PAPIIT grant IN-117117.
+- [yashcodes](https://github.com/yashcodes)
 
 ## IntervalConstraintProgramming.jl
 
@@ -52,9 +62,9 @@ Financial support is acknowledged from DGAPA-UNAM PAPIIT grant IN-117117.
 
 - [David P. Sanders](http://sistemas.fciencias.unam.mx/~dsanders/), Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM)
 
-### Acknowledgements
+### Contributors
 
-Financial support is acknowledged from DGAPA-UNAM PAPIME grants PE-105911 and PE-107114, and DGAPA-UNAM PAPIIT grant IN-117214, and from a CONACYT-Mexico sabbatical fellowship. The author thanks Alan Edelman and the Julia group for hospitality during his sabbatical visit. He also thanks Luc Jaulin and Jordan Ninin for the IAMOOC online course, which introduced him to this subject.
+- [yashcodes](https://github.com/yashcodes)
 
 ## TaylorModels.jl
 
@@ -63,6 +73,8 @@ Financial support is acknowledged from DGAPA-UNAM PAPIME grants PE-105911 and PE
 - [Luis Benet](http://www.cicc.unam.mx/~benet/), Instituto de Ciencias Físicas, Universidad Nacional Autónoma de México (UNAM)
 - [David P. Sanders](http://sistemas.fciencias.unam.mx/~dsanders/), Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM)
 
-### Acknowledgements
+### Contributors
 
-Financial support is acknowledged from DGAPA-UNAM PAPIIT grants IN-117117, IG-100616 and IG-100819. DPS acknowledges support through a Cátedra Marcos Moshinsky (2018).
+- [UzielLinares](https://github.com/UzielLinares)
+- [aa25desh](https://github.com/aa25desh)
+- [mforets](https://github.com/mforets)

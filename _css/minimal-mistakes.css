@@ -15,10 +15,19 @@
 }
 
 .logo-img {
-  width: 80%;
+  width: 90%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (min-width: 37.5rem) {
+  .logo-img {
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+  }
 }
 .intro {
   text-align: center;
@@ -3481,7 +3490,7 @@ a.reversefootnote:hover {
 
 .page__hero--overlay {
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: 0em;
   padding: 3em 0;
   clear: both;
   background-size: cover;

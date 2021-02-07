@@ -1,4 +1,4 @@
-<!doctype html> <!-- Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes Free for personal and commercial use under the MIT license https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE --> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/libs/highlight/atom-one-dark.css"> <style> .hljs td { border-bottom: none; padding-bottom: 0em !important; padding-left: 0.5em !important; padding-right: 0.5em !important; padding-top: 0.2em !important;} </style> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/minimal-mistakes.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=stylesheet  href="/css/sidebar.css"> <link rel=stylesheet  href="/css/documentation.css"> <link rel=icon  href="/assets/juliaintervals-logoTest.svg"> <!--[if IE ]> <style> /* old IE unsupported flexbox fixes */ .greedy-nav .site-title { padding-right: 3em; } .greedy-nav button { position: absolute; top: 0; right: 0; height: 100%; } </style> <![endif]--> <title>TaylorModels.jl API docs</title> <script src="/libs/lunr/lunr.min.js"></script> <script src="/libs/lunr/lunr_index.js"></script> <script src="/libs/lunr/lunrclient.min.js"></script> <body class=layout--single > <div class="masthead sticky"> <div class=masthead__inner-wrap > <div class=masthead__menu > <nav id=site-nav  class=greedy-nav > <a class=site-logo  href="/"><img src="/assets/juliaintervals-lockupTest.svg" alt="julia logo"></a> <form id=lunrSearchForm  name=lunrSearchForm > <input class=search-input  name=q  placeholder="Enter search term" type=text  > <input type=submit  class=search-button  value=Search  formaction="/search/index.html" > </form> <ul class=visible-links > <li class=masthead__menu-item ><a href="/pages/tutorials/" >Tutorials</a> <li class=masthead__menu-item ><a href="/pages/howTo/" >Applications</a> <li class=masthead__menu-item ><a href="/pages/explanations/" >Explanations</a> <li class=masthead__menu-item ><a href="/pages/apiDocs/">API docs</a> <li class=masthead__menu-item ><a href="/pages/faq/">Contributors</a> </ul> <button class="greedy-nav__toggle hidden" type=button > <span class=visually-hidden >Toggle menu</span> <div class=navicon ></div> </button> <ul class="hidden-links hidden"></ul> </nav> </div> </div> </div> <div class=initial-content > <div id=main  role=main > <div class="sidebar sticky"> <div itemscope itemtype="https://schema.org/Person"> <h3><label for=show-menu  class=show-menu >Index</label></h3> <input type=checkbox  id=show-menu  role=button > <div class=menu  id=side-menu > <h2 class=sidebar-title ><a href="/pages/apiDocs" class=sidebar-link >API</a></h2> <ul class=menu-list > <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalArithmetic/" class="menu-list-link ">IntervalArithmetic.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiRootFinding/" class="menu-list-link ">IntervalRootFinding.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalOptimisation/" class="menu-list-link ">IntervalOptimisation.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalConstraintProgramming/" class="menu-list-link ">IntervalConstraintProgramming.jl</a> <li class="menu-list-item active"><a href="/pages/apiDocs/apiTaylorModels/" class="menu-list-link active">TaylorModels.jl</a> </ul></div> </div> </div> <div class=franklin-content ><p> <div class=docstring > <div class=doc-header  id=RTaylorModel1 > <a href="#RTaylorModel1">RTaylorModel1</a></div> <div class=doc-content ><pre><code class="julia hljs">RTaylorModel1{T,S}</code></pre>
+<!doctype html> <!-- Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes Free for personal and commercial use under the MIT license https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE --> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/libs/highlight/atom-one-dark.css"> <style> .hljs td { border-bottom: none; padding-bottom: 0em !important; padding-left: 0.5em !important; padding-right: 0.5em !important; padding-top: 0.2em !important;} </style> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/minimal-mistakes.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=stylesheet  href="/css/sidebar.css"> <link rel=stylesheet  href="/css/documentation.css"> <link rel=icon  href="/assets/juliaintervals-logoTest.svg"> <!--[if IE ]> <style> /* old IE unsupported flexbox fixes */ .greedy-nav .site-title { padding-right: 3em; } .greedy-nav button { position: absolute; top: 0; right: 0; height: 100%; } </style> <![endif]--> <title>TaylorModels.jl API docs</title> <script src="/libs/lunr/lunr.min.js"></script> <script src="/libs/lunr/lunr_index.js"></script> <script src="/libs/lunr/lunrclient.min.js"></script> <body class=layout--single > <div class="masthead sticky"> <div class=masthead__inner-wrap > <div class=masthead__menu > <nav id=site-nav  class=greedy-nav > <a class=site-logo  href="/"><img src="/assets/juliaintervals-lockupTest.svg" alt="julia logo"></a> <form id=lunrSearchForm  name=lunrSearchForm > <input class=search-input  name=q  placeholder="Enter search term" type=text  > <input type=submit  class=search-button  value=Search  formaction="/search/index.html" > </form> <ul class=visible-links > <li class=masthead__menu-item ><a href="/pages/tutorials/" >Tutorials</a> <li class=masthead__menu-item ><a href="/pages/howTo/" >Applications</a> <li class=masthead__menu-item ><a href="/pages/explanations/" >Explanations</a> <li class=masthead__menu-item ><a href="/pages/apiDocs/">API docs</a> <li class=masthead__menu-item ><a href="/pages/faq/">Contributors</a> </ul> <button class="greedy-nav__toggle hidden" type=button > <span class=visually-hidden >Toggle menu</span> <div class=navicon ></div> </button> <ul class="hidden-links hidden"></ul> </nav> </div> </div> </div> <div class=initial-content > <div id=main  role=main > <div class="sidebar sticky"> <div itemscope itemtype="https://schema.org/Person"> <h3><label for=show-menu  class=show-menu >Index</label></h3> <input type=checkbox  id=show-menu  role=button > <div class=menu  id=side-menu > <h2 class=sidebar-title ><a href="/pages/apiDocs" class=sidebar-link >API</a></h2> <ul class=menu-list > <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalArithmetic/" class="menu-list-link ">IntervalArithmetic.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiRootFinding/" class="menu-list-link ">IntervalRootFinding.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalOptimisation/" class="menu-list-link ">IntervalOptimisation.jl</a> <li class="menu-list-item "><a href="/pages/apiDocs/apiIntervalConstraintProgramming/" class="menu-list-link ">IntervalConstraintProgramming.jl</a> <li class="menu-list-item active"><a href="/pages/apiDocs/apiTaylorModels/" class="menu-list-link active">TaylorModels.jl</a> </ul></div> </div> </div> <div class=franklin-content ><h1 id=taylormodeljl_api ><a href="#taylormodeljl_api">TaylorModel.jl API</a></h1> <div class=franklin-toc ><ol><li><a href="#types">Types</a><li><a href="#methods">Methods</a></ol></div> <h2 id=types ><a href="#types">Types</a></h2> <p> <div class=docstring > <div class=doc-header  id=RTaylorModel1 > <a href="#RTaylorModel1">RTaylorModel1</a>&nbsp; - Type <div class=doc-source ><a href="https://www.github.com/juliaintervals/TaylorModels.jl/blob/master/src/constructors.jl#L33" target=_blank >source</a></div></div> <div class=doc-content ><pre><code class="julia hljs">RTaylorModel1{T,S}</code></pre>
 <p>Relative Taylor model in 1 variable, providing a rigurous polynomial approximation given by a Taylor polynomial <code>pol</code> &#40;around <code>x0</code>&#41; and a relative remainder <code>rem</code> for a function <code>f&#40;x&#41;</code> in one variable, valid in the interval <code>dom</code>. This corresponds to definition 2.3.2 of Mioara Joldes&#39; thesis.</p>
 <p>Fields:</p>
 <ul>
@@ -16,7 +16,7 @@
   </div>
    <div class=docstring >
       <div class=doc-header  id=TaylorModel1 >
-        <a href="#TaylorModel1">TaylorModel1</a></div>
+        <a href="#TaylorModel1">TaylorModel1</a>&nbsp; - Type <div class=doc-source ><a href="https://www.github.com/juliaintervals/TaylorModels.jl/blob/master/src/constructors.jl#L33" target=_blank >source</a></div></div>
       <div class=doc-content ><pre><code class="julia hljs">TaylorModel1{T,S}</code></pre>
 <p>Absolute Taylor model in 1 variable, providing a rigurous polynomial approximation given by a Taylor polynomial <code>pol</code> &#40;around <code>x0</code>&#41; and an absolute remainder <code>rem</code> for a function <code>f&#40;x&#41;</code> in one variable, valid in the interval <code>dom</code>. This corresponds to definition 2.1.3 of Mioara Joldes&#39; thesis.</p>
 <p>Fields:</p>
@@ -35,14 +35,16 @@
   </div>
    <div class=docstring >
       <div class=doc-header  id=TaylorModelN >
-        <a href="#TaylorModelN">TaylorModelN</a></div>
+        <a href="#TaylorModelN">TaylorModelN</a>&nbsp; - Type <div class=doc-source ><a href="https://www.github.com/juliaintervals/TaylorModels.jl/blob/master/src/constructors.jl#L127" target=_blank >source</a></div></div>
       <div class=doc-content ><pre><code class="julia hljs">TaylorModelN{N,T,S}</code></pre>
 <p>Taylor Models with absolute remainder for <code>N</code> independent variables.</p>
 </div>
   </div>
-   <div class=docstring >
+</p>
+<h2 id=methods ><a href="#methods">Methods</a></h2>
+<p>  <div class=docstring >
       <div class=doc-header  id=bound_remainder >
-        <a href="#bound_remainder">bound_remainder</a></div>
+        <a href="#bound_remainder">bound_remainder</a>&nbsp; - Function <div class=doc-source ><a href="https://www.github.com/juliaintervals/TaylorModels.jl/blob/master/src/bounds.jl#L37" target=_blank >source</a></div></div>
       <div class=doc-content ><p>bound_remainder&#40;::Type&#123;TaylorModel1&#125;f::Function, polf::Taylor1, polfI::Taylor1, x0::Interval, I::Interval&#41;</p>
 <p>Bound the absolute remainder of the polynomial approximation of <code>f</code> given by the Taylor polynomial <code>polf</code> around <code>x0</code> on the interval <code>I</code>. It requires the interval extension <code>polfI</code> of the polynomial that approximates <code>f</code> for the whole interval <code>I</code>, in order to compute the Lagrange remainder.</p>
 <p>If <code>polfI&#91;end&#93;</code> has a definite sign, then it is monotonic in the intervals &#91;I.lo, x0&#93; and &#91;x0.hi, I.hi&#93;, which is exploited; otherwise, it is used to compute the Lagrange remainder. This corresponds to Prop 2.2.1 in Mioara Joldes PhD thesis &#40;pp 52&#41;.</p>
@@ -53,7 +55,7 @@
   </div>
    <div class=docstring >
       <div class=doc-header  id=fp_rpa >
-        <a href="#fp_rpa">fp_rpa</a></div>
+        <a href="#fp_rpa">fp_rpa</a>&nbsp; - Function <div class=doc-source ><a href="https://www.github.com/juliaintervals/TaylorModels.jl/blob/master/src/rpa_functions.jl#L233" target=_blank >source</a></div></div>
       <div class=doc-content ><pre><code class="julia hljs">fp_rpa(tm::TaylorModel1{Interval{T},T})
 fp_rpa(tm::RTaylorModel1{Interval{T},T})</code></pre>
 <p>Convert a <code>tm</code> TaylorModel1 to a TaylorModel1 whose polynomial coefficients are <code>Float64</code>. The accumulated error is added to the remainder. The mid point of the expansion interval is preferentially rounded down if it is not an exactly representable value.</p>
@@ -61,14 +63,14 @@ fp_rpa(tm::RTaylorModel1{Interval{T},T})</code></pre>
   </div>
    <div class=docstring >
       <div class=doc-header  id=rpa >
-        <a href="#rpa">rpa</a></div>
+        <a href="#rpa">rpa</a>&nbsp; - Function <div class=doc-source ><a href="https://www.github.com/juliaintervals/TaylorModels.jl/blob/master/src/rpa_functions.jl#L130" target=_blank >source</a></div></div>
       <div class=doc-content ><p>rpa&#40;g::Function, tmf::TaylorModel1&#41;    rpa&#40;g::Function, tmf::RTaylorModel1&#41;    rpa&#40;g::Function, tmf::TaylorModelN&#41;</p>
 <p>Rigurous polynomial approximation &#40;RPA&#41; for the function <code>g</code> using the Taylor Model with absolute/relative remainder <code>tmf</code>. The bound is computed exploiting monotonicity if possible, otherwise, it uses Lagrange bound.</p>
 </div>
   </div>
    <div class=docstring >
       <div class=doc-header  id=integrate >
-        <a href="#integrate">integrate</a></div>
+        <a href="#integrate">integrate</a>&nbsp; - Function <div class=doc-source ><a href="https://www.github.com/juliaintervals/TaylorModels.jl/blob/master/src/integration.jl#L34" target=_blank >source</a></div></div>
       <div class=doc-content ><pre><code class="julia hljs">integrate(a, [x])</code></pre>
 <p>Return the integral of <code>a::Taylor1</code>. The constant of integration &#40;0-th order coefficient&#41; is set to <code>x</code>, which is zero if ommitted.</p>
 <pre><code class="julia hljs">integrate(a, r)</code></pre>
@@ -84,7 +86,7 @@ fp_rpa(tm::RTaylorModel1{Interval{T},T})</code></pre>
 </p>
 <div class=page-foot >
   <div class=copyright >
-    &copy; JuliaIntervals. Last modified: February 04, 2021. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    &copy; JuliaIntervals. Last modified: February 07, 2021. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
   </div>
 </div>
 </div>

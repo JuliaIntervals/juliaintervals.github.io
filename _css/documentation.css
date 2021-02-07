@@ -19,3 +19,7 @@
     position: relative;
     padding: 1rem 1.25rem;
  }
+
+ .doc-source {
+    margin-left: auto;
+ }

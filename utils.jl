@@ -1,4 +1,5 @@
-using Markdown, JSON, Literate
+using Markdown, JSON, Literate, Documenter
+using IntervalArithmetic, IntervalRootFinding, IntervalOptimisation, IntervalConstraintProgramming, TaylorModels
 
 function generate_notebooks()
     nbpath = joinpath("notebooks")
@@ -49,6 +50,55 @@ function hfun_doc(params)
       </div>
     """
 end
+
+function hfun_doc1(params)
+    fname = params[1]
+    pname = params[2]
+
+    if startswith(fname, '@') # handle macros
+        type = "Macro"
+        methodlist = methods(eval(Symbol(fname))).ms
+    else
+	    methodlist = eval(Meta.parse("methods($pname.$fname, $pname)")).ms
+	    type = eval(Meta.parse("Documenter.Utilities.doccat($pname.$fname)"))
+	end
+
+    # manual signature needed for functions imported and re-ex ported from other packages
+    if length(params) > 2
+        sig = "Tuple{$(join(params[3:end], " "))}"
+        doc = eval(Meta.parse("Docs.doc($pname.$fname, $sig)"))
+    else
+        doc = eval(Meta.parse("@doc $pname.$fname"))
+    end
+
+    # construct doc
+    txt = Markdown.plain(doc)
+	body = Franklin.fd2html(txt; internal=true)
+    body = replace(body, "<h1"=>s"<h3")
+    body = replace(body, "</h1"=>s"</h3")
+
+    # build source code link
+    codepath = ""
+    if length(methodlist) > 0
+        method = methodlist[1]
+        prefix = "https://www.github.com/juliaintervals/$(pname).jl/blob/master/"
+        filename = string(method.file)
+        idx = findfirst("src", filename)
+        filename = filename[idx[1]:end]
+        filename = replace(filename, "\\" => s"/")
+        codepath = prefix*filename*"#L$(method.line)"
+        codepath = """<div class="doc-source"><a href="$codepath" target="_blank">source</a></div>"""
+    end
+
+    return """
+      <div class="docstring">
+          <div class="doc-header" id="$fname">
+            <a href="#$fname">$fname</a>&nbsp; - $type $codepath</div>
+          <div class="doc-content">$body</div>
+      </div>
+    """
+end
+
 
 function hfun_m1fill(vname)
   var = vname[1]

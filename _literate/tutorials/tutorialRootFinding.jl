@@ -16,7 +16,7 @@ using IntervalArithmetic, IntervalRootFinding
 
 # The `IntervalRootFinding.jl` can be used to rigorously compute the zeros of a function $f: \mathbb{R}^m\rightarrow\mathbb{R}^n$ over a given
 # interval (or interval box) $X\subset\mathbb{R}^m$.
-# ## Basic Usage
+# ## Basic usage
 
 # To get started, let's compute the roots of the simple function $f(x)=x^2-2x$ over the interval $[-4, -4]$.
 # To fullfil the task, we can use the function `roots` from the `IntervalRootFinding` package which has syntax

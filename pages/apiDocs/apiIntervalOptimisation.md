@@ -1,4 +1,6 @@
 @def title = "IntervalOptimisation.jl API docs"
 
-{{doc maximise IntervalOptimisation}}
-{{doc minimise IntervalOptimisation}}
+# IntervalOptimisation.jl API
+
+{{doc1 maximise IntervalOptimisation}}
+{{doc1 minimise IntervalOptimisation}}

@@ -1,26 +1,36 @@
 @def title = "IntervalArithmetic.jl API docs"
 
-{{doc DecoratedInterval IntervalArithmetic}}
-{{doc IntervalBox IntervalArithmetic}}
-{{doc @biginterval IntervalArithmetic}}
-{{doc @floatinterval IntervalArithmetic}}
-{{doc @format IntervalArithmetic}}
-{{doc @interval IntervalArithmetic}}
-{{doc bisect IntervalArithmetic}}
-{{doc cancelminus IntervalArithmetic}}
-{{doc cancelplus IntervalArithmetic}}
-{{doc diam IntervalArithmetic}}
-{{doc emptyinterval IntervalArithmetic}}
-{{doc entireinterval IntervalArithmetic}}
-{{doc hull IntervalArithmetic}}
+# IntervalArithmetic.jl API
 
-{{doc interval IntervalArithmetic}}
-{{doc isatomic IntervalArithmetic}}
-{{doc iscommon IntervalArithmetic}}
-{{doc isthin IntervalArithmetic}}
-{{doc mince IntervalArithmetic}}
-{{doc nai IntervalArithmetic}}
-{{doc pow IntervalArithmetic}}
-{{doc radius IntervalArithmetic}}
-{{doc setformat IntervalArithmetic}}
-{{doc Region IntervalArithmetic}}
+\toc
+
+## External
+
+### Types
+{{doc1 DecoratedInterval IntervalArithmetic}}
+{{doc1 IntervalBox IntervalArithmetic}}
+{{doc1 Region IntervalArithmetic}}
+
+### Macros
+{{doc1 @biginterval IntervalArithmetic}}
+{{doc1 @floatinterval IntervalArithmetic}}
+{{doc1 @format IntervalArithmetic}}
+{{doc1 @interval IntervalArithmetic}}
+
+### Methods
+{{doc1 bisect IntervalArithmetic}}
+{{doc1 cancelminus IntervalArithmetic}}
+{{doc1 cancelplus IntervalArithmetic}}
+{{doc1 diam IntervalArithmetic}}
+{{doc1 emptyinterval IntervalArithmetic}}
+{{doc1 entireinterval IntervalArithmetic}}
+{{doc1 hull IntervalArithmetic}}
+{{doc1 interval IntervalArithmetic}}
+{{doc1 isatomic IntervalArithmetic}}
+{{doc1 iscommon IntervalArithmetic}}
+{{doc1 isthin IntervalArithmetic}}
+{{doc1 mince IntervalArithmetic}}
+{{doc1 nai IntervalArithmetic}}
+{{doc1 pow IntervalArithmetic}}
+{{doc1 radius IntervalArithmetic}}
+{{doc1 setformat IntervalArithmetic}}

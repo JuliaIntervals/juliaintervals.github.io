@@ -1,5 +1,16 @@
 #nb # Interval arithmetic tutorial
 
+# ## Setup
+
+# The `IntervalArithmetic.jl` package can be installed with
+
+# ```julia
+# using Pkg; Pkg.add("IntervalArithmetic")
+# ```
+
+# Now you can import the package
+using IntervalArithmetic
+
 # ## Introduction
 
 # This tutorial will show you how to perform interval computations in Julia using the `IntervalArithmetic.jl` package.
@@ -22,7 +33,7 @@ plot(p1, p2, layout=(1,2), leg=false) # hide
 # However, the function in the figure is (this example is due to William Kahan, the father of floating point arithmetic)
 
 # $$
-# f(x) = (1/80) * \frac{1}{80}\log(|3(1 - x) + 1|) + x^2 + 1
+# f(x) = \frac{1}{80}\log(|3(1 - x) + 1|) + x^2 + 1
 # $$
 
 # From the expression is now evident that the function has a vertical asympote at $x=\frac{4}{3}$ So what is going on?
@@ -49,16 +60,6 @@ f(nextfloat(x))
 # you how to perform interval computations in Julia using the `IntervalArithmetic.jl` package.
 # After this tutorial, you will be ready to harness the power of interval arithmetic and learn how to apply it to root finding, optimisation or differential equations.
 
-# ## Setup
-
-# The `IntervalArithmetic.jl` package can be installed with
-
-# ```julia
-# using Pkg; Pkg.add("IntervalArithmetic")
-# ```
-
-using IntervalArithmetic
-
 # ## Defining intervals
 
 # An interval $I$ is a subset of $\R$ in the form $I=\{x\in\R|a\leq x\leq b\}$ and is denoted as
@@ -76,6 +77,14 @@ b = 2..1
 
 # **Note** that the if the upper bound is negative, then it should be within parentheses `-5..(-2)` or adding a space before it `-5.. -2`.
 # However, the expression `-5..-2` will throw a syntax error.
+
+
+# ### Midpoint notation
+
+# An interval can be created also using the *midpoint notation*, i.e. $m± r$, where $m=\frac{a+b}{2}$ is the midpoint of the interval and $r=\frac{b-a}{2}$ is the radius. In julia, the symbol $\pm$ can be typed writing `\pm<TAB>`.
+# This method is equivalent to `(m-r)..(m+r)`
+
+2 ± 1
 
 # ### `@interval` macro and `interval` method
 
@@ -100,38 +109,31 @@ d = @interval 1
 
 # This is equivalent to `sin(interval(0.2))+cos(interval(1.3))-exp(interval(0.4))`.
 
-# ### Midpoint notation
-
-# An interval can be created also using the *midpoint notation*, i.e. $m± r$, where $m=\frac{a+b}{2}$ is the midpoint of the interval and $r=\frac{b-a}{2}$ is the radius. In julia, the symbol $\pm$ can be typed writing `\pm<TAB>`.
-# This method is equivalent to `(m-r)..(m+r)`
-
-2 ± 1
-
-# ### Interval() constructor
-
-# You can create an interval also using the `Interval(a, b)` constructor, or `Interval(a)` for degenerated interal. However, **this method should be avoided**, mainly for two reasons.
-
-# First, the constructor does not perform any sanity check on the interval, meaning that absurd intervals such as $[2, 1]$ could be created. Second, this constructor does not perform correct rounding on the boundaries. Suppose we want to create the interval $[0.1, 0.1]$. The number $0.1$ cannot be represented exactly with floating-point arithmetic, i.e. when the user types $0.1$ the computer automatically approximates to the closest representable numbers. If we create the interval with any of the methods exposed above, the package will make sure to round down the lower bound and round up the upper bound, ensuring that $0.1$ will actually be included in the interval. However, if the `Interval()` constructor is used, no rounding is performed, resulting in the number not being contained in the interval.
+# There is a fundamental between `interval` and `@interval`: the former does not perform direct rounding on the boundaries.
+# Suppose we want to create the interval $[0.1, 0.1]$. The number $0.1$ cannot be represented exactly with floating-point arithmetic, i.e. when the user types $0.1$ the computer automatically approximates to the closest representable number.
 
 a = 0.1
 
 @show big(a)
 
-
-I = Interval(a)
-
-II = @interval 0.1
+# The following trick allows you to create a number as close as possible to the exact real number
 
 correct = big"0.1"
 @show correct
 
+#  If we create the interval with the `@interval` macro or the `..`, the package will check whether the number is exactly representable in floating point arithmetic and if it is not, it will round down the lower bound and round up the upper bound, ensuring that $0.1$ is actually included in the interval. However, if the `interval()` method is used, no rounding is performed, resulting in the number not being contained in the interval.
+
+I = interval(a)
+
+II = @interval 0.1
+III = a..a
+
 @show correct ∈ I
 @show correct ∈ II
+@show correct ∈ III
 
-
-# The function `big(a)` reveals that the float $a$ is actually slightly bigger than $0.1.$ Since `Interval(0.1)` does not perform any proper rounding, the interval will be above $0.1$. The best possible approximation of the number can be obtained using arbitrary-precision arithmetic insead of floating-point, this is achieved with `big"0.1"` (Note that we give `"0.1"` as a string). It can now be observed that this number is not included in `Interval(0.1)`. However, creating the interval with `@interval 0.1` performs direct rounding (lower bound rounded down and upper bound rounded up), obtaining an interval that does indeed contain the wanted number.
-
-# The `Interval()` constructor is used in the internals of the package and it is called only after rounding and sanity checks have been done. For efficiency reasons, the constructor does not perform any more checks. The user should **not** use this constructor directly, but prefer any of the above exposed methods.
+# Concluding, `..` and `@interval` are more sophisticated and ensure proper rounding if the number typed by the user is not exactly representable in floating point arithmetic. This introduces some computational overhead. `interval()` simply uses the floating point
+# representation of the user input. This is faster, but the real numbers meant by the user might not necessarily be in the interval.
 
 # ## Operations on intervals
 

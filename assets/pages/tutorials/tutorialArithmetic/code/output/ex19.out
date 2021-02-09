@@ -1,3 +1,2 @@
-ArgumentError: Package ForwardDiff not found in current path:
-- Run `import Pkg; Pkg.add("ForwardDiff")` to install the ForwardDiff package.
-
+f(3 .. ∞) = [7, ∞]
+0 ∈ f(3 .. ∞) = false

@@ -1,2 +1,4 @@
 # This file was generated, do not modify it. # hide
-@show f(-2.. -1.5) ∪ f(-1.5.. 2)
+f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1
+x = @interval 4/3
+@show f(x)

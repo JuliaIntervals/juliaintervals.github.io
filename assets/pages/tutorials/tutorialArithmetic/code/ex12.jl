@@ -1,8 +1,10 @@
 # This file was generated, do not modify it. # hide
-X-X
+X = 1..2
+Y = 3..4
 
-X/X
-
-Z*(X+Y)
-
-Z*X+Z*Y
+@show X ∩ Y # typed \cap<TAB
+@show X ∪ Y # TYPED \cup<TAB>
+@show X + Y
+@show X*Y
+@show X^3
+@show X/Y

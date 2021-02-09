@@ -1,5 +1,6 @@
 # This file was generated, do not modify it. # hide
-box1 = IntervalBox(X, f1)
-box2 = IntervalBox.(X2, f2)
+X1 = IntervalBox(1..2, 2..3)
+X2 = IntervalBox(-1..1, 0..2)
 
-nothing # hide
+@show X1 + X2
+@show sin.(X1)

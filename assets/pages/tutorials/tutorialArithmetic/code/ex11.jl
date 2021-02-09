@@ -1,10 +1,9 @@
 # This file was generated, do not modify it. # hide
-X = 1..2
+I = interval(a)
 
-Y = -1..1
+II = @interval 0.1
+III = a..a
 
-Z = 0..2
-
-@show X/Y
-
-@show X/Z
+@show correct ∈ I
+@show correct ∈ II
+@show correct ∈ III

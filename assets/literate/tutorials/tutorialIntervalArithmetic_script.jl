@@ -1,5 +1,7 @@
 # This file was generated, do not modify it.
 
+using IntervalArithmetic
+
 f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1 # hide
 using Plots # hide
 p1 = plot(0.5:0.01:2.0, f, leg=false) # hide
@@ -15,12 +17,12 @@ f(x) = 1/80 * log(abs(3*(1 - x) + 1)) + x^2 + 1
 f(prevfloat(x))
 f(nextfloat(x))
 
-using IntervalArithmetic
-
 a = 1..2
 @show a
 
 b = 2..1
+
+2 ± 1
 
 a = @interval(1,2)
 
@@ -34,22 +36,21 @@ d = @interval 1
 
 @interval sin(0.2)+cos(1.3)-exp(0.4)
 
-2 ± 1
-
 a = 0.1
 
 @show big(a)
 
-
-I = Interval(a)
-
-II = @interval 0.1
-
 correct = big"0.1"
 @show correct
 
+I = interval(a)
+
+II = @interval 0.1
+III = a..a
+
 @show correct ∈ I
 @show correct ∈ II
+@show correct ∈ III
 
 X = 1..2
 Y = 3..4

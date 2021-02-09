@@ -1,6 +1,8 @@
 # This file was generated, do not modify it. # hide
-f(x) = x^2+3x-1
+@show sin(0..2/3*π)
 
-X = -2..2
+@show  log(-3.. -2)
 
-@show f(X)
+@show log(-3..2)
+
+@show  √(-3..4)

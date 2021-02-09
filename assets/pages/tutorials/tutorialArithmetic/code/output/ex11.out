@@ -1,2 +1,3 @@
-X / Y = [-∞, ∞]
-X / Z = [0.5, ∞]
+correct ∈ I = false
+correct ∈ II = true
+correct ∈ III = true

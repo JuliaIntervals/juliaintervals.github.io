@@ -1,7 +1,7 @@
 # This file was generated, do not modify it. # hide
-using Plots
-plot(box1)
-plot!(box2)
-plot!(f, -2, 2, leg=false, color=:black, linewidth=2)
+f(x) = x^2 + 3x - 1
+X = -2..2
+f1 = f(X)
 
-savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide
+X2 = [-2.. -1.5, -1.5..2]
+f2 = f.(X2)

@@ -1,2 +1,2 @@
 # This file was generated, do not modify it. # hide
-f(1..2)
+@show f(-2.. -1.5) ∪ f(-1.5.. 2)

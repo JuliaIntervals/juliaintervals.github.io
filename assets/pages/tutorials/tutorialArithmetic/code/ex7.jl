@@ -1,2 +1,10 @@
 # This file was generated, do not modify it. # hide
-@interval sin(0.2)+cos(1.3)-exp(0.4)
+a = @interval(1,2)
+
+b = interval(1, 2)
+
+c = interval(1)
+
+d = @interval 1
+
+@show a, b, c, d

@@ -1,2 +1,2 @@
 # This file was generated, do not modify it. # hide
-2 ± 1
+@interval sin(0.2)+cos(1.3)-exp(0.4)

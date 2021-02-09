@@ -1,3 +1,4 @@
 # This file was generated, do not modify it. # hide
-f(prevfloat(x))
-f(nextfloat(x))
+x = 4/3
+f(x) = 1/80 * log(abs(3*(1 - x) + 1)) + x^2 + 1
+@show f(x)

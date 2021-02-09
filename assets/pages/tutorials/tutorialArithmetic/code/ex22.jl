@@ -1,7 +1,8 @@
 # This file was generated, do not modify it. # hide
-f(x) = x^2 + 3x - 1
-X = -2..2
-f1 = f(X)
+X1 = IntervalBox(1..2, 2..3, 3..4)
+X2 = IntervalBox(1..2, 3..4)
+X3 = IntervalBox(1..2, 5)
 
-X2 = [-2.. -1.5, -1.5..2]
-f2 = f.(X2)
+@show X1
+@show X2
+@show X3

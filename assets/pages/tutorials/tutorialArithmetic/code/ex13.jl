@@ -1,8 +1,10 @@
 # This file was generated, do not modify it. # hide
-@show sin(0..2/3*π)
+X = 1..2
 
-@show  log(-3.. -2)
+Y = -1..1
 
-@show log(-3..2)
+Z = 0..2
 
-@show  √(-3..4)
+@show X/Y
+
+@show X/Z

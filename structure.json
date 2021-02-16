@@ -33,6 +33,9 @@
      {"name": "Explanations",
         "folder": "explanations",
         "pages": [
+           {"file": "videos",
+            "name": "Video resources",
+            "notebook": false},
            {"file": "intervalFunctionsGrimoire",
             "name": "Interval functions grimoire",
             "notebook": false},

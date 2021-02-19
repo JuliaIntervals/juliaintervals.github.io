@@ -4,8 +4,8 @@
 
 # The `IntervalConstraintProgramming.jl` package can be installed with
 
-# ```julia
-# using Pkg; Pkg.add("IntervalConstraintProgramming")
+# ```julia-repl
+# julia> using Pkg; Pkg.add("IntervalConstraintProgramming")
 # ```
 
 # Once the package is installed, it can be imported. Note that you will need also the `IntervalArithmetic.jl` package.
@@ -15,7 +15,7 @@ using IntervalArithmetic, IntervalConstraintProgramming
 # ## Introduction
 
 # Given a domain $X$ and a set of constraint $S$, constraint programming aims to determine
-# all points in the domain $X$ that sadisfy the constraint $S$.
+# all points in the domain $X$ that satisfy the constraint $S$.
 
 # This Julia package allows you to specify a set of constraints on real-valued variables, given by (in)equalities, and rigorously calculate inner and outer approximations to the feasible set, i.e. the set that satisfies the constraints.
 # This uses interval arithmetic provided by the `IntervalArithmetic.jl` package, in particular multi-dimensional IntervalBoxes, i.e. Cartesian products of one-dimensional intervals.
@@ -29,9 +29,10 @@ S = @constraint x^2 + y^2 <= 1
 # As it can be noticed, the macro itself can figure out that $x$ and $y$ are variables and you do not need to define those separately.
 # The output of the macro is an object of type `Separator`.
 # To understand what it means, we first need to introduce a few terms.
-# - *Inner contractor*: The smallest box containing all points in the domain $X$ that sadisfy the constraint $S$.
-# - *Outer contractor*: The smallest box containing all points in the domain $X$ that *do not* sadisfy the constraint $S$.
-# The separator is now simply a function that returns the inner and outer contractor when applied to a domain. The domain should have alwasy type `IntervalBox`, even when it is a 1-dimensional box (i.e. an interval).
+# - *Inner contractor*: The smallest box containing all points in the domain $X$ that satisfy the constraint $S$.
+# - *Outer contractor*: The smallest box containing all points in the domain $X$ that *do not* satisfy the constraint $S$.
+#
+# The separator is now simply a function that returns the inner and outer contractor when applied to a domain. The domain should have always type `IntervalBox`, even when it is a 1-dimensional box (i.e. an interval).
 # Let us look an example on how to get an inner and outer contractor.
 
 X = IntervalBox(-100..100, 2)
@@ -43,8 +44,8 @@ inner, outer = S(X)
 @show outer
 
 # **Note** Points on the boundary are counted both as inner and outer points. In other words if our constraint is e.g. $x\leq1$, then the inner contractor will be the smallest box
-# containing all points in the domain that sadisfy $x\leq 1$ and the outer contractor all points sadisfying $x\geq1$. Not that the equality is kept in both inequalities.
-# To better understand this, consider the following example: let us look for the points in the real line $\R$ sadisfying $-1\leq x\leq0$, using $X=[-1,1]$ as domain. The "pen and paper" solution
+# containing all points in the domain that satisfy $x\leq 1$ and the outer contractor all points satisfying $x\geq1$. Not that the equality is kept in both inequalities.
+# To better understand this, consider the following example: let us look for the points in the real line $\mathbb{R}$ satisfying $-1\leq x\leq0$, using $X=[-1,1]$ as domain. The "pen and paper" solution
 # would be that $[-1,0]$ is the inner contractor and $]0,1]$ is the outer contractor. However, we get the following result:
 S = @constraint -1<=x<=0
 X = IntervalBox(-1..1, 1)
@@ -52,12 +53,12 @@ X = IntervalBox(-1..1, 1)
 @show inner, outer = S(X)
 
 # The inner contractor is what we expected. For the outer contractor, the key point is that the negation of $-1\leq x\leq 0$ is $x\leq-1 \cup x\geq 0$. I.e. the outer contractor looks
-# for the smallest box inside the domain $[-1,1]$ which sadisfies $x\leq-1 \cup x\geq 0$. This is the smallest box containing $-1$ and $[0, 1]$, i.e. the whole domain $[-1, 1]$.
+# for the smallest box inside the domain $[-1,1]$ which satisfies $x\leq-1 \cup x\geq 0$. This is the smallest box containing $-1$ and $[0, 1]$, i.e. the whole domain $[-1, 1]$.
 # Let us take another example with the same constraint but a different domain
 X = IntervalBox(-0.5..0.5, 1)
 @show inner, outer = S(X)
 
-# Now the outer contractor looks for the point inside $[-0.5, 0.5]$ sadisfying $x\leq-1 \cup x\geq 0$, i.e $[0, 0.5]$.
+# Now the outer contractor looks for the point inside $[-0.5, 0.5]$ satisfying $x\leq-1 \cup x\geq 0$, i.e $[0, 0.5]$.
 
 # ## First application: set inversion
 
@@ -102,6 +103,7 @@ anim = @animate for tol in tolerances
     plot!(paving.boundary, c="gray")
 end
 #!nb gif(anim, joinpath(@OUTPUT, "paving_gif.gif"), fps = 2) # hide
+#nb gif(anim, "paving_gif.gif", fps=2)
 #!nb nothing # hide
 
 #!nb # \fig{paving_gif}

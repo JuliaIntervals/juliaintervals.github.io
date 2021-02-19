@@ -81,7 +81,7 @@ The list of contributors for each package is obtained taking the people with at 
 - \elink{aa25desh}{https://github.com/aa25desh}
 - \elink{mforets}{https://github.com/mforets}
 
-## JuliaIntervals Webpage
+## JuliaIntervals webpage
 
 \github{https://github.com/juliaintervals/juliaintervals.github.io}
 

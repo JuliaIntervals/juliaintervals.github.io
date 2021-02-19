@@ -6,12 +6,21 @@ This section has a collection of videos about interval arithmetic with Julia
 
 \toc
 
-## Interval methods with Julia: Finding one million roots in one second
+## Interval methods with Julia: finding one million roots in one second
 
 Advanced talk about interval arithmetic and its applications. Given as part of the \elink{seminar series in nonlinear analysis}{http://crm.math.ca/camp-nonlinear/#seminars}
 
 ~~~
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8E0qdO_jRZ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+~~~
+
+## Global optimisation with interval methods in Julia
+
+Talk about global optimisation using interval arithmetic. Talk given at the \elink{GERAD}{https://www.gerad.ca/en} research center.
+
+
+~~~
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AuB3pdFmozM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ~~~
 
 ## Calculating with sets: Interval methods in Julia

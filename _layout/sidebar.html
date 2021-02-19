@@ -1,32 +1,41 @@
 <h3><label for="show-menu" class="show-menu">Index</label></h3>
 <input type="checkbox" id="show-menu" role="button">
 <div class="menu" id="side-menu">
+{{ispage pages/packages/*}}<h2 class="sidebar-title"><a href="/pages/packages" class="sidebar-link">Packages</a></h2>{{end}}
 {{ispage pages/tutorials/*}}<h2 class="sidebar-title"><a href="/pages/tutorials" class="sidebar-link">Tutorials</a></h2>{{end}}
 {{ispage pages/howTo/*}}<h2 class="sidebar-title"><a href="/pages/howTo" class="sidebar-link">Applications</a></h2>{{end}}
 {{ispage pages/explanations/*}}<h2 class="sidebar-title"><a href="/pages/explanations" class="sidebar-link">Explanations</a></h2>{{end}}
 {{ispage pages/apiDocs/*}}<h2 class="sidebar-title"><a href="/pages/apiDocs" class="sidebar-link">API</a></h2>{{end}}
 <ul class="menu-list">
+{{ispage pages/packages/*}}
+<li class="menu-list-item {{ispage pages/packages/#intervalarithmeticjl/}}active{{end}}"><a href="/pages/packages/#intervalarithmeticjl" class="menu-list-link  {{ispage pages/packages/#intervalarithmeticjl/}}active{{end}}">IntervalArithmetic.jl</a></li>
+<li class="menu-list-item {{ispage pages/packages/#intervalrootfindingjl/}}active{{end}}"><a href="/pages/packages/#intervalrootfindingjl" class="menu-list-link  {{ispage pages/packages/#intervalrootfindingjl/}}active{{end}}">IntervalRootFinding.jl</a></li>
+<li class="menu-list-item {{ispage pages/packages/#intervaloptimisationjl/}}active{{end}}"><a href="/pages/packages/#intervaloptimisationjl" class="menu-list-link  {{ispage pages/packages/#intervaloptimisationjl/}}active{{end}}">IntervalOptimisation.jl</a></li>
+<li class="menu-list-item {{ispage pages/packages/#intervalconstraintprogrammingjl/}}active{{end}}"><a href="/pages/packages/#intervalconstraintprogrammingjl" class="menu-list-link  {{ispage pages/packages/#intervalconstraintprogrammingjl/}}active{{end}}">IntervalConstraintProgramming.jl</a></li>
+<li class="menu-list-item {{ispage pages/packages/#taylormodelsjl/}}active{{end}}"><a href="/pages/packages/#taylormodelsjl" class="menu-list-link  {{ispage pages/packages/#taylormodelsjl/}}active{{end}}">TaylorModels.jl</a></li>
+<li class="menu-list-item {{ispage pages/packages/#juliaintervals_webpage/}}active{{end}}"><a href="/pages/packages/#juliaintervals_webpage" class="menu-list-link  {{ispage pages/packages/#juliaintervals_webpage/}}active{{end}}">JuliaIntervals webpage</a></li>
+{{end}}
 {{ispage pages/tutorials/*}}
-<li class="menu-list-item {{ispage pages/tutorials/tutorialArithmetic/}}active{{end}}"><a href="/pages/tutorials/tutorialArithmetic/" class="menu-list-link  {{ispage pages/tutorials/tutorialArithmetic/}}active{{end}}">IntervalArithmetic.jl</a></li>
-<li class="menu-list-item {{ispage pages/tutorials/tutorialRootFinding/}}active{{end}}"><a href="/pages/tutorials/tutorialRootFinding/" class="menu-list-link  {{ispage pages/tutorials/tutorialRootFinding/}}active{{end}}">IntervalRootFinding.jl</a></li>
-<li class="menu-list-item {{ispage pages/tutorials/tutorialConstraintProgramming/}}active{{end}}"><a href="/pages/tutorials/tutorialConstraintProgramming/" class="menu-list-link  {{ispage pages/tutorials/tutorialConstraintProgramming/}}active{{end}}">IntervalConstraintProgramming.jl</a></li>
-<li class="menu-list-item {{ispage pages/tutorials/tutorialOptimisation/}}active{{end}}"><a href="/pages/tutorials/tutorialOptimisation/" class="menu-list-link  {{ispage pages/tutorials/tutorialOptimisation/}}active{{end}}">IntervalOptimisation.jl</a></li>
-<li class="menu-list-item {{ispage pages/tutorials/tutorialTaylorModels/}}active{{end}}"><a href="/pages/tutorials/tutorialTaylorModels/" class="menu-list-link  {{ispage pages/tutorials/tutorialTaylorModels/}}active{{end}}">TaylorModels.jl</a></li>
+<li class="menu-list-item {{ispage pages/tutorials/tutorialArithmetic/}}active{{end}}"><a href="/pages/tutorials/tutorialArithmetic" class="menu-list-link  {{ispage pages/tutorials/tutorialArithmetic/}}active{{end}}">IntervalArithmetic.jl</a></li>
+<li class="menu-list-item {{ispage pages/tutorials/tutorialRootFinding/}}active{{end}}"><a href="/pages/tutorials/tutorialRootFinding" class="menu-list-link  {{ispage pages/tutorials/tutorialRootFinding/}}active{{end}}">IntervalRootFinding.jl</a></li>
+<li class="menu-list-item {{ispage pages/tutorials/tutorialConstraintProgramming/}}active{{end}}"><a href="/pages/tutorials/tutorialConstraintProgramming" class="menu-list-link  {{ispage pages/tutorials/tutorialConstraintProgramming/}}active{{end}}">IntervalConstraintProgramming.jl</a></li>
+<li class="menu-list-item {{ispage pages/tutorials/tutorialOptimisation/}}active{{end}}"><a href="/pages/tutorials/tutorialOptimisation" class="menu-list-link  {{ispage pages/tutorials/tutorialOptimisation/}}active{{end}}">IntervalOptimisation.jl</a></li>
+<li class="menu-list-item {{ispage pages/tutorials/tutorialTaylorModels/}}active{{end}}"><a href="/pages/tutorials/tutorialTaylorModels" class="menu-list-link  {{ispage pages/tutorials/tutorialTaylorModels/}}active{{end}}">TaylorModels.jl</a></li>
 {{end}}
 {{ispage pages/howTo/*}}
-<li class="menu-list-item {{ispage pages/howTo/rigorousPi/}}active{{end}}"><a href="/pages/howTo/rigorousPi/" class="menu-list-link  {{ispage pages/howTo/rigorousPi/}}active{{end}}">Rigorous approximation of π</a></li>
-<li class="menu-list-item {{ispage pages/howTo/funcRange/}}active{{end}}"><a href="/pages/howTo/funcRange/" class="menu-list-link  {{ispage pages/howTo/funcRange/}}active{{end}}">Rigorous computation of function range</a></li>
+<li class="menu-list-item {{ispage pages/howTo/rigorousPi/}}active{{end}}"><a href="/pages/howTo/rigorousPi" class="menu-list-link  {{ispage pages/howTo/rigorousPi/}}active{{end}}">Rigorous approximation of π</a></li>
+<li class="menu-list-item {{ispage pages/howTo/funcRange/}}active{{end}}"><a href="/pages/howTo/funcRange" class="menu-list-link  {{ispage pages/howTo/funcRange/}}active{{end}}">Rigorous computation of function range</a></li>
 {{end}}
 {{ispage pages/explanations/*}}
-<li class="menu-list-item {{ispage pages/explanations/videos/}}active{{end}}"><a href="/pages/explanations/videos/" class="menu-list-link  {{ispage pages/explanations/videos/}}active{{end}}">Video resources</a></li>
-<li class="menu-list-item {{ispage pages/explanations/intervalFunctionsGrimoire/}}active{{end}}"><a href="/pages/explanations/intervalFunctionsGrimoire/" class="menu-list-link  {{ispage pages/explanations/intervalFunctionsGrimoire/}}active{{end}}">Interval functions grimoire</a></li>
-<li class="menu-list-item {{ispage pages/explanations/explanationNewton/}}active{{end}}"><a href="/pages/explanations/explanationNewton/" class="menu-list-link  {{ispage pages/explanations/explanationNewton/}}active{{end}}">Newton method for interval root finding</a></li>
+<li class="menu-list-item {{ispage pages/explanations/videos/}}active{{end}}"><a href="/pages/explanations/videos" class="menu-list-link  {{ispage pages/explanations/videos/}}active{{end}}">Video resources</a></li>
+<li class="menu-list-item {{ispage pages/explanations/intervalFunctionsGrimoire/}}active{{end}}"><a href="/pages/explanations/intervalFunctionsGrimoire" class="menu-list-link  {{ispage pages/explanations/intervalFunctionsGrimoire/}}active{{end}}">Interval functions grimoire</a></li>
+<li class="menu-list-item {{ispage pages/explanations/explanationNewton/}}active{{end}}"><a href="/pages/explanations/explanationNewton" class="menu-list-link  {{ispage pages/explanations/explanationNewton/}}active{{end}}">Newton method for interval root finding</a></li>
 {{end}}
 {{ispage pages/apiDocs/*}}
-<li class="menu-list-item {{ispage pages/apiDocs/apiIntervalArithmetic/}}active{{end}}"><a href="/pages/apiDocs/apiIntervalArithmetic/" class="menu-list-link  {{ispage pages/apiDocs/apiIntervalArithmetic/}}active{{end}}">IntervalArithmetic.jl</a></li>
-<li class="menu-list-item {{ispage pages/apiDocs/apiRootFinding/}}active{{end}}"><a href="/pages/apiDocs/apiRootFinding/" class="menu-list-link  {{ispage pages/apiDocs/apiRootFinding/}}active{{end}}">IntervalRootFinding.jl</a></li>
-<li class="menu-list-item {{ispage pages/apiDocs/apiIntervalOptimisation/}}active{{end}}"><a href="/pages/apiDocs/apiIntervalOptimisation/" class="menu-list-link  {{ispage pages/apiDocs/apiIntervalOptimisation/}}active{{end}}">IntervalOptimisation.jl</a></li>
-<li class="menu-list-item {{ispage pages/apiDocs/apiIntervalConstraintProgramming/}}active{{end}}"><a href="/pages/apiDocs/apiIntervalConstraintProgramming/" class="menu-list-link  {{ispage pages/apiDocs/apiIntervalConstraintProgramming/}}active{{end}}">IntervalConstraintProgramming.jl</a></li>
-<li class="menu-list-item {{ispage pages/apiDocs/apiTaylorModels/}}active{{end}}"><a href="/pages/apiDocs/apiTaylorModels/" class="menu-list-link  {{ispage pages/apiDocs/apiTaylorModels/}}active{{end}}">TaylorModels.jl</a></li>
+<li class="menu-list-item {{ispage pages/apiDocs/apiIntervalArithmetic/}}active{{end}}"><a href="/pages/apiDocs/apiIntervalArithmetic" class="menu-list-link  {{ispage pages/apiDocs/apiIntervalArithmetic/}}active{{end}}">IntervalArithmetic.jl</a></li>
+<li class="menu-list-item {{ispage pages/apiDocs/apiRootFinding/}}active{{end}}"><a href="/pages/apiDocs/apiRootFinding" class="menu-list-link  {{ispage pages/apiDocs/apiRootFinding/}}active{{end}}">IntervalRootFinding.jl</a></li>
+<li class="menu-list-item {{ispage pages/apiDocs/apiIntervalOptimisation/}}active{{end}}"><a href="/pages/apiDocs/apiIntervalOptimisation" class="menu-list-link  {{ispage pages/apiDocs/apiIntervalOptimisation/}}active{{end}}">IntervalOptimisation.jl</a></li>
+<li class="menu-list-item {{ispage pages/apiDocs/apiIntervalConstraintProgramming/}}active{{end}}"><a href="/pages/apiDocs/apiIntervalConstraintProgramming" class="menu-list-link  {{ispage pages/apiDocs/apiIntervalConstraintProgramming/}}active{{end}}">IntervalConstraintProgramming.jl</a></li>
+<li class="menu-list-item {{ispage pages/apiDocs/apiTaylorModels/}}active{{end}}"><a href="/pages/apiDocs/apiTaylorModels" class="menu-list-link  {{ispage pages/apiDocs/apiTaylorModels/}}active{{end}}">TaylorModels.jl</a></li>
 {{end}}
 </ul></div>

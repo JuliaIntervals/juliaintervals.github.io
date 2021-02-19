@@ -4,8 +4,8 @@
 
 # The `TaylorModels.jl` package can be installed with
 
-# ```julia
-# using Pkg; Pkg.add("TaylorModels")
+# ```julia-repl
+# julia> using Pkg; Pkg.add("TaylorModels")
 # ```
 
 # Once the package is installed, it can be imported. Note that you will need also the `IntervalArithmetic.jl` package.
@@ -69,9 +69,11 @@ orders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 anim = @animate for n in orders
     tm = TaylorModel1(n, interval(x0), a)
     ftm = f(tm)
-    plot(range(inf(a), stop=sup(a), length=1000), f, lw=2, xaxis="x", yaxis="f(x)", label="f(x)")
+    plot(range(inf(a), stop=sup(a), length=1000), f, lw=2, xaxis="x", yaxis="f(x)",
+         label="f(x)", ylims=(-30, 10))
     plot!(ftm, title="$(n)th order")
 end
 #!nb gif(anim, joinpath(@OUTPUT, "taylor1_gif.gif"), fps = 2) # hide
+#nb gif(anim, "taylor1_gif.gif", fps = 2)
 #!nb nothing # hide
 #!nb # \fig{taylor1_gif}

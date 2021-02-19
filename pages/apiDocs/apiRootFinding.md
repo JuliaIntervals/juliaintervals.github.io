@@ -30,4 +30,3 @@
 {{doc1 gauss_elimination_interval! IntervalRootFinding}}
 {{doc1 gauss_seidel_interval! IntervalRootFinding}}
 {{doc1 newton1d IntervalRootFinding}}
-{{doc1 gauss_elimination_interval! IntervalRootFinding}}

@@ -3,8 +3,8 @@
 
 The `IntervalRootFinding.jl` package can be installed with
 
-```julia
-using Pkg; Pkg.add("IntervalRootFinding");
+```julia-repl
+julia> using Pkg; Pkg.add("IntervalRootFinding");
 ```
 
 Once the package is installed, it can be imported. Note that you will need also the `IntervalArithmetic.jl` package.

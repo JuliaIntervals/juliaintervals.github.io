@@ -3,8 +3,8 @@
 
 The `IntervalOptimisation.jl` package can be installed with
 
-```julia
-using Pkg; Pkg.add("IntervalOptimisation")
+```julia-repl
+julia> using Pkg; Pkg.add("IntervalOptimisation")
 ```
 
 Once the package is installed, it can be imported. Note that you will need also the `IntervalArithmetic.jl` package.
@@ -21,7 +21,7 @@ The main syntax is
 minimise(f, X, tol=1e-3),
 ```
 
-where $f:\R^n↦\R$ is the function to minimize, $X$ is the interval, or interval box, over which we minimize the function.
+where $f:\mathbb{R}^n↦\mathbb{R}$ is the function to minimize, $X$ is the interval, or interval box, over which we minimize the function.
 For example, let's consider the function $f(x)=(x-3)^2$ and let us find its global minimum over its whole domain
 
 ```julia:ex2

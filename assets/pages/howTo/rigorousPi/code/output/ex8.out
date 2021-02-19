@@ -1,2 +1,2 @@
-  0.125881 seconds (2.06 M allocations: 48.472 MiB, 13.68% gc time)
+  0.115955 seconds (2.06 M allocations: 48.472 MiB, 15.18% gc time)
 (S, diam(S)) = ([3.14159, 3.1416], 9.57456336436735e-13)

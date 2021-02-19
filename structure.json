@@ -1,4 +1,27 @@
 [
+    {"name": "Packages",
+     "folder":"packages",
+     "pages":[
+        {"file": "#intervalarithmeticjl",
+            "name": "IntervalArithmetic.jl",
+            "notebook": false},
+           {"file": "#intervalrootfindingjl",
+            "name": "IntervalRootFinding.jl",
+            "notebook": false},
+            {"file": "#intervaloptimisationjl",
+            "name": "IntervalOptimisation.jl",
+            "notebook": false},
+           {"file": "#intervalconstraintprogrammingjl",
+            "name": "IntervalConstraintProgramming.jl",
+            "notebook": false},
+           {"file": "#taylormodelsjl",
+            "name": "TaylorModels.jl",
+            "notebook": false},
+            {"file": "#juliaintervals_webpage",
+            "name": "JuliaIntervals webpage",
+            "notebook": false}
+     ]},
+    
     {"name": "Tutorials",
      "folder": "tutorials",
      "pages": [

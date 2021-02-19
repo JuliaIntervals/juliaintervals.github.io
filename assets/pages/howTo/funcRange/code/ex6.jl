@@ -1,19 +1,8 @@
 # This file was generated, do not modify it. # hide
-function range(f, X, N, tol=0.01)
-
-    Xs = mince(X, N)
-    Ynext = f.(Xs)
-    Ynext = reduce(∪, Ynext)
-    err = tol+1
-
-    while err > tol
-        Yprev = Ynext
-        N *= 2
-        Xs = mince(X, N)
-        Ynext = f.(Xs)
-        Ynext = reduce(∪, Ynext)
-        err = (diam(Yprev) - diam(Ynext))/diam(Yprev)
-    end
-
-    return (Ynext, N, err)
+anim = @animate for i in 0:10
+    Xs = mince(X, 2^i)
+    plot(f, -5, 5, leg=false, ylims=(-5, 40), xlims=(X.lo, X.hi), lw=2)
+    plot!(IntervalBox.(Xs, f.(Xs)))
 end
+gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 2)
+nothing # hide

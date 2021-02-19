@@ -144,3 +144,30 @@ plot!(f, -2, 2, leg=false, color=:black, linewidth=2)
 
 savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide
 
+a = sqrt(2) .. sqrt(3)
+@show a
+
+setformat(:full)
+@show a
+
+setformat(:midpoint)
+@show a
+setformat(:standard)
+
+setformat(sigfigs=10)
+@show a
+
+precision(Interval)
+
+setprecision(Interval, 256)
+@show precision(Interval)
+@interval π
+
+setprecision(Interval, Float64)
+
+setrounding(Interval, :accurate)
+
+setrounding(Interval, :slow)
+
+rounding(Interval)
+

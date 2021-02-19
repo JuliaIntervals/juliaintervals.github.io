@@ -125,7 +125,7 @@ function create_sidebar(sidebarName="_layout/sidebar.html", siteName="structure.
         for section in s
             write(f, "{{ispage pages/$(section["folder"])/*}}\n")
             for page in section["pages"]
-                write(f, "<li class=\"menu-list-item {{ispage pages/$(section["folder"])/$(page["file"])/}}active{{end}}\"><a href=\"/pages/$(section["folder"])/$(page["file"])/\" class=\"menu-list-link  {{ispage pages/$(section["folder"])/$(page["file"])/}}active{{end}}\">$(page["name"])</a></li>\n")
+                write(f, "<li class=\"menu-list-item {{ispage pages/$(section["folder"])/$(page["file"])/}}active{{end}}\"><a href=\"/pages/$(section["folder"])/$(page["file"])\" class=\"menu-list-link  {{ispage pages/$(section["folder"])/$(page["file"])/}}active{{end}}\">$(page["name"])</a></li>\n")
             end
             write(f, "{{end}}\n")
         end

@@ -1,1 +1,1 @@
-([0, 7.39292e-09], IntervalArithmetic.Interval{Float64}[[2.99964, 3.00019]])
+([0, 7.392914838e-09], IntervalArithmetic.Interval{Float64}[[2.999645979, 3.000182057]])

@@ -29,13 +29,13 @@ overestimate_1_interval = (diam(range_1_interval)-diam(range_f))/diam(range_f)
 overestimate_10_intervals = (diam(range_10_intervals)-diam(range_f))/diam(range_f)
 @show overestimate_1_interval, overestimate_10_intervals
 
-anim = @animate for i=1:50
-    Xs = mince(X, i)
-    plot(f, -5, 5, leg=false)
+anim = @animate for i in 0:10
+    Xs = mince(X, 2^i)
+    plot(f, -5, 5, leg=false, ylims=(-5, 40), xlims=(X.lo, X.hi), lw=2)
     plot!(IntervalBox.(Xs, f.(Xs)))
 end
-gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 10)
-nothing
+gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 2)
+nothing # hide
 
 function range(f, X, N, tol=0.01)
 
@@ -74,7 +74,7 @@ savefig(joinpath(@OUTPUT, "range5.svg")) # hide
 
 anim = @animate for i in 2 .^(0:10)
     Xs = mince(X, i)
-    plot(g, -10, 10, leg=false)
+    plot(g, -10, 10, leg=false, xlims=(X.lo, X.hi), ylims=(-60, 50), lw=2)
     plot!(IntervalBox.(Xs, g.(Xs)))
 end
 gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2) # hide

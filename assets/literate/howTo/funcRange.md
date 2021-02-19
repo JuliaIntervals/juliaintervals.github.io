@@ -1,7 +1,7 @@
 <!--This file was generated, do not modify it.-->
 ## Introduction
 
-The range of a function $f$ is defined as the set $f(X) = {f(x) | x\in X}$, where $X$ is the domain of the function.
+The range of a function $f$ is defined as the set $f(X) = \{f(x) | x\in X\}$, where $X$ is the domain of the function.
 This tutorial will show how to to exploit interval arithmetic to give a rigorous estimate of the function range.
 
 First, let's import all the packages we need
@@ -70,24 +70,27 @@ range_10_intervals = reduce(∪, Y)
 overestimate_1_interval = (diam(range_1_interval)-diam(range_f))/diam(range_f)
 overestimate_10_intervals = (diam(range_10_intervals)-diam(range_f))/diam(range_f)
 @show overestimate_1_interval, overestimate_10_intervals
+```
 
-anim = @animate for i=1:50
-    Xs = mince(X, i)
-    plot(f, -5, 5, leg=false)
+Observe that increasing the number of intervals from 1 to 10 reduced the relative error from 25% to 5.5%.
+The following animation shows how the range approximation improves doubling the number of intervals at each iteration.
+
+```julia:ex6
+anim = @animate for i in 0:10
+    Xs = mince(X, 2^i)
+    plot(f, -5, 5, leg=false, ylims=(-5, 40), xlims=(X.lo, X.hi), lw=2)
     plot!(IntervalBox.(Xs, f.(Xs)))
 end
-gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 10)
-nothing
+gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 2)
+nothing # hide
 ```
 
 \fig{anim_range1.gif}
 
-As can be seen, the more intervals we use, the closer the range estimate will get to the actual range.
 We are now ready to write our function `range(f, X, tol)` which estimates the range of a function $f$ over an interval $X$.
 The function will take a third parameter an error tolerance `tol` and keep increasing the number of intervals until the relative change will become smaller than `tol`.
-Denoting by $Y_i$ the range estimate using $i$ intervals, the relative change can be computed as $\frac{Y_{i-1}-Y_{i}}{Y_{i-1}}$.
 
-```julia:ex6
+```julia:ex7
 function range(f, X, N, tol=0.01)
 
     Xs = mince(X, N)
@@ -110,7 +113,7 @@ end
 
 Now we are ready to compute the range of our function
 
-```julia:ex7
+```julia:ex8
 Y, N, err = range(f, X, 3)
 @show (Y, N, err)
 plot(f, -5, 5, legend=false)
@@ -125,7 +128,7 @@ savefig(joinpath(@OUTPUT, "range4.svg")) # hide
 Now that we have developed our tool to estimate a function range, we are ready to test it with more challenging functions.
 Let's estimate the range of the function $g(x) = -\sum_{k=1}^5kx\sin\left(\frac{k(x-3)}{3}\right)$ over the interval $X=[-10,10]$.
 
-```julia:ex8
+```julia:ex9
 X = -10..10
 
 g(x) = -sum([k*x*sin(k*(x-3)/3) for k in 1:5])
@@ -139,10 +142,10 @@ savefig(joinpath(@OUTPUT, "range5.svg")) # hide
 
 \fig{range5}
 
-```julia:ex9
+```julia:ex10
 anim = @animate for i in 2 .^(0:10)
     Xs = mince(X, i)
-    plot(g, -10, 10, leg=false)
+    plot(g, -10, 10, leg=false, xlims=(X.lo, X.hi), ylims=(-60, 50), lw=2)
     plot!(IntervalBox.(Xs, g.(Xs)))
 end
 gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2) # hide

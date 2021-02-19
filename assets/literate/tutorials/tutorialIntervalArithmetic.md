@@ -3,8 +3,8 @@
 
 The `IntervalArithmetic.jl` package can be installed with
 
-```julia
-using Pkg; Pkg.add("IntervalArithmetic")
+```julia-repl
+julia> using Pkg; Pkg.add("IntervalArithmetic")
 ```
 
 Now you can import the package
@@ -71,7 +71,7 @@ After this tutorial, you will be ready to harness the power of interval arithmet
 
 ## Defining intervals
 
-An interval $I$ is a subset of $\R$ in the form $I=\{x\in\R|a\leq x\leq b\}$ and is denoted as
+An interval $I$ is a subset of $\mathbb{R}$ in the form $I=\{x\in\mathbb{R}|a\leq x\leq b\}$ and is denoted as
 $I=[a, b]$ and we say that $a$ and $b$ are the lower and upper bound. Note that the bounds must satisfy $a\leq b$. The IntervalArithmetic.jl package offers several ways to define an interval
 
 ### Dot notation
@@ -101,7 +101,7 @@ This method is equivalent to `(m-r)..(m+r)`
 
 Another way to define an interval is to use the `@interval(a, b)` macro or the `interval(a, b)` method.
 If called with a single input such as `@interval(a)` or `interval(a)`, they will create the degenerated interval $[a,a]$.
-Notice that if you use the macro with only one parameter, you can replace the parentheses with an empty space
+Here some examples:
 
 ```julia:ex7
 a = @interval(1,2)
@@ -123,7 +123,7 @@ The macro is particularly useful when you want to create an interval from a more
 
 This is equivalent to `sin(interval(0.2))+cos(interval(1.3))-exp(interval(0.4))`.
 
-There is a fundamental between `interval` and `@interval`: the former does not perform direct rounding on the boundaries.
+There is a fundamental difference between `interval` and `@interval`: the former does not perform direct rounding on the boundaries.
 Suppose we want to create the interval $[0.1, 0.1]$. The number $0.1$ cannot be represented exactly with floating-point arithmetic, i.e. when the user types $0.1$ the computer automatically approximates to the closest representable number.
 
 ```julia:ex9
@@ -271,8 +271,8 @@ f(x) = x^2 - 2
 
 As can be seen, $0$  is not in  the interval $[3, \infty]$, hence our computations proves rigorously, that the function has no roots in that interval.
 
-Unfortunately, the converse is not true. As discussed before, the resulting interval might sometimes be an overestimate of the true one.
-Hence, if $0$ is in the interval, we cannot directly conclude that the function has a root, as this might be due to overestimate.
+Unfortunately, the converse is not true. The resulting interval might overestimate the true range.
+Hence, if $0$ is in the interval, we cannot directly conclude that the function has a root, as this might be due to overestimation. For example:
 
 ```julia:ex20
 f(1..2)
@@ -296,7 +296,7 @@ has implemented several functionalities to compute roots of functions in a rigor
 
 ## Interval boxes
 
-Interval boxes generalize the concept of interval to higher dimensions. More formally an interval box $X$ is a subset of $\R^n$ defined as the cartesian product of $n$ intervals, i.e.
+Interval boxes generalize the concept of interval to higher dimensions. More formally an interval box $X$ is a subset of $\mathbb{R}^n$ defined as the cartesian product of $n$ intervals, i.e.
 
 $$
 X = X_1\times\cdots\times X_n
@@ -362,4 +362,93 @@ savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide
 \fig{plotBoxes}
 
 As you can see, evaluating the range using two boxes reduces the overestimate of the range.
+
+## Display modes
+There are several useful output representations for intervals, some of which we have already touched on. The display is controlled globally by the `setformat` function, which has
+the following options, specified by keyword arguments:
+
+* `format`: interval output format
+  - `:standard`: output of the form `[1.09999, 1.30001]`, rounded to the current number of significant figures (default)
+  - `:full`: output of the form `Interval(1.0999999999999999, 1.3)`, as in the `showfull` function
+  - `:midpoint`: output in the midpoint-radius form, e.g. `1.2 ± 0.100001`
+* `sigfigs`: number of significant figures to show in standard mode. Default value is 6
+* `decorations` (boolean): whether to show decorations or not. Default false.
+
+Here are some examples
+
+```julia:ex27
+a = sqrt(2) .. sqrt(3)
+@show a
+
+setformat(:full)
+@show a
+
+setformat(:midpoint)
+@show a
+setformat(:standard)
+
+setformat(sigfigs=10)
+@show a
+```
+
+## Advanced options: precision and rounding modes
+
+### Changing bounds precision
+By default, the methods described above use `Float64` for the lower and upper bound of the interval. You can verify this using the function `precision(Interval)`
+
+```julia:ex28
+precision(Interval)
+```
+
+The result is a tuple. The first value tells us that the lower and upper bounds of the interval are stored as
+64-bits floating points. The second value is the precision of `BigFloat` used for interval computations.
+
+You can change the precision of the bounds using `setprecision(Interval, T)`, where `T` can be a type (e.g. `Float64`) or an integer
+number indicating the number of bits.
+
+```julia:ex29
+setprecision(Interval, 256)
+@show precision(Interval)
+@interval π
+```
+
+The subscript `256` tells us that the bounds of the interval are `BigFloat` with 256 bits.
+We can set the precision back to default value with
+
+```julia:ex30
+setprecision(Interval, Float64)
+```
+
+### Rounding modes
+
+As we discussed before, interval arithmetic computations use direct rounding. This means that
+when computing `f(X)`, where `X` is an interval, the lower bound is rounded down and the upper bound is rounded up.
+This is achieved using th \elink{CRlibm}{https://github.com/JuliaIntervals/CRlibm.jl} library.
+While this ensures the inverval is as tight as possible, it also introduces some computational overhead.
+An alternative rounding method is to perform calculations using the (standard) RoundNearest rounding mode, and then widen the result by one machine epsilon in each direction using prevfloat and nextfloat.
+This produces a wider interval, but significantly speeds up computations. The rounding mode can be changed using `setrounding(Interval, mode)` function.
+The `mode` parameter can have values
+- `:fast` tight (correct) rounding with errorfree arithmetic via FastRounding.jl. Faster than other tight methods, but might be incorrect for extreme inputs
+- `:tight` tight (correct) rounding with improved errorfree arithmetic via RoundingEmulator.jl
+- `:accurate` fast "accurate" rounding using prevfloat and nextfloat, slightly wider than needed but faster
+- `:slow` tight (correct) rounding by changing rounding mode.
+- `:none` no rounding (for speed comparisons; no enclosure is guaranteed)
+For example
+
+```julia:ex31
+setrounding(Interval, :accurate)
+```
+
+will use round to nearest during computations and then use `prevfloat` and `nextfloat`for the interval bounds.
+You can return to the default mode as follows
+
+```julia:ex32
+setrounding(Interval, :slow)
+```
+
+You can check the rounding mode you are currently using with the `rounding`function
+
+```julia:ex33
+rounding(Interval)
+```
 

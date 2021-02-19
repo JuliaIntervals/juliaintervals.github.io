@@ -1,8 +1,10 @@
 # This file was generated, do not modify it. # hide
-anim = @animate for i in 2 .^(0:10)
-    Xs = mince(X, i)
-    plot(g, -10, 10, leg=false)
-    plot!(IntervalBox.(Xs, g.(Xs)))
-end
-gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2) # hide
-nothing # hide
+X = -10..10
+
+g(x) = -sum([k*x*sin(k*(x-3)/3) for k in 1:5])
+
+Y, N, err = range(g, X, 3)
+@show (Y, N, err)
+plot(g, -10, 10, legend=false)
+plot!(IntervalBox(X, Y))
+savefig(joinpath(@OUTPUT, "range5.svg")) # hide

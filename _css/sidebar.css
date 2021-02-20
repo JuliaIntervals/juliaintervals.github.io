@@ -15,6 +15,15 @@
   color:#000;
 }
 
+.top-btn {
+  margin-top: 2rem
+}
+
+@media (max-width : 63.99rem) {
+  .top-btn {display: none !important;
+  }
+}
+
 .show-menu {
   cursor: pointer;
   appearance:none;

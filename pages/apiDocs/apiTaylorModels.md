@@ -1,6 +1,4 @@
-@def title = "TaylorModels.jl API docs"
-
-# TaylorModel.jl API
+\title{TaylorModel.jl API}
 
 \toc
 

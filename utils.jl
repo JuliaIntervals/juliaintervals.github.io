@@ -32,25 +32,6 @@ function hfun_index(params)
     return index
 end
 
-function hfun_doc(params)
-    fname = params[1]
-    pname = params[2]
-    # type = length(params) > 1 ? params[2] : Documenter.Utilities.doccat(eval(Meta.parse(fname)))
-    doc = eval(Meta.parse("using $pname; @doc $fname"))
-    txt = Markdown.plain(doc)
-    # possibly further processing here
-    body = Franklin.fd2html(txt; internal=true)
-    body = replace(body, "<h1"=>s"<h3")
-    body = replace(body, "</h1"=>s"</h3")
-    return """
-      <div class="docstring">
-          <div class="doc-header" id="$fname">
-            <a href="#$fname">$fname</a></div>
-          <div class="doc-content">$body</div>
-      </div>
-    """
-end
-
 function hfun_doc1(params)
     fname = params[1]
     pname = params[2]

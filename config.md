@@ -27,12 +27,15 @@ For instance:
 * \newcommand{\phrase}{This is a long phrase to copy.}
 -->
 \newcommand{\elink}[2]{~~~ <a href="#2" target="_blank">#1</a>~~~}
-\newcommand{\R}{\mathbb R}
 \newcommand{\github}[1]{~~~ <a href="#1" style="margin-left: auto;" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub repository</a> ~~~}
 
+\newcommand{\title}[1]{
+@def title = !#1
+# !#1
+}
+
 \newcommand{\tutorial}[2]{
-@def title = !#2
-# !#2
+\title{!#2}
 
 \toc
 

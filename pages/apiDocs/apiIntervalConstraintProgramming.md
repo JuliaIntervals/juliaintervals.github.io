@@ -1,6 +1,4 @@
-@def title = "IntervalContraintProgramming.jl API docs"
-
-# IntervalConstraintProgramming.jl API
+\title{IntervalConstraintProgramming.jl API}
 
 \toc
 

@@ -1,4 +1,3 @@
-@def title = "API docs index"
+\title{API documentation}
 
-# API documentation
 {{index apiDocs}}

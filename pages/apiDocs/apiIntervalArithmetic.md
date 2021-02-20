@@ -1,6 +1,4 @@
-@def title = "IntervalArithmetic.jl API docs"
-
-# IntervalArithmetic.jl API
+\title{IntervalArithmetic.jl API}
 
 \toc
 

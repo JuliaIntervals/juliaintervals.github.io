@@ -1,6 +1,4 @@
-@def title="IntervalRootFinding.jl API docs"
-
-# IntervalRootFinding.jl API
+\title{IntervalRootFinding.jl API}
 
 \toc 
 

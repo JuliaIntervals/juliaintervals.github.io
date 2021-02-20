@@ -1,6 +1,5 @@
-@def title="Packages"
 @def maxtoclevel = 2
-# Packages
+\title{Packages}
 
 This page contains the list of packages in our organization, with corresponding authors and contributors.
 

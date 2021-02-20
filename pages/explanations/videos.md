@@ -1,6 +1,4 @@
-@def title = "Interval videos"
-
-# Video resources
+\title{Video resources}
 
 This section has a collection of videos about interval arithmetic with Julia
 

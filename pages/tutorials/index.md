@@ -1,6 +1,4 @@
-@def title = "Tutorials Index"
-
-# Tutorials
+\title{Tutorials}
 
 The tutorials in these section will teach you the bases of interval methods with Julia.
 

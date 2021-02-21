@@ -1,4 +1,4 @@
-Sitemap: https://github.com/JuliaIntervals/sitemap.xml
+Sitemap: https://juliaintervals.github.io/sitemap.xml
 
 User-agent: *
 Disallow:

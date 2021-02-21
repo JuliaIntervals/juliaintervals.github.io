@@ -1,3 +1,1 @@
-ArgumentError: Package ForwardDiff not found in current path:
-- Run `import Pkg; Pkg.add("ForwardDiff")` to install the ForwardDiff package.
-
+df(1 .. 2) = [2, 4]

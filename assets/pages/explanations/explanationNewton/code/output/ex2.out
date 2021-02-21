@@ -1,2 +1,1 @@
-LoadError: UndefVarError: @animate not defined
-in expression starting at none:2
+(xk, yk) = (-3.911818029136288e-8, -1.9559090145681437e-8)

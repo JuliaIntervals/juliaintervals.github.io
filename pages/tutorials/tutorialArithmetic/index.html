@@ -160,9 +160,7 @@ X = -<span class=hljs-number >2.</span><span class=hljs-number >.2</span>
 <pre><code class="julia hljs"><span class=hljs-keyword >using</span> ForwardDiff
 
 df(x) = ForwardDiff.derivative(f, x)
-<span class=hljs-meta >@show</span> df(<span class=hljs-number >1.</span><span class=hljs-number >.2</span>)</code></pre><pre><code class="plaintext hljs">ArgumentError: Package ForwardDiff not found in current path:
-- Run `import Pkg; Pkg.add(&quot;ForwardDiff&quot;)` to install the ForwardDiff package.
-
+<span class=hljs-meta >@show</span> df(<span class=hljs-number >1.</span><span class=hljs-number >.2</span>)</code></pre><pre><code class="plaintext hljs">df(1 .. 2) = [2, 4]
 </code></pre>
 <p>The function <code>df</code> will now compute the derivative of <code>f</code> at a given point <code>x</code>. The last row tells us that the derivative is strictly positive in the interval, i.e. the function is monotone. From this we can conclude two things:</p>
 <ol>

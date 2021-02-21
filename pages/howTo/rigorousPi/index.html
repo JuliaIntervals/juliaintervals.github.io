@@ -32,7 +32,7 @@ err = abs(S - <span class=hljs-literal >pi</span>^<span class=hljs-number >2</sp
 <span class=hljs-keyword >end</span>
 
 N = <span class=hljs-number >10</span>^<span class=hljs-number >5</span>
-<span class=hljs-meta >@time</span> rigorous_approx_S_N = forward_S_N(N)</code></pre><pre><code class="plaintext hljs">  2.966243 seconds (16.48 M allocations: 705.212 MiB, 4.97% gc time)
+<span class=hljs-meta >@time</span> rigorous_approx_S_N = forward_S_N(N)</code></pre><pre><code class="plaintext hljs">  2.543139 seconds (16.48 M allocations: 705.208 MiB, 5.37% gc time)
 [1.64492, 1.64493]</code></pre>
 <p>We incorporate the respective bound on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">T_N</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.83333em;vertical-align:-0.15em;"></span><span class=mord ><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class=msupsub ><span class="vlist-t vlist-t2"><span class=vlist-r ><span class=vlist  style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class=pstrut  style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class=vlist-s >​</span></span><span class=vlist-r ><span class=vlist  style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> to obtain the bounds on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>, and hence on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span>. We can also optimize the code by creating the interval <code>@interval&#40;1&#41;</code> only once:</p>
 <pre><code class="julia hljs"><span class=hljs-keyword >function</span> forward_sum(N)
@@ -51,7 +51,7 @@ N = <span class=hljs-number >10</span>^<span class=hljs-number >5</span>
 
 N = <span class=hljs-number >10</span>^<span class=hljs-number >6</span>
 <span class=hljs-meta >@time</span> S = forward_sum(N)
-<span class=hljs-meta >@show</span> S, diam(S)</code></pre><pre><code class="plaintext hljs">  0.694839 seconds (5.45 M allocations: 178.429 MiB, 7.94% gc time)
+<span class=hljs-meta >@show</span> S, diam(S)</code></pre><pre><code class="plaintext hljs">  0.556275 seconds (5.45 M allocations: 178.430 MiB, 9.32% gc time)
 (S, diam(S)) = ([3.14159, 3.1416], 2.1298829366855898e-10)
 </code></pre>
 <p>We can ask for the midpoint–radius representation, which shows that the calculated bounds are correct to around 10 decimal places:</p>
@@ -75,7 +75,7 @@ N = <span class=hljs-number >10</span>^<span class=hljs-number >6</span>
 
 N = <span class=hljs-number >10</span>^<span class=hljs-number >6</span>
 <span class=hljs-meta >@time</span> S = reverse_sum(N)
-<span class=hljs-meta >@show</span> S, diam(S)</code></pre><pre><code class="plaintext hljs">  0.172306 seconds (3.03 M allocations: 77.610 MiB, 10.43% gc time)
+<span class=hljs-meta >@show</span> S, diam(S)</code></pre><pre><code class="plaintext hljs">  0.125746 seconds (3.03 M allocations: 77.610 MiB, 12.52% gc time)
 (S, diam(S)) = ([3.14159, 3.1416], 9.57456336436735e-13)
 </code></pre>
 <p>Note that the sqrt function is guaranteed &#40;by the <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> standard&#41; to give correctly-rounded results, so the resulting bounds on <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span></span></span></span> are guaranteed to be correct.</p>
@@ -95,7 +95,7 @@ N = <span class=hljs-number >10</span>^<span class=hljs-number >6</span>
 
 N = <span class=hljs-number >10</span>^<span class=hljs-number >6</span>
 <span class=hljs-meta >@time</span> S = reverse_sum2(N)
-<span class=hljs-meta >@show</span> S, diam(S)</code></pre><pre><code class="plaintext hljs">  0.135215 seconds (2.06 M allocations: 48.472 MiB, 15.00% gc time)
+<span class=hljs-meta >@show</span> S, diam(S)</code></pre><pre><code class="plaintext hljs">  0.102628 seconds (2.06 M allocations: 48.472 MiB, 14.58% gc time)
 (S, diam(S)) = ([3.14159, 3.1416], 9.57456336436735e-13)
 </code></pre>
 

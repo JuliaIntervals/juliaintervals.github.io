@@ -1,2 +1,4 @@
-LoadError: UndefVarError: @animate not defined
-in expression starting at none:1
+xk = [-1, 0.4292036733]
+xk = [-0.001913860913, 0.06895721471]
+xk = [-3.670747462e-05, 3.138504583e-06]
+xk = [-3.940431152e-16, 5.259983123e-15]

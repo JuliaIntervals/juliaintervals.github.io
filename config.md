@@ -5,7 +5,7 @@ The website_* must be defined for the RSS to work
 -->
 @def website_title = "JuliaIntervals"
 @def website_descr = "Interval computations with Julia"
-@def website_url   = "https://github.com/JuliaIntervals"
+@def website_url   = "https://juliaintervals.github.io/"
 @def showall = true
 @def author = "JuliaIntervals"
 

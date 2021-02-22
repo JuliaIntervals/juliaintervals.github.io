@@ -109,7 +109,7 @@ Now the following important theorem holds
 
 **Theorem** if $0 \notin f'(X)$, then the intervals $X_k$ form a nested sequence squeezing quadratically to the root of $f$.
 
-Note that the condition $0 \notin f'(X)$ implies that $f$ has a unique root in $X$. An equivalent expression for this theorem is the following:
+Note that the condition $0 \notin f'(X)$ implies that either $f$ has a unique root in $X$ or no roots at all. An equivalent expression for this theorem is the following:
 - If $N_f(X)\subseteq X$, then $X$ has a unique root
 - if $N_f(X)\cap X=\emptyset$, then $f$ has no root in $X$.
 The following animation shows the Newton method in action with our example from before
@@ -152,4 +152,13 @@ and then repeat Newton iteration with extended division to both interals. Hence,
 we will double the number of intervals to track. If at some point we have $X_k=\emptyset$, then we can conclude it has
 no roots and it can bo thrown away. If $N_f(X_k)\subseteq X_k$, then the root is unique and we do not need to split the
 interval with extended division anymore.
+
+## Generalization to higher dimensions
+
+The Interval Newton method can be generalized to higher dimensions replacing the derivative with the Jacobian. Suppose you want
+to solve the system $F(\mathbf{x})=\mathbf{0}$, where $F:\mathbb{R}^n\rightarrow\mathbb{R}^n$. Now the update formula for interval Newton is
+
+$$ X_{k+1} = m(X_k) - J(X_k)^{-1}F(m(X_k)), $$
+
+where $X_k$ is now an interval box.
 

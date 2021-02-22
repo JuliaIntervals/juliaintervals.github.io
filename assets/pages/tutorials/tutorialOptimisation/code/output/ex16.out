@@ -1,0 +1,2 @@
+length(minimisers) = 3
+minimisers = IntervalArithmetic.Interval{Float64}[[0.999999378, 1.000000281], [1.00000028, 1.000001169], [0.9999984897, 0.9999993781]]

@@ -70,3 +70,62 @@ for N in (1,2, 10, 20, 50)
     res, xmin = minimise(G, IntervalBox(-600..600, N))
     @show N, res, diam(xmin[1])
 end
+
+# ## Clustering problem
+
+# The *clustering problem* is an issue arising in global optimisation with interval arithmetic.
+# Let us consider a simple function
+
+f(x) = x^2 - 2x + 1
+
+# You may recall that interval arithmetic suffers from the *dependency problem*, i.e. if the same
+# variable is repeated in the expression (as in the example above) then evaluating the function will
+# produce an overestimate. Observe
+
+f(0..2)
+
+# using Interval arithmetic we obtain the range $[-3, 5]$, while the true range is $[0, 1]$.
+# Suppose $x^*$ is a minimiser for $f$, then for an $\epsilon$ small enough we will have that
+# $f(x^*) \in f([x^*+\epsilon, x^*+2\epsilon])$. Hence, close to the minimiser $x^*$ we will have
+# intervals not containing $x^*$ that cannot be thrown away, because they seem to contain $f(x^*)$.
+# Observe the following example
+
+minval, minimisers = minimise(f, 0..2, tol=1e-3);
+@show length(minimisers)
+
+# The function returns $102$ minimisers, however only of these contains the true minimiser $x=1$.
+# The following picture illustrates this
+
+using Plots
+plot(f, 1-0.1, 1+0.1, lw=2)
+plot!(IntervalBox.(minimisers, f.(minimisers)), legend=false)
+
+#!nb savefig(joinpath(@OUTPUT, "clustering.svg")) # hide
+#!nb # \fig{clustering}
+
+# Using a stricter tolerance makes things worse, as we will keep bisecting those fake minimisers,
+# obtaining more fake minimisers that cannot be thrown away, Observe
+
+minval, minimisers = minimise(f, 0..2, tol=1e-6);
+@show length(minimisers)
+
+# How to solve this problem? A solution is the so called *mean-value form*, instead of computing
+# f(X) with traditional interval arithmetic, we use the following formula
+
+# $$ f(X) = f(m(X)) +f'(X)(X-m(X)) $$
+
+# where $m(X)$ denotes the midpoint of $X$. It can be proved that the true range of $f(X)$ is
+# enclosed into the mean value form. It can also be proved that the mean-value form overestimates
+# reduces the overestimate. Let us define a function to compute the mean-value form, using ForwardDiff
+# to compute the derivative
+
+using ForwardDiff
+
+mean_value_form(f, X) = f(mid(X)) + ForwardDiff.derivative(f, X)*(X - mid(X))
+# Now let us try to minimise the function using the mean-value form
+
+minval, minimisers = minimise(X -> mean_value_form(f, X), 0..2, tol=1e-6);
+@show length(minimisers)
+@show minimisers
+
+# As you can see, the number of minimisers has been reduced from 2990 to 2!

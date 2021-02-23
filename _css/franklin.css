@@ -12,6 +12,30 @@ html {
     text-align: justify;
 }
 
+
+.note {
+    margin-top: 1.5em;
+    width: 95%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:  aliceblue;
+    border-radius: 5px;
+    margin-bottom: 1em;
+  }
+  .note .content {
+    padding: 10px;
+    padding-left: 12px;
+  }
+  .note .title{
+    font-size: 105%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-left: 7px;
+    padding-top: 2px;
+    color: white;
+    background: cornflowerblue;
+  }
+
 /* ==================================================================
     BASIC GRID FOR PROFILE PIC
 ================================================================== */

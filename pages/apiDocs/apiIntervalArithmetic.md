@@ -32,3 +32,4 @@
 {{doc1 pow IntervalArithmetic}}
 {{doc1 radius IntervalArithmetic}}
 {{doc1 setformat IntervalArithmetic}}
+{{doc1 setrounding IntervalArithmetic}}

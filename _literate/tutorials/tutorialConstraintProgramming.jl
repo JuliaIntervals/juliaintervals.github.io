@@ -130,8 +130,8 @@ S = Separator(vars, f)
 # We have already defined the variables, now the equations of the 3 circles are
 
 circle1(x, y) = (x + √3)^2 + (y + 1)^2 - 9/4 < 0
-circle2(x, y) = (x - √3)^2 + (y + 1)^2 < 9/4
-circle3(x, y) = x^2 + (y - 2)^2 < 9/4
+circle2(x, y) = (x - √3)^2 + (y + 1)^2 - 9/4 < 0
+circle3(x, y) = x^2 + (y - 2)^2 - 9/4 < 0
 
 # Now we can define the corresponding separators.
 

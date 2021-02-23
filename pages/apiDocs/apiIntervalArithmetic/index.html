@@ -227,10 +227,29 @@ Display parameters:
 - significant figures: <span class=hljs-number >6</span></code></pre>
 </div>
   </div>
+   <div class=docstring >
+      <div class=doc-header  id=setrounding >
+        <a href="#setrounding">setrounding</a>&nbsp; - Function <div class=doc-source ><a href="https://www.github.com/juliaintervals/IntervalArithmetic.jl/blob/master/src/intervals/precision.jl#L76" target=_blank >source</a></div></div>
+      <div class=doc-content ><pre><code class="julia hljs">setrounding(T, mode)</code></pre>
+<p>Set the rounding mode of floating point type <code>T</code>, controlling the rounding of basic arithmetic functions &#40;<a href="@ref"><code>&#43;</code></a>, <a href="@ref"><code>-</code></a>, <a href="@ref"><code>*</code></a>, <a href="@ref"><code>/</code></a> and <a href="@ref"><code>sqrt</code></a>&#41; and type conversion. Other numerical functions may give incorrect or invalid values when using rounding modes other than the default <a href="@ref"><code>RoundNearest</code></a>.</p>
+<p>Note that this is currently only supported for <code>T &#61;&#61; BigFloat</code>.</p>
+<div class="admonition warning"><p class=admonition-title >Warning</p><p>This function is not thread-safe. It will affect code running on all threads, but its behavior is undefined if called concurrently with computations that use the setting.</p>
+</div>
+<pre><code class="julia hljs">setrounding(f::<span class=hljs-built_in >Function</span>, T, mode)</code></pre>
+<p>Change the rounding mode of floating point type <code>T</code> for the duration of <code>f</code>. It is logically equivalent to:</p>
+<pre><code class="julia hljs">old = rounding(T)
+setrounding(T, mode)
+f()
+setrounding(T, old)</code></pre>
+<p>See <a href="@ref"><code>RoundingMode</code></a> for available rounding modes.</p>
+<pre><code class="julia hljs">setrounding(Interval, rounding_type::<span class=hljs-built_in >Symbol</span>)</code></pre>
+<p>Set the rounding type used for all interval calculations on Julia v0.6 and above. Valid <code>rounding_type</code>s are &#40;:fast, :tight, :accurate, :slow, :none&#41;.</p>
+</div>
+  </div>
 </p>
 <div class=page-foot >
   <div class=copyright >
-    &copy; JuliaIntervals. Last modified: February 22, 2021. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
+    &copy; JuliaIntervals. Last modified: February 23, 2021. Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a>.
   </div>
 </div>
 </div>

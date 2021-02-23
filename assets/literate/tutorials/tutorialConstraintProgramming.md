@@ -125,3 +125,67 @@ nothing # hide
 
 \fig{paving_gif}
 
+## Constraint Programming with ModelingToolkit
+
+The `@constraint` macro is very handy, but it can handle only simple expressions. If you want
+to handle more complicated expressions, you can use `IntervalConstraintProgramming` with `ModelingToolkit`.
+The following example shows how to import the package and define variables
+
+```julia:ex10
+using ModelingToolkit
+vars = @variables x y
+```
+
+\note{At the moment `IntervalConstraintProgramming.jl` does not work with `ModelingToolkit` v4 or higher. Use v3 instead.}
+
+Once you have defined the variables, you can construct a separator using the `Separator` constructor, which take an array of variables
+as first parameter and a function representing the constraint as second parameter, observe
+
+```julia:ex11
+f(x, y) = x + y < 3
+
+S = Separator(vars, f)
+```
+
+After that, you can use the separator and the pave function as described before. As an example, let us draw the Julia logo solving a set inversion problem.
+We have already defined the variables, now the equations of the 3 circles are
+
+```julia:ex12
+circle1(x, y) = (x + √3)^2 + (y + 1)^2 - 9/4 < 0
+circle2(x, y) = (x - √3)^2 + (y + 1)^2 < 9/4
+circle3(x, y) = x^2 + (y - 2)^2 < 9/4
+```
+
+Now we can define the corresponding separators.
+
+```julia:ex13
+S1 = Separator(vars, circle1)
+S2 = Separator(vars, circle2)
+S3 = Separator(vars, circle3)
+```
+
+Now we can use pave with diferent tolerances to plot the Julia logo
+
+```julia:ex14
+X = IntervalBox(-4..4, 2)
+anim = @animate for tol in 2.0 .^ (0:-1:-6)
+    paving1 = pave(S1, X, tol)
+    paving2 = pave(S2, X, tol)
+    paving3 = pave(S3, X, tol)
+    plot(legend=false, aspect_ratio=:equal)
+
+    plot!(paving1.boundary, color=:gray, alpha=0.5)
+    plot!(paving2.boundary, color=:gray, alpha=0.5)
+    plot!(paving3.boundary, color=:gray, alpha=0.5)
+
+    plot!(paving1.inner, color=RGB(0.796, 0.235, 0.2))
+    plot!(paving2.inner, color=RGB(0.584, 0.345, 0.698))
+    plot!(paving3.inner, color=RGB(0.22, 0.596, 0.149))
+end
+
+gif(anim, joinpath(@OUTPUT, "julia_logo.gif"), fps = 1) # hide
+nothing # hide
+```
+
+\fig{julia_logo}
+

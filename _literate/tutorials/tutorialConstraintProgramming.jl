@@ -62,7 +62,7 @@ X = IntervalBox(-0.5..0.5, 1)
 
 # ## First application: set inversion
 
-# Given a function $f:\R^m\rightarrow\R^n$ and a set $Y\subset\R^n$, set inversion means to find the set $X=f^{1}(Y)=\{x\in\R^m|f(x)\in Y\}$, which is refered as *feasible set*. Generally, the
+# Given a function $f:\R^m\rightarrow\R^n$ and a set $Y\subset\R^n$, set inversion means to find the set $X=f^{-1}(Y)=\{x\in\R^m|f(x)\in Y\}$, which is refered as *feasible set*. Generally, the
 # image set Y can be represented as a set of constraints on the expression $f(X)$ and solving the set inversion problem means to find the points in $X$ for
 # which these constraints are satisfied. As we show in this example, set inversion can be solved using interval constraint programming.
 # Let's consider the function $f(x, y) = x^2+y^2$ and let's find the set $X$ for which $f(X)\in[1, 3]$, i.e. we must find the points $(x, y)$ for which $1\leq x^2+y^2\leq 3$.

@@ -48,8 +48,8 @@ f(x, y) = x + y < 3
 S = Separator(vars, f)
 
 circle1(x, y) = (x + √3)^2 + (y + 1)^2 - 9/4 < 0
-circle2(x, y) = (x - √3)^2 + (y + 1)^2 < 9/4
-circle3(x, y) = x^2 + (y - 2)^2 < 9/4
+circle2(x, y) = (x - √3)^2 + (y + 1)^2 - 9/4 < 0
+circle3(x, y) = x^2 + (y - 2)^2 - 9/4 < 0
 
 S1 = Separator(vars, circle1)
 S2 = Separator(vars, circle2)

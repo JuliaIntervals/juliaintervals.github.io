@@ -75,8 +75,8 @@ a = 1..2
 b = 2..1
 
 
-# **Note** that the if the upper bound is negative, then it should be within parentheses `-5..(-2)` or adding a space before it `-5.. -2`.
-# However, the expression `-5..-2` will throw a syntax error.
+# \note{If the upper bound is negative, then it should be within parentheses `-5..(-2)` or adding a space before it `-5.. -2`.
+# The expression `-5..-2` will throw a syntax error.}
 
 
 # ### Midpoint notation
@@ -143,7 +143,7 @@ III = a..a
 
 # where the brackets $[A]$ denote the interval closure, i.e. the smallest interval containing the set $A$, for example if $A=[1,2]\cup[3,4]$ then $[A]=[1,4]$.
 # Bearing this definition in mind, traditional arithmetic and set operations can be defined for intervals. These operations are already implemented in IntervalArihtmetic.jl and can be used with the traditional operators `+, -, *, /, ∩, ∪`.
-# If you want to know how these are computed under the hood, check our interval functions grimoire! (TODO: add link)
+# If you want to know how these are computed under the hood, check our interval functions [grimoire](/pages/explanations/intervalFunctionsGrimoire)!
 # A few examples:
 
 X = 1..2
@@ -223,38 +223,6 @@ X = -2..2
 @show f(-2.. -1.5) ∪ f(-1.5.. 2)
 
 # As can be noticed, the overestimate is now reduced. [Here](/pages/howTo/funcRange/) you will find a more detailed discussion on how to estimate the range of a function and deal with function overestimates.
-
-# ## First application: existence of zeros of a function
-
-# In this section we will briefly show some first applications of interval arithmetic. More can be found in [applications](/pages/howTo/index/) section.
-
-# Interval arithmetic can be used to determine whether a function has at least a root in a given interval. Suppose we want to find the zeros of the function $f(x)=x^2-2$.
-# Suppose we want to know whether the function has a zero in the interval $[3, \infty]$.
-
-f(x) = x^2 - 2
-@show f(3..∞)
-@show 0 ∈ f(3..∞)
-
-# As can be seen, $0$  is not in  the interval $[3, \infty]$, hence our computations proves rigorously, that the function has no roots in that interval.
-
-# Unfortunately, the converse is not true. The resulting interval might overestimate the true range.
-# Hence, if $0$ is in the interval, we cannot directly conclude that the function has a root, as this might be due to overestimation. For example:
-
-f(1..2)
-
-# Now the function *might* have a root in the interval $[1,2]$, but how can we be sure? Automatic differentiation comes to the rescue!
-
-using ForwardDiff
-
-df(x) = ForwardDiff.derivative(f, x)
-@show df(1..2)
-
-# The function `df` will now compute the derivative of `f` at a given point `x`. The last row tells us that the derivative is strictly positive in the interval, i.e. the function is monotone. From this we can conclude two things:
-# 1. Since the function is monotone, no overestimate occurs, and the computed range is the true range, i.e. the function has indeed one root in the interval
-# 2. Since the function is monotone in that interval, the root is unique.
-
-# Using interval arithmetic we could prove rigorously the existence and uniqueness of the root. If you think doing all this work by hand is boring, the package [`IntervalRootFinding.jl`](/pages/tutorials/tutorialRootFinding/)
-# has implemented several functionalities to compute roots of functions in a rigorous way.
 
 # ## Interval boxes
 

@@ -1,1 +1,0 @@
-precision(Interval) = (BigFloat, 256)

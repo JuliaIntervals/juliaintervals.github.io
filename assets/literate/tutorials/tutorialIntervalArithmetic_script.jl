@@ -100,17 +100,6 @@ X = -2..2
 
 @show f(-2.. -1.5) ∪ f(-1.5.. 2)
 
-f(x) = x^2 - 2
-@show f(3..∞)
-@show 0 ∈ f(3..∞)
-
-f(1..2)
-
-using ForwardDiff
-
-df(x) = ForwardDiff.derivative(f, x)
-@show df(1..2)
-
 X1 = IntervalBox(1..2, 2..3, 3..4)
 X2 = IntervalBox(1..2, 3..4)
 X3 = IntervalBox(1..2, 5)

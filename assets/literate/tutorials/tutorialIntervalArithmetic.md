@@ -85,8 +85,8 @@ a = 1..2
 b = 2..1
 ```
 
-**Note** that the if the upper bound is negative, then it should be within parentheses `-5..(-2)` or adding a space before it `-5.. -2`.
-However, the expression `-5..-2` will throw a syntax error.
+\note{If the upper bound is negative, then it should be within parentheses `-5..(-2)` or adding a space before it `-5.. -2`.
+The expression `-5..-2` will throw a syntax error.}
 
 ### Midpoint notation
 
@@ -163,7 +163,7 @@ $$X\circ Y = [\{x\circ y: x\in X, y\in Y\}]$$
 
 where the brackets $[A]$ denote the interval closure, i.e. the smallest interval containing the set $A$, for example if $A=[1,2]\cup[3,4]$ then $[A]=[1,4]$.
 Bearing this definition in mind, traditional arithmetic and set operations can be defined for intervals. These operations are already implemented in IntervalArihtmetic.jl and can be used with the traditional operators `+, -, *, /, ∩, ∪`.
-If you want to know how these are computed under the hood, check our interval functions grimoire! (TODO: add link)
+If you want to know how these are computed under the hood, check our interval functions [grimoire](/pages/explanations/intervalFunctionsGrimoire)!
 A few examples:
 
 ```julia:ex12
@@ -256,44 +256,6 @@ The reason for this overestimation is known as *dependence problem*. If in a fun
 
 As can be noticed, the overestimate is now reduced. [Here](/pages/howTo/funcRange/) you will find a more detailed discussion on how to estimate the range of a function and deal with function overestimates.
 
-## First application: existence of zeros of a function
-
-In this section we will briefly show some first applications of interval arithmetic. More can be found in [applications](/pages/howTo/index/) section.
-
-Interval arithmetic can be used to determine whether a function has at least a root in a given interval. Suppose we want to find the zeros of the function $f(x)=x^2-2$.
-Suppose we want to know whether the function has a zero in the interval $[3, \infty]$.
-
-```julia:ex19
-f(x) = x^2 - 2
-@show f(3..∞)
-@show 0 ∈ f(3..∞)
-```
-
-As can be seen, $0$  is not in  the interval $[3, \infty]$, hence our computations proves rigorously, that the function has no roots in that interval.
-
-Unfortunately, the converse is not true. The resulting interval might overestimate the true range.
-Hence, if $0$ is in the interval, we cannot directly conclude that the function has a root, as this might be due to overestimation. For example:
-
-```julia:ex20
-f(1..2)
-```
-
-Now the function *might* have a root in the interval $[1,2]$, but how can we be sure? Automatic differentiation comes to the rescue!
-
-```julia:ex21
-using ForwardDiff
-
-df(x) = ForwardDiff.derivative(f, x)
-@show df(1..2)
-```
-
-The function `df` will now compute the derivative of `f` at a given point `x`. The last row tells us that the derivative is strictly positive in the interval, i.e. the function is monotone. From this we can conclude two things:
-1. Since the function is monotone, no overestimate occurs, and the computed range is the true range, i.e. the function has indeed one root in the interval
-2. Since the function is monotone in that interval, the root is unique.
-
-Using interval arithmetic we could prove rigorously the existence and uniqueness of the root. If you think doing all this work by hand is boring, the package [`IntervalRootFinding.jl`](/pages/tutorials/tutorialRootFinding/)
-has implemented several functionalities to compute roots of functions in a rigorous way.
-
 ## Interval boxes
 
 Interval boxes generalize the concept of interval to higher dimensions. More formally an interval box $X$ is a subset of $\mathbb{R}^n$ defined as the cartesian product of $n$ intervals, i.e.
@@ -305,7 +267,7 @@ $$
 In julia, interval boxes can be created using the constructor `IntervalBox`, which takes the single intervals `X1,X2,...,Xn` as arguments. For the special case when $X_1=\cdots=X_n$ you can also use
 the shorter signature `IntervalBox(x, n)`. Observe the following examples
 
-```julia:ex22
+```julia:ex19
 X1 = IntervalBox(1..2, 2..3, 3..4)
 X2 = IntervalBox(1..2, 3..4)
 X3 = IntervalBox(1..2, 5)
@@ -318,7 +280,7 @@ X3 = IntervalBox(1..2, 5)
 Note that an interval box is a vector of intervals and as such, only operations which are well defined for vectors (addition and scalar multiplication) are implemented.
 Particularly, product of interval boxes or elementary functions are not well defined. If you want to apply a function to each component of the box, use broadcasting.
 
-```julia:ex23
+```julia:ex20
 X1 = IntervalBox(1..2, 2..3)
 X2 = IntervalBox(-1..1, 0..2)
 
@@ -329,7 +291,7 @@ X2 = IntervalBox(-1..1, 0..2)
 2D interval boxes are particularly handy for visualization. We can give the function `plot` (and `plot!`) a 2D interval box, or an array of boxes, to visualize these boxes in the cartesian plane.
 Recall our example from before
 
-```julia:ex24
+```julia:ex21
 f(x) = x^2 + 3x - 1
 X = -2..2
 f1 = f(X)
@@ -341,7 +303,7 @@ f2 = f.(X2)
 We had discussed that evaluated the function over the inverval overestimates the range, and splitting the interval helps reducing the overestimate. To help visualizing this, we first create the interval boxes $X×f(X)$, note you can
 use broadcasting to create an array of boxes from arrays of interval
 
-```julia:ex25
+```julia:ex22
 box1 = IntervalBox(X, f1)
 box2 = IntervalBox.(X2, f2)
 
@@ -350,7 +312,7 @@ nothing # hide
 
 now we can plot the boxes to visualize the overestimate
 
-```julia:ex26
+```julia:ex23
 using Plots
 plot(box1)
 plot!(box2)
@@ -376,7 +338,7 @@ the following options, specified by keyword arguments:
 
 Here are some examples
 
-```julia:ex27
+```julia:ex24
 a = sqrt(2) .. sqrt(3)
 @show a
 
@@ -396,7 +358,7 @@ setformat(sigfigs=10)
 ### Changing bounds precision
 By default, the methods described above use `Float64` for the lower and upper bound of the interval. You can verify this using the function `precision(Interval)`
 
-```julia:ex28
+```julia:ex25
 precision(Interval)
 ```
 
@@ -406,7 +368,7 @@ The result is a tuple. The first value tells us that the lower and upper bounds 
 You can change the precision of the bounds using `setprecision(Interval, T)`, where `T` can be a type (e.g. `Float64`) or an integer
 number indicating the number of bits.
 
-```julia:ex29
+```julia:ex26
 setprecision(Interval, 256)
 @show precision(Interval)
 @interval π
@@ -415,7 +377,7 @@ setprecision(Interval, 256)
 The subscript `256` tells us that the bounds of the interval are `BigFloat` with 256 bits.
 We can set the precision back to default value with
 
-```julia:ex30
+```julia:ex27
 setprecision(Interval, Float64)
 ```
 
@@ -435,20 +397,20 @@ The `mode` parameter can have values
 - `:none` no rounding (for speed comparisons; no enclosure is guaranteed)
 For example
 
-```julia:ex31
+```julia:ex28
 setrounding(Interval, :accurate)
 ```
 
 will use round to nearest during computations and then use `prevfloat` and `nextfloat`for the interval bounds.
 You can return to the default mode as follows
 
-```julia:ex32
+```julia:ex29
 setrounding(Interval, :slow)
 ```
 
 You can check the rounding mode you are currently using with the `rounding`function
 
-```julia:ex33
+```julia:ex30
 rounding(Interval)
 ```
 

@@ -1,7 +1,13 @@
 # This file was generated, do not modify it. # hide
-f(x) = x^2 + 3x - 1
-X = -2..2
-f1 = f(X)
+a = sqrt(2) .. sqrt(3)
+@show a
 
-X2 = [-2.. -1.5, -1.5..2]
-f2 = f.(X2)
+setformat(:full)
+@show a
+
+setformat(:midpoint)
+@show a
+setformat(:standard)
+
+setformat(sigfigs=10)
+@show a

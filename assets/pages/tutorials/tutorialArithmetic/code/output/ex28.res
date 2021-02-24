@@ -1,1 +1,1 @@
-(Float64, 256)
+:accurate

@@ -1,6 +1,7 @@
 # This file was generated, do not modify it. # hide
-X1 = IntervalBox(1..2, 2..3)
-X2 = IntervalBox(-1..1, 0..2)
+using Plots
+plot(box1)
+plot!(box2)
+plot!(f, -2, 2, leg=false, color=:black, linewidth=2)
 
-@show X1 + X2
-@show sin.(X1)
+savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide

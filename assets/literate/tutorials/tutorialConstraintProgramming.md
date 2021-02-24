@@ -156,6 +156,8 @@ circle2(x, y) = (x - √3)^2 + (y + 1)^2 - 9/4 < 0
 circle3(x, y) = x^2 + (y - 2)^2 - 9/4 < 0
 ```
 
+\note{If you use `ModelingToolkit`, then all inequalities should be strict, e.g. `x+y <= 1 ` is not supported and should be `x + y < 1` instead}
+
 Now we can define the corresponding separators.
 
 ```julia:ex13

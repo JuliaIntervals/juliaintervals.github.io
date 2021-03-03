@@ -21,13 +21,13 @@ using IntervalArithmetic
 
 # Observe the graph below, at first sight, it seems to have a small cuspid at $x=\frac{4}{3}$, zooming closer also seems to confirm it.
 
-f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1 # hide
-using Plots # hide
-p1 = plot(0.5:0.01:2.0, f, leg=false) # hide
-p2 = plot(1.2:0.0001:1.5, f, leg=false) # hide
-plot(p1, p2, layout=(1,2), leg=false) # hide
+f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1 #hide
+using Plots #hide
+p1 = plot(0.5:0.01:2.0, f, leg=false) #hide
+p2 = plot(1.2:0.0001:1.5, f, leg=false) #hide
+plot(p1, p2, layout=(1,2), leg=false) #hide
 
-#!nb savefig(joinpath(@OUTPUT, "intMotivation.svg")) # hide
+#!nb savefig(joinpath(@OUTPUT, "intMotivation.svg")) #hide
 #!nb # \fig{intMotivation}
 
 # However, the function in the figure is (this example is due to William Kahan, the father of floating point arithmetic)
@@ -268,7 +268,7 @@ f2 = f.(X2)
 box1 = IntervalBox(X, f1)
 box2 = IntervalBox.(X2, f2)
 
-#!nb nothing # hide
+#!nb nothing #hide
 
 # now we can plot the boxes to visualize the overestimate
 
@@ -277,7 +277,7 @@ plot(box1)
 plot!(box2)
 plot!(f, -2, 2, leg=false, color=:black, linewidth=2)
 
-#!nb savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide
+#!nb savefig(joinpath(@OUTPUT, "plotBoxes.svg")) #hide
 
 #!nb # \fig{plotBoxes}
 

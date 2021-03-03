@@ -45,7 +45,7 @@ anim = @animate for i in 1:5
     global xk, yk = xnew, ynew
 end
 
-#!nb gif(anim, joinpath(@OUTPUT, "newton.gif"), fps = 0.8) # hide
+#!nb gif(anim, joinpath(@OUTPUT, "newton.gif"), fps = 0.8) #hide
 #nb gif(anim, "newton.gif", fps=0.8)
 @show xk, yk
 
@@ -89,7 +89,7 @@ plot!([Xnext.lo, Xnext.hi], [0, 0], label="\$N(x) \\cap X\$", c=:black, lw=3)
 plot!(f, -10, 10, label="\$f(x)\$", c=:red, legend=:right)
 plot!(legend=:bottomright, legendfont=12)
 
-#!nb savefig(joinpath(@OUTPUT, "intervalNewton.svg")) # hide
+#!nb savefig(joinpath(@OUTPUT, "intervalNewton.svg")) #hide
 #!nb # \fig{intervalNewton}
 
 # The green interval represents our starting interval. The gray area is the cone containing all lines passing through
@@ -125,8 +125,8 @@ anim = @animate for i in 1:4
     @show xk
 end
 
-#!nb gif(anim, joinpath(@OUTPUT, "interval_newton.gif"), fps = 0.8) # hide
-#!nb nothing # hide
+#!nb gif(anim, joinpath(@OUTPUT, "interval_newton.gif"), fps = 0.8) #hide
+#!nb nothing #hide
 #nb gif(anim, "interval_newton.gif", fps=0.8)
 
 #!nb # \fig{interval_newton.gif}

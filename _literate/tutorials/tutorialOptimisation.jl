@@ -100,7 +100,7 @@ using Plots
 plot(f, 1-0.1, 1+0.1, lw=2)
 plot!(IntervalBox.(minimisers, f.(minimisers)), legend=false)
 
-#!nb savefig(joinpath(@OUTPUT, "clustering.svg")) # hide
+#!nb savefig(joinpath(@OUTPUT, "clustering.svg")) #hide
 #!nb # \fig{clustering}
 
 # Using a stricter tolerance makes things worse, as we will keep bisecting those fake minimisers,
@@ -128,4 +128,4 @@ minval, minimisers = minimise(X -> mean_value_form(f, X), 0..2, tol=1e-6);
 @show length(minimisers)
 @show minimisers
 
-# As you can see, the number of minimisers has been reduced from 2990 to 2!
+# As you can see, the number of minimisers has been reduced from 2990 to 3!

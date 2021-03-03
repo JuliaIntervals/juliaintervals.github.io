@@ -58,7 +58,7 @@ using Plots
 plot(range(inf(a), stop=sup(a), length=1000), f, lw=2, xaxis="x", yaxis="f(x)", label="f(x)")
 plot!(ftm6, label="6th order")
 plot!(ftm7, label="7th order")
-#!nb savefig(joinpath(@OUTPUT, "taylor1.svg")) # hide
+#!nb savefig(joinpath(@OUTPUT, "taylor1.svg")) #hide
 
 #!nb # \fig{taylor1}
 
@@ -73,7 +73,7 @@ anim = @animate for n in orders
          label="f(x)", ylims=(-30, 10))
     plot!(ftm, title="$(n)th order")
 end
-#!nb gif(anim, joinpath(@OUTPUT, "taylor1_gif.gif"), fps = 2) # hide
+#!nb gif(anim, joinpath(@OUTPUT, "taylor1_gif.gif"), fps = 2) #hide
 #nb gif(anim, "taylor1_gif.gif", fps = 2)
-#!nb nothing # hide
+#!nb nothing #hide
 #!nb # \fig{taylor1_gif}

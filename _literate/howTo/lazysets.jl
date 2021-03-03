@@ -29,7 +29,7 @@ X = IntervalBox(-10..10, 2) # our starting box
 paving = pave(S, X, 0.02)
 
 # We will choose octagon directions, meaning that the directions normal to the
-# overapproximating a polyhedron are parallel to those of an octagon (not restricted to two dimensions):
+# overapproximating polyhedron are parallel to those of an octagon (this method is not restricted to two dimensions):
 Xoct = overapproximate(paving, OctDirections(2))
 
 plot(Xoct, lab="Octagon", alpha=.5, c=:orange)
@@ -78,4 +78,3 @@ length(Xoct.constraints)
 length(Xpoly.constraints)
 #-
 length(Xpoly′.constraints)
-

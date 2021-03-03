@@ -6,13 +6,13 @@
 
 # Interval constraint programming uses interval boxes. However, if the region we want to approximate
 # is not box-shaped, it will require a large number of boxes to be represented accurately.
-# To operate with those regions, it is practical to simplify such union of boxeswith another set representation,
+# To operate with those regions, it is practical to simplify such union of boxes with another set representation,
 # hopefully without information loss, i.e. minimizing the *overapproximation error*.
 
 # The package \elink{LazySets.jl}{https://github.com/JuliaReach/LazySets.jl/} can be used to approximate regions
 # returned by `IntervalConstraintProgramming.jl` using general set types such as
-# \elink{polyhedra}{https://en.wikipedia.org/wiki/Polyhedron}, that is, finite intersections of half-spaces. More generally,
-# unions of polyhedra could be used.
+# \elink{polyhedra}{https://en.wikipedia.org/wiki/Polyhedron}, that is, finite intersections of half-spaces.
+# More generally, unions of polyhedra can be used if the region is not convex.
 
 # First let us import the packages we need
 
@@ -28,7 +28,8 @@ S = @constraint x^2+y^2 + 3*sin(x) + 5*sin(y) <= 1.0
 X = IntervalBox(-10..10, 2) # our starting box
 paving = pave(S, X, 0.02)
 
-# choose octagon directions
+# We will choose octagon directions, meaning that the directions normal to the
+# overapproximating a polyhedron are parallel to those of an octagon (not restricted to two dimensions):
 Xoct = overapproximate(paving, OctDirections(2))
 
 plot(Xoct, lab="Octagon", alpha=.5, c=:orange)
@@ -41,26 +42,17 @@ plot!(paving.boundary, c="gray", label="boundary")
 # The function `overapproximate` considers the union of the elements in the boundary of the paving
 # and then computes the support function of the such union along each chosen direction,
 # obtaining the corresponding polyhedron in constraint form.
-# In this example we have picked octagonal directions, but specifying custom directions is also possible.
+# In this example we have picked octagonal directions, but specifying other sets of directions is also possible
+# (see [the documentation](https://juliareach.github.io/LazySets.jl/dev/lib/approximations/#Template-directions) for details).
 
-# It is interesting to note that the numer of boxes is much larger than the number of constraints of the approximation:
+# When no directions are known a priori, we can also let the algorithm choose the directions by an iterative refinement
+# process of the given tolerance $\varepsilon$ (this method only works in two dimensions). 
+# First we construct $Y$, the (lazy) convex hull of the paving's boundary, then we overapproximate it using polygons:
 
-length(paving.inner) + length(paving.boundary)
+Y = ConvexHullArray(convert.(Hyperrectangle, paving.boundary))
 
-#-
-
-length(Xoct.constraints)
-
-# When no directions are known a priori, we can also overapproximate using an iterative refinement process of
-# the given tolerance $\varepsilon$. First we construct $Y$, the (lazy, exact) convex hull of the paving's boundary,
-# then we overapproximate it using polygons:
-
-Y = ConvexHullArray(convert.(Hyperrectangle,paving.boundary))
 Xpoly = overapproximate(Y, 0.1)
-@show length(Xpoly.constraints)
-
 Xpoly′ = overapproximate(Y, 0.01)
-@show length(Xpoly′.constraints)
 
 plot(Xoct, lab="Octagon", alpha=.5, c=:orange, legend=:bottomright)
 
@@ -74,3 +66,16 @@ lens!([0.0, 0.3], [0.0, 0.3], inset = (1, bbox(0.25, 0.35, 0.4, 0.4)))
 
 #!nb savefig(joinpath(@OUTPUT, "pavingPolyhedralRefined.svg")) # hide
 #!nb # \fig{pavingPolyhedralRefined}
+
+# To conclude, we note that in all cases considered the number of initial boxes is much larger than the
+# complexity of the approximation if we measure it in terms of the number of constraints:
+
+length(paving.inner) + length(paving.boundary)
+
+#-
+length(Xoct.constraints)
+#-
+length(Xpoly.constraints)
+#-
+length(Xpoly′.constraints)
+

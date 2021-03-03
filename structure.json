@@ -50,6 +50,9 @@
          "notebook": true},
         {"file": "funcRange",
          "name": "Rigorous computation of function range",
+         "notebook": true},
+        {"file": "lazysets",
+         "name": "Polyhedral approximations with LazySets",
          "notebook": true}
      ]},
 

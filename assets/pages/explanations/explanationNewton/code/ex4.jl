@@ -13,6 +13,3 @@ anim = @animate for i in 1:4
     global xk = newton_iteration(f, df, xk)
     @show xk
 end
-
-gif(anim, joinpath(@OUTPUT, "interval_newton.gif"), fps = 0.8) # hide
-nothing # hide

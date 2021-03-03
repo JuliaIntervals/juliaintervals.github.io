@@ -33,7 +33,7 @@ using Plots
 plot(f, 1-0.1, 1+0.1, lw=2)
 plot!(IntervalBox.(minimisers, f.(minimisers)), legend=false)
 
-savefig(joinpath(@OUTPUT, "clustering.svg")) # hide
+savefig(joinpath(@OUTPUT, "clustering.svg")) #hide
 
 minval, minimisers = minimise(f, 0..2, tol=1e-6);
 @show length(minimisers)

@@ -125,7 +125,6 @@ using Plots
 plot(f, 1-0.1, 1+0.1, lw=2)
 plot!(IntervalBox.(minimisers, f.(minimisers)), legend=false)
 
-savefig(joinpath(@OUTPUT, "clustering.svg")) # hide
 ```
 
 \fig{clustering}
@@ -162,5 +161,5 @@ minval, minimisers = minimise(X -> mean_value_form(f, X), 0..2, tol=1e-6);
 @show minimisers
 ```
 
-As you can see, the number of minimisers has been reduced from 2990 to 2!
+As you can see, the number of minimisers has been reduced from 2990 to 3!
 

@@ -6,4 +6,3 @@ X = -5..5
 
 plot(f, -5, 5, leg=false)
 plot!(IntervalBox(X, f(X)))
-savefig(joinpath(@OUTPUT, "range1.svg")) # hide

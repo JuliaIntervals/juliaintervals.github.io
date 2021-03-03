@@ -29,7 +29,7 @@ using Plots
 plot(paving.inner, c="green", aspect_ratio=:equal, label="inner")
 plot!(paving.boundary, c="gray", label="boundary")
 
-savefig(joinpath(@OUTPUT, "paving.svg")) # hide
+savefig(joinpath(@OUTPUT, "paving.svg")) #hide
 
 tolerances =  append!(collect(1:-0.1:0.1), collect(0.09:-0.01:0.01))
 anim = @animate for tol in tolerances
@@ -37,8 +37,8 @@ anim = @animate for tol in tolerances
     plot(paving.inner, c="green", legend=false, title="tol=$tol", aspect_ratio=:equal)
     plot!(paving.boundary, c="gray")
 end
-gif(anim, joinpath(@OUTPUT, "paving_gif.gif"), fps = 2) # hide
-nothing # hide
+gif(anim, joinpath(@OUTPUT, "paving_gif.gif"), fps = 2) #hide
+nothing #hide
 
 using ModelingToolkit
 vars = @variables x y
@@ -71,6 +71,6 @@ anim = @animate for tol in 2.0 .^ (0:-1:-6)
     plot!(paving3.inner, color=RGB(0.22, 0.596, 0.149))
 end
 
-gif(anim, joinpath(@OUTPUT, "julia_logo.gif"), fps = 1) # hide
-nothing # hide
+gif(anim, joinpath(@OUTPUT, "julia_logo.gif"), fps = 1) #hide
+nothing #hide
 

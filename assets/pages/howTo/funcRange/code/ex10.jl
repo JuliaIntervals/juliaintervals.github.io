@@ -4,5 +4,3 @@ anim = @animate for i in 2 .^(0:10)
     plot(g, -10, 10, leg=false, xlims=(X.lo, X.hi), ylims=(-60, 50), lw=2)
     plot!(IntervalBox.(Xs, g.(Xs)))
 end
-gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2) # hide
-nothing # hide

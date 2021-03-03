@@ -1,6 +1,20 @@
 using Markdown, JSON, Literate, Documenter
 using IntervalArithmetic, IntervalRootFinding, IntervalOptimisation, IntervalConstraintProgramming, TaylorModels
 
+# NOTEBOOK GENERATION UTILS
+function rm_hide(content)
+    cells = content["cells"]
+    for (i, cell) in enumerate(cells)
+        src = cell["source"]
+        for (j, s) in enumerate(src)
+            src[j] = replace(s, "#hide"=>"")
+        end
+        cell["source"] = src
+    end
+    content["cells"] = cells
+    return content
+end
+
 function generate_notebooks()
     nbpath = joinpath("notebooks")
     for (root, _, files) in walkdir("_literate")
@@ -8,7 +22,7 @@ function generate_notebooks()
             subpath = splitpath(root)[2:end]
             outpath = joinpath(nbpath, subpath...)
             litpath = joinpath(root, file)
-            Literate.notebook(litpath, outpath, execute=false, documenter=false)
+            Literate.notebook(litpath, outpath, execute=false, documenter=false, postprocess=rm_hide)
         end
     end
 end
@@ -93,6 +107,7 @@ function lx_baz(com, _)
   return uppercase(brace_content)
 end
 
+# SIDEBAR GENERATION
 function create_sidebar(sidebarName="_layout/sidebar.html", siteName="structure.json")
     s = read(siteName, String)
     s = JSON.parse(s)

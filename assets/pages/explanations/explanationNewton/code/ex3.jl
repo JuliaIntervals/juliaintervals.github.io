@@ -21,5 +21,3 @@ plot!([Nx.lo, Nx.hi], [offset, offset], label="\$N(X)\$", c=:blue, lw=2)
 plot!([Xnext.lo, Xnext.hi], [0, 0], label="\$N(x) \\cap X\$", c=:black, lw=3)
 plot!(f, -10, 10, label="\$f(x)\$", c=:red, legend=:right)
 plot!(legend=:bottomright, legendfont=12)
-
-savefig(joinpath(@OUTPUT, "intervalNewton.svg")) # hide

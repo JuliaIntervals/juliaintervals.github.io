@@ -3,5 +3,3 @@ using Plots
 plot(box1)
 plot!(box2)
 plot!(f, -2, 2, leg=false, color=:black, linewidth=2)
-
-savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide

@@ -22,7 +22,6 @@ X = -5..5
 
 plot(f, -5, 5, leg=false)
 plot!(IntervalBox(X, f(X)))
-savefig(joinpath(@OUTPUT, "range1.svg")) # hide
 ```
 
 \fig{range1}
@@ -43,7 +42,6 @@ f1(x) = (x+1)^2-1
 
 plot(f1, -5, 5, leg=false)
 plot!(IntervalBox(X, f1(X)))
-savefig(joinpath(@OUTPUT, "range2.svg")) # hide
 ```
 
  \fig{range2}
@@ -58,7 +56,6 @@ Xs = mince(X, 10)
 Y = f.(Xs)
 plot(f, -5, 5, leg=false)
 plot!(IntervalBox.(Xs, f.(Xs)))
-savefig(joinpath(@OUTPUT, "range3.svg")) # hide
 ```
 
 \fig{range3}
@@ -81,8 +78,6 @@ anim = @animate for i in 0:10
     plot(f, -5, 5, leg=false, ylims=(-5, 40), xlims=(X.lo, X.hi), lw=2)
     plot!(IntervalBox.(Xs, f.(Xs)))
 end
-gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 2)
-nothing # hide
 ```
 
 \fig{anim_range1.gif}
@@ -118,7 +113,6 @@ Y, N, err = range(f, X, 3)
 @show (Y, N, err)
 plot(f, -5, 5, legend=false)
 plot!(IntervalBox(X, Y))
-savefig(joinpath(@OUTPUT, "range4.svg")) # hide
 ```
 
 \fig{range4}
@@ -137,7 +131,6 @@ Y, N, err = range(g, X, 3)
 @show (Y, N, err)
 plot(g, -10, 10, legend=false)
 plot!(IntervalBox(X, Y))
-savefig(joinpath(@OUTPUT, "range5.svg")) # hide
 ```
 
 \fig{range5}
@@ -148,8 +141,6 @@ anim = @animate for i in 2 .^(0:10)
     plot(g, -10, 10, leg=false, xlims=(X.lo, X.hi), ylims=(-60, 50), lw=2)
     plot!(IntervalBox.(Xs, g.(Xs)))
 end
-gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2) # hide
-nothing # hide
 ```
 
 \fig{anim_range2.gif}

@@ -28,7 +28,7 @@ end
 
 @btime roots(g, dg, X)
 @btime roots(g, X)
-nothing # hide
+nothing #hide
 
 h(x) = cos(x) * sin(1 / x)
 

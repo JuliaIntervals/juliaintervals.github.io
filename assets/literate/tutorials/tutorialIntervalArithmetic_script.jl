@@ -2,13 +2,13 @@
 
 using IntervalArithmetic
 
-f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1 #hide
-using Plots #hide
-p1 = plot(0.5:0.01:2.0, f, leg=false) #hide
-p2 = plot(1.2:0.0001:1.5, f, leg=false) #hide
-plot(p1, p2, layout=(1,2), leg=false) #hide
+f(x) = (1/80) * log(abs(3*(1 - x) + 1)) + x^2 + 1 # hide
+using Plots # hide
+p1 = plot(0.5:0.01:2.0, f, leg=false) # hide
+p2 = plot(1.2:0.0001:1.5, f, leg=false) # hide
+plot(p1, p2, layout=(1,2), leg=false) # hide
 
-savefig(joinpath(@OUTPUT, "intMotivation.svg")) #hide
+savefig(joinpath(@OUTPUT, "intMotivation.svg")) # hide
 
 x = 4/3
 f(x) = 1/80 * log(abs(3*(1 - x) + 1)) + x^2 + 1
@@ -124,14 +124,14 @@ f2 = f.(X2)
 box1 = IntervalBox(X, f1)
 box2 = IntervalBox.(X2, f2)
 
-nothing #hide
+nothing # hide
 
 using Plots
 plot(box1)
 plot!(box2)
 plot!(f, -2, 2, leg=false, color=:black, linewidth=2)
 
-savefig(joinpath(@OUTPUT, "plotBoxes.svg")) #hide
+savefig(joinpath(@OUTPUT, "plotBoxes.svg")) # hide
 
 a = sqrt(2) .. sqrt(3)
 @show a

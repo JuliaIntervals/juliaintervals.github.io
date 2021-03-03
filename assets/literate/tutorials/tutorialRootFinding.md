@@ -91,6 +91,7 @@ end
 
 @btime roots(g, dg, X)
 @btime roots(g, X)
+nothing # hide
 ```
 
 ## Tolerance

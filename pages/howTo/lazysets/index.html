@@ -12,8 +12,8 @@ paving = pave(S, X, <span class=hljs-number >0.02</span>)</code></pre><pre><code
 
 plot(Xoct, lab=<span class=hljs-string >&quot;Octagon&quot;</span>, alpha=<span class=hljs-number >.5</span>, c=:orange)
 plot!(paving.inner, c=<span class=hljs-string >&quot;green&quot;</span>, aspect_ratio=:equal, label=<span class=hljs-string >&quot;inner&quot;</span>)
-plot!(paving.boundary, c=<span class=hljs-string >&quot;gray&quot;</span>, label=<span class=hljs-string >&quot;boundary&quot;</span>)</code></pre><pre><code class="plaintext hljs">Plot{Plots.GRBackend() n=3}</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/howTo/lazysets/code/pavingPolyhedral' not found. //</span></p>
+plot!(paving.boundary, c=<span class=hljs-string >&quot;gray&quot;</span>, label=<span class=hljs-string >&quot;boundary&quot;</span>)</code></pre>
+<img src="/assets/pages/howTo/lazysets/code/output/pavingPolyhedral.svg" alt="">
 <p>The function <code>overapproximate</code> considers the union of the elements in the boundary of the paving and then computes the support function of the such union along each chosen direction, obtaining the corresponding polyhedron in constraint form. In this example we have picked octagonal directions, but specifying custom directions is also possible.</p>
 <p>It is interesting to note that the numer of boxes is much larger than the number of constraints of the approximation:</p>
 <pre><code class="julia hljs">length(paving.inner) + length(paving.boundary)</code></pre><pre><code class="plaintext hljs">2145</code></pre>
@@ -36,8 +36,8 @@ plot!(paving.inner, lab=<span class=hljs-string >&quot;Paving (inner)&quot;</spa
 
 lens!([<span class=hljs-number >0.0</span>, <span class=hljs-number >0.3</span>], [<span class=hljs-number >0.0</span>, <span class=hljs-number >0.3</span>], inset = (<span class=hljs-number >1</span>, bbox(<span class=hljs-number >0.25</span>, <span class=hljs-number >0.35</span>, <span class=hljs-number >0.4</span>, <span class=hljs-number >0.4</span>)))</code></pre><pre><code class="plaintext hljs">length(Xpoly.constraints) = 16
 length(Xpoly′.constraints) = 54
-Plot{Plots.GRBackend() n=6}</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/howTo/lazysets/code/pavingPolyhedralRefined' not found. //</span></p>
+</code></pre>
+<img src="/assets/pages/howTo/lazysets/code/output/pavingPolyhedralRefined.svg" alt="">
 
 <div class=page-foot >
   <div class=copyright >

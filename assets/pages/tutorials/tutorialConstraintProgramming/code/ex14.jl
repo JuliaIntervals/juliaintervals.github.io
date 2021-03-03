@@ -14,3 +14,6 @@ anim = @animate for tol in 2.0 .^ (0:-1:-6)
     plot!(paving2.inner, color=RGB(0.584, 0.345, 0.698))
     plot!(paving3.inner, color=RGB(0.22, 0.596, 0.149))
 end
+
+gif(anim, joinpath(@OUTPUT, "julia_logo.gif"), fps = 1) # hide
+nothing # hide

@@ -1,1 +1,1 @@
-Plots.Animation("/tmp/jl_PoBvGX", ["000001.png", "000002.png", "000003.png", "000004.png", "000005.png", "000006.png", "000007.png", "000008.png", "000009.png", "000010.png"])
+nothing

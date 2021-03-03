@@ -4,8 +4,8 @@
 <h2 id=introduction ><a href="#introduction" class=header-anchor >Introduction</a></h2>
 <p>This tutorial will show you how to perform interval computations in Julia using the <code>IntervalArithmetic.jl</code> package. Interval arithmetic, opposed to traditional floating point arithmetic, uses intervals instead of single numbers. As floating point arithmetic introduces numerical error, interval arithmetic offers a framework to perform <em>rigorous</em> computations, meaning the output of the computation, be it solving a system of equations or an optimisation problem, will be an interval that is guaranteed to contain the correct solution. Before we dive into interval arithmetic, let&#39;s have a motivational example.</p>
 <p>Observe the graph below, at first sight, it seems to have a small cuspid at <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">x=\frac{4}{3}</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class=mspace  style="margin-right:0.2777777777777778em;"></span><span class=mrel >=</span><span class=mspace  style="margin-right:0.2777777777777778em;"></span></span><span class=base ><span class=strut  style="height:1.190108em;vertical-align:-0.345em;"></span><span class=mord ><span class="mopen nulldelimiter"></span><span class=mfrac ><span class="vlist-t vlist-t2"><span class=vlist-r ><span class=vlist  style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class=pstrut  style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class=pstrut  style="height:3em;"></span><span class=frac-line  style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class=pstrut  style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class=vlist-s >​</span></span><span class=vlist-r ><span class=vlist  style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, zooming closer also seems to confirm it.</p>
-<p><span style="color:red;">// `\show{ex2}`: could not find the relevant output file. //</span></p>
-<p><span style="color:red;">// Image matching '/assets/pages/tutorials/tutorialArithmetic/code/intMotivation' not found. //</span></p>
+
+<img src="/assets/pages/tutorials/tutorialArithmetic/code/output/intMotivation.svg" alt="">
 <p>However, the function in the figure is &#40;this example is due to William Kahan, the father of floating point arithmetic&#41;</p>
 <span class=katex-display ><span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy=false >(</mo><mi>x</mi><mo stretchy=false >)</mo><mo>=</mo><mfrac><mn>1</mn><mn>80</mn></mfrac><mi>log</mi><mo>⁡</mo><mo stretchy=false >(</mo><mi mathvariant=normal >∣</mi><mn>3</mn><mo stretchy=false >(</mo><mn>1</mn><mo>−</mo><mi>x</mi><mo stretchy=false >)</mo><mo>+</mo><mn>1</mn><mi mathvariant=normal >∣</mi><mo stretchy=false >)</mo><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">
 f(x) = \frac{1}{80}\log(|3(1 - x) + 1|) + x^2 + 1
@@ -48,7 +48,7 @@ d = <span class=hljs-meta >@interval</span> <span class=hljs-number >1</span>
 <span class=hljs-meta >@show</span> a, b, c, d</code></pre><pre><code class="plaintext hljs">(a, b, c, d) = ([1, 2], [1, 2], [1, 1], [1, 1])
 </code></pre>
 <p>The macro is particularly useful when you want to create an interval from a more complicated expression, as demonstrated in the example below</p>
-<pre><code class="julia hljs"><span class=hljs-meta >@interval</span> sin(<span class=hljs-number >0.2</span>)+cos(<span class=hljs-number >1.3</span>)-exp(<span class=hljs-number >0.4</span>)</code></pre><pre><code class="plaintext hljs">[-1.025656539, -1.025656538]</code></pre>
+<pre><code class="julia hljs"><span class=hljs-meta >@interval</span> sin(<span class=hljs-number >0.2</span>)+cos(<span class=hljs-number >1.3</span>)-exp(<span class=hljs-number >0.4</span>)</code></pre><pre><code class="plaintext hljs">[-1.02566, -1.02565]</code></pre>
 <p>This is equivalent to <code>sin&#40;interval&#40;0.2&#41;&#41;&#43;cos&#40;interval&#40;1.3&#41;&#41;-exp&#40;interval&#40;0.4&#41;&#41;</code>.</p>
 <p>There is a fundamental difference between <code>interval</code> and <code>@interval</code>: the former does not perform direct rounding on the boundaries. Suppose we want to create the interval <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy=false >[</mo><mn>0.1</mn><mo separator=true >,</mo><mn>0.1</mn><mo stretchy=false >]</mo></mrow><annotation encoding="application/x-tex">[0.1, 0.1]</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:1em;vertical-align:-0.25em;"></span><span class=mopen >[</span><span class=mord >0</span><span class=mord >.</span><span class=mord >1</span><span class=mpunct >,</span><span class=mspace  style="margin-right:0.16666666666666666em;"></span><span class=mord >0</span><span class=mord >.</span><span class=mord >1</span><span class=mclose >]</span></span></span></span>. The number <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.1</mn></mrow><annotation encoding="application/x-tex">0.1</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.64444em;vertical-align:0em;"></span><span class=mord >0</span><span class=mord >.</span><span class=mord >1</span></span></span></span> cannot be represented exactly with floating-point arithmetic, i.e. when the user types <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.1</mn></mrow><annotation encoding="application/x-tex">0.1</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.64444em;vertical-align:0em;"></span><span class=mord >0</span><span class=mord >.</span><span class=mord >1</span></span></span></span> the computer automatically approximates to the closest representable number.</p>
 <pre><code class="julia hljs">a = <span class=hljs-number >0.1</span>
@@ -89,7 +89,7 @@ X ∪ Y = [1, 4]
 X + Y = [4, 6]
 X * Y = [3, 8]
 X ^ 3 = [1, 8]
-X / Y = [0.25, 0.6666666667]
+X / Y = [0.25, 0.666667]
 </code></pre>
 <p>Note that the operation <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi mathvariant=normal >/</mi><mi>Y</mi></mrow><annotation encoding="application/x-tex">X/Y</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class=mord >/</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> is finite only if <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo mathvariant=normal >∉</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">0∉ Y</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:1em;vertical-align:-0.25em;"></span><span class=mord >0</span><span class=mspace  style="margin-right:0.2777777777777778em;"></span><span class=mrel ><span class=mord ><span class=mrel >∈</span></span><span class=mord ><span class="vlist-t vlist-t2"><span class=vlist-r ><span class=vlist  style="height:0.75em;"><span style="top:-3em;"><span class=pstrut  style="height:3em;"></span><span class=llap ><span class=strut  style="height:1em;vertical-align:-0.25em;"></span><span class=inner ><span class=mord ><span class=mord >/</span><span class=mspace  style="margin-right:0.05555555555555555em;"></span></span></span><span class=fix ></span></span></span></span><span class=vlist-s >​</span></span><span class=vlist-r ><span class=vlist  style="height:0.25em;"><span></span></span></span></span></span></span><span class=mspace  style="margin-right:0.2777777777777778em;"></span></span><span class=base ><span class=strut  style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>, otherwise the resulting interval will be unbounded</p>
 <pre><code class="julia hljs">X = <span class=hljs-number >1.</span><span class=hljs-number >.2</span>
@@ -124,13 +124,13 @@ Z*X+Z*Y</code></pre><pre><code class="plaintext hljs">[-2, 6]</code></pre>
 
 <span class=hljs-meta >@show</span>  √(-<span class=hljs-number >3.</span><span class=hljs-number >.4</span>)</code></pre><pre><code class="plaintext hljs">sin(0 .. (2 / 3) * π) = [0, 1]
 log(-3 .. -2) = ∅
-log(-3 .. 2) = [-∞, 0.6931471806]
+log(-3 .. 2) = [-∞, 0.693148]
 √(-3 .. 4) = [0, 2]
 </code></pre>
 <p>Now that we have discussed basic interval arithmetic operations, we are ready to return to Kahan&#39;s example. Let us create a small interval around <code>4/3</code>and evaluate the function there.</p>
 <pre><code class="julia hljs">f(x) = (<span class=hljs-number >1</span>/<span class=hljs-number >80</span>) * log(abs(<span class=hljs-number >3</span>*(<span class=hljs-number >1</span> - x) + <span class=hljs-number >1</span>)) + x^<span class=hljs-number >2</span> + <span class=hljs-number >1</span>
 x = <span class=hljs-meta >@interval</span> <span class=hljs-number >4</span>/<span class=hljs-number >3</span>
-<span class=hljs-meta >@show</span> f(x)</code></pre><pre><code class="plaintext hljs">f(x) = [-∞, 2.335896451]
+<span class=hljs-meta >@show</span> f(x)</code></pre><pre><code class="plaintext hljs">f(x) = [-∞, 2.3359]
 </code></pre>
 <p>As we can notice, interval arithmetic can successfully detect the singularity in the function, which we could not do with floating point arithmetic.</p>
 <h3 id=a_note_on_functions_overestimation ><a href="#a_note_on_functions_overestimation" class=header-anchor >A note on functions: overestimation</a></h3>
@@ -168,7 +168,7 @@ X2 = IntervalBox(-<span class=hljs-number >1.</span><span class=hljs-number >.1<
 
 <span class=hljs-meta >@show</span> X1 + X2
 <span class=hljs-meta >@show</span> sin.(X1)</code></pre><pre><code class="plaintext hljs">X1 + X2 = [-0, 3] × [2, 5]
-sin.(X1) = [0.8414709848, 1] × [0.141120008, 0.9092974269]
+sin.(X1) = [0.84147, 1] × [0.14112, 0.909298]
 </code></pre>
 <p>2D interval boxes are particularly handy for visualization. We can give the function <code>plot</code> &#40;and <code>plot&#33;</code>&#41; a 2D interval box, or an array of boxes, to visualize these boxes in the cartesian plane. Recall our example from before</p>
 <pre><code class="julia hljs">f(x) = x^<span class=hljs-number >2</span> + <span class=hljs-number >3</span>x - <span class=hljs-number >1</span>
@@ -181,15 +181,13 @@ f2 = f.(X2)</code></pre><pre><code class="plaintext hljs">2-element Array{Interv
  [-5.5, 9]</code></pre>
 <p>We had discussed that evaluated the function over the inverval overestimates the range, and splitting the interval helps reducing the overestimate. To help visualizing this, we first create the interval boxes <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>×</mo><mi>f</mi><mo stretchy=false >(</mo><mi>X</mi><mo stretchy=false >)</mo></mrow><annotation encoding="application/x-tex">X×f(X)</annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class=mspace  style="margin-right:0.2222222222222222em;"></span><span class=mbin >×</span><span class=mspace  style="margin-right:0.2222222222222222em;"></span></span><span class=base ><span class=strut  style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class=mopen >(</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class=mclose >)</span></span></span></span>, note you can use broadcasting to create an array of boxes from arrays of interval</p>
 <pre><code class="julia hljs">box1 = IntervalBox(X, f1)
-box2 = IntervalBox.(X2, f2)</code></pre><pre><code class="plaintext hljs">2-element Array{IntervalArithmetic.IntervalBox{2,Float64},1}:
- [-2, -1.5] × [-4.75, -1.5]
- [-1.5, 2] × [-5.5, 9]</code></pre>
+box2 = IntervalBox.(X2, f2)</code></pre>
 <p>now we can plot the boxes to visualize the overestimate</p>
 <pre><code class="julia hljs"><span class=hljs-keyword >using</span> Plots
 plot(box1)
 plot!(box2)
-plot!(f, -<span class=hljs-number >2</span>, <span class=hljs-number >2</span>, leg=<span class=hljs-literal >false</span>, color=:black, linewidth=<span class=hljs-number >2</span>)</code></pre><pre><code class="plaintext hljs">Plot{Plots.GRBackend() n=3}</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/tutorials/tutorialArithmetic/code/plotBoxes' not found. //</span></p>
+plot!(f, -<span class=hljs-number >2</span>, <span class=hljs-number >2</span>, leg=<span class=hljs-literal >false</span>, color=:black, linewidth=<span class=hljs-number >2</span>)</code></pre>
+<img src="/assets/pages/tutorials/tutorialArithmetic/code/output/plotBoxes.svg" alt="">
 <p>As you can see, evaluating the range using two boxes reduces the overestimate of the range.</p>
 <h2 id=display_modes ><a href="#display_modes" class=header-anchor >Display modes</a></h2>
 <p>There are several useful output representations for intervals, some of which we have already touched on. The display is controlled globally by the <code>setformat</code> function, which has the following options, specified by keyword arguments:</p>
@@ -221,9 +219,9 @@ setformat(:midpoint)
 setformat(:standard)
 
 setformat(sigfigs=<span class=hljs-number >10</span>)
-<span class=hljs-meta >@show</span> a</code></pre><pre><code class="plaintext hljs">a = [1.414213562, 1.732050808]
+<span class=hljs-meta >@show</span> a</code></pre><pre><code class="plaintext hljs">a = [1.41421, 1.73206]
 a = Interval(1.4142135623730951, 1.7320508075688774)
-a = 1.573132185 ± 0.1589186226
+a = 1.57313 ± 0.158919
 a = [1.414213562, 1.732050808]
 </code></pre>
 <h2 id=advanced_options_precision_and_rounding_modes ><a href="#advanced_options_precision_and_rounding_modes" class=header-anchor >Advanced options: precision and rounding modes</a></h2>

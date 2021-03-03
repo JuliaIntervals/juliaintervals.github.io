@@ -2,3 +2,5 @@
 using Plots
 plot(paving.inner, c="green", aspect_ratio=:equal, label="inner")
 plot!(paving.boundary, c="gray", label="boundary")
+
+savefig(joinpath(@OUTPUT, "paving.svg")) # hide

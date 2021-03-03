@@ -47,6 +47,7 @@ anim = @animate for i in 1:5
     global xk, yk = xnew, ynew
 end
 
+gif(anim, joinpath(@OUTPUT, "newton.gif"), fps = 0.8) # hide
 @show xk, yk
 ```
 
@@ -91,6 +92,7 @@ plot!([Xnext.lo, Xnext.hi], [0, 0], label="\$N(x) \\cap X\$", c=:black, lw=3)
 plot!(f, -10, 10, label="\$f(x)\$", c=:red, legend=:right)
 plot!(legend=:bottomright, legendfont=12)
 
+savefig(joinpath(@OUTPUT, "intervalNewton.svg")) # hide
 ```
 
 \fig{intervalNewton}
@@ -128,6 +130,8 @@ anim = @animate for i in 1:4
     @show xk
 end
 
+gif(anim, joinpath(@OUTPUT, "interval_newton.gif"), fps = 0.8) # hide
+nothing # hide
 ```
 
 \fig{interval_newton.gif}

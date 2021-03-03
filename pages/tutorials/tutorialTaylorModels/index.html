@@ -46,8 +46,8 @@ ftm7 =  [-8.36112, -8.36111] + [-47.0612, -47.0611] t + [-38.3545, -38.3544] t²
 <pre><code class="julia hljs"><span class=hljs-keyword >using</span> Plots
 plot(range(inf(a), stop=sup(a), length=<span class=hljs-number >1000</span>), f, lw=<span class=hljs-number >2</span>, xaxis=<span class=hljs-string >&quot;x&quot;</span>, yaxis=<span class=hljs-string >&quot;f(x)&quot;</span>, label=<span class=hljs-string >&quot;f(x)&quot;</span>)
 plot!(ftm6, label=<span class=hljs-string >&quot;6th order&quot;</span>)
-plot!(ftm7, label=<span class=hljs-string >&quot;7th order&quot;</span>)</code></pre><pre><code class="plaintext hljs">Plot{Plots.GRBackend() n=3}</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/tutorials/tutorialTaylorModels/code/taylor1' not found. //</span></p>
+plot!(ftm7, label=<span class=hljs-string >&quot;7th order&quot;</span>)</code></pre>
+<img src="/assets/pages/tutorials/tutorialTaylorModels/code/output/taylor1.svg" alt="">
 <p>As you can notice, the Taylor model produces a &quot;band&quot; around the function and the polynomial approximation is guaranteed to be somewhere inside that bar. As you may expect, the higher the order of the model, the narrower the band will be, as the following animation shows</p>
 <pre><code class="julia hljs">orders = [<span class=hljs-number >1</span>, <span class=hljs-number >2</span>, <span class=hljs-number >3</span>, <span class=hljs-number >4</span>, <span class=hljs-number >5</span>, <span class=hljs-number >6</span>, <span class=hljs-number >7</span>, <span class=hljs-number >8</span>, <span class=hljs-number >9</span>, <span class=hljs-number >10</span>]
 anim = <span class=hljs-meta >@animate</span> <span class=hljs-keyword >for</span> n <span class=hljs-keyword >in</span> orders
@@ -56,8 +56,8 @@ anim = <span class=hljs-meta >@animate</span> <span class=hljs-keyword >for</spa
     plot(range(inf(a), stop=sup(a), length=<span class=hljs-number >1000</span>), f, lw=<span class=hljs-number >2</span>, xaxis=<span class=hljs-string >&quot;x&quot;</span>, yaxis=<span class=hljs-string >&quot;f(x)&quot;</span>,
          label=<span class=hljs-string >&quot;f(x)&quot;</span>, ylims=(-<span class=hljs-number >30</span>, <span class=hljs-number >10</span>))
     plot!(ftm, title=<span class=hljs-string >&quot;<span class=hljs-subst >$(n)</span>th order&quot;</span>)
-<span class=hljs-keyword >end</span></code></pre><pre><code class="plaintext hljs">Plots.Animation(&quot;/tmp/jl_PoBvGX&quot;, [&quot;000001.png&quot;, &quot;000002.png&quot;, &quot;000003.png&quot;, &quot;000004.png&quot;, &quot;000005.png&quot;, &quot;000006.png&quot;, &quot;000007.png&quot;, &quot;000008.png&quot;, &quot;000009.png&quot;, &quot;000010.png&quot;])</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/tutorials/tutorialTaylorModels/code/taylor1_gif' not found. //</span></p>
+<span class=hljs-keyword >end</span></code></pre>
+<img src="/assets/pages/tutorials/tutorialTaylorModels/code/output/taylor1_gif.gif" alt="">
 
 <div class=page-foot >
   <div class=copyright >

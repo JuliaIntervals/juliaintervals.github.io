@@ -53,16 +53,16 @@ paving = pave(S, X, <span class=hljs-number >0.125</span>)</code></pre><pre><cod
 <p>As we can see, the function found in total 164 boxes inside the feasible set and 164 boxes at the boundary. We can now visualize how well paving approximates the feasible set</p>
 <pre><code class="julia hljs"><span class=hljs-keyword >using</span> Plots
 plot(paving.inner, c=<span class=hljs-string >&quot;green&quot;</span>, aspect_ratio=:equal, label=<span class=hljs-string >&quot;inner&quot;</span>)
-plot!(paving.boundary, c=<span class=hljs-string >&quot;gray&quot;</span>, label=<span class=hljs-string >&quot;boundary&quot;</span>)</code></pre><pre><code class="plaintext hljs">Plot{Plots.GRBackend() n=2}</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/tutorials/tutorialConstraintProgramming/code/paving' not found. //</span></p>
+plot!(paving.boundary, c=<span class=hljs-string >&quot;gray&quot;</span>, label=<span class=hljs-string >&quot;boundary&quot;</span>)</code></pre>
+<img src="/assets/pages/tutorials/tutorialConstraintProgramming/code/output/paving.svg" alt="">
 <p>The smallest the tolerance parameter, the better the approximation of the feasible set will be, as the following animation shows</p>
 <pre><code class="julia hljs">tolerances =  append!(collect(<span class=hljs-number >1</span>:-<span class=hljs-number >0.1</span>:<span class=hljs-number >0.1</span>), collect(<span class=hljs-number >0.09</span>:-<span class=hljs-number >0.01</span>:<span class=hljs-number >0.01</span>))
 anim = <span class=hljs-meta >@animate</span> <span class=hljs-keyword >for</span> tol <span class=hljs-keyword >in</span> tolerances
     paving = pave(S, X, tol)
     plot(paving.inner, c=<span class=hljs-string >&quot;green&quot;</span>, legend=<span class=hljs-literal >false</span>, title=<span class=hljs-string >&quot;tol=<span class=hljs-variable >$tol</span>&quot;</span>, aspect_ratio=:equal)
     plot!(paving.boundary, c=<span class=hljs-string >&quot;gray&quot;</span>)
-<span class=hljs-keyword >end</span></code></pre><pre><code class="plaintext hljs">Plots.Animation(&quot;/tmp/jl_n1QFQY&quot;, [&quot;000001.png&quot;, &quot;000002.png&quot;, &quot;000003.png&quot;, &quot;000004.png&quot;, &quot;000005.png&quot;, &quot;000006.png&quot;, &quot;000007.png&quot;, &quot;000008.png&quot;, &quot;000009.png&quot;, &quot;000010.png&quot;, &quot;000011.png&quot;, &quot;000012.png&quot;, &quot;000013.png&quot;, &quot;000014.png&quot;, &quot;000015.png&quot;, &quot;000016.png&quot;, &quot;000017.png&quot;, &quot;000018.png&quot;, &quot;000019.png&quot;])</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/tutorials/tutorialConstraintProgramming/code/paving_gif' not found. //</span></p>
+<span class=hljs-keyword >end</span></code></pre>
+<img src="/assets/pages/tutorials/tutorialConstraintProgramming/code/output/paving_gif.gif" alt="">
 <h2 id=constraint_programming_with_modelingtoolkit ><a href="#constraint_programming_with_modelingtoolkit" class=header-anchor >Constraint Programming with ModelingToolkit</a></h2>
 <p>The <code>@constraint</code> macro is very handy, but it can handle only simple expressions. If you want to handle more complicated expressions, you can use <code>IntervalConstraintProgramming</code> with <code>ModelingToolkit</code>. The following example shows how to import the package and define variables</p>
 <pre><code class="julia hljs"><span class=hljs-keyword >using</span> ModelingToolkit
@@ -102,8 +102,8 @@ anim = <span class=hljs-meta >@animate</span> <span class=hljs-keyword >for</spa
     plot!(paving1.inner, color=RGB(<span class=hljs-number >0.796</span>, <span class=hljs-number >0.235</span>, <span class=hljs-number >0.2</span>))
     plot!(paving2.inner, color=RGB(<span class=hljs-number >0.584</span>, <span class=hljs-number >0.345</span>, <span class=hljs-number >0.698</span>))
     plot!(paving3.inner, color=RGB(<span class=hljs-number >0.22</span>, <span class=hljs-number >0.596</span>, <span class=hljs-number >0.149</span>))
-<span class=hljs-keyword >end</span></code></pre><pre><code class="plaintext hljs">Plots.Animation(&quot;/tmp/jl_ccqt9Z&quot;, [&quot;000001.png&quot;, &quot;000002.png&quot;, &quot;000003.png&quot;, &quot;000004.png&quot;, &quot;000005.png&quot;, &quot;000006.png&quot;, &quot;000007.png&quot;])</code></pre>
-<p><span style="color:red;">// Image matching '/assets/pages/tutorials/tutorialConstraintProgramming/code/julia_logo' not found. //</span></p>
+<span class=hljs-keyword >end</span></code></pre>
+<img src="/assets/pages/tutorials/tutorialConstraintProgramming/code/output/julia_logo.gif" alt="">
 
 <div class=page-foot >
   <div class=copyright >

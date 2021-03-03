@@ -7,3 +7,5 @@ anim = @animate for n in orders
          label="f(x)", ylims=(-30, 10))
     plot!(ftm, title="$(n)th order")
 end
+gif(anim, joinpath(@OUTPUT, "taylor1_gif.gif"), fps = 2) # hide
+nothing # hide

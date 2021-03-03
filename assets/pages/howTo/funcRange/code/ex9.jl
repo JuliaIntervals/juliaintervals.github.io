@@ -7,3 +7,4 @@ Y, N, err = range(g, X, 3)
 @show (Y, N, err)
 plot(g, -10, 10, legend=false)
 plot!(IntervalBox(X, Y))
+savefig(joinpath(@OUTPUT, "range5.svg")) # hide

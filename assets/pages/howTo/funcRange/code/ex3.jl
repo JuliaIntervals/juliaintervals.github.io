@@ -4,3 +4,4 @@ f1(x) = (x+1)^2-1
 
 plot(f1, -5, 5, leg=false)
 plot!(IntervalBox(X, f1(X)))
+savefig(joinpath(@OUTPUT, "range2.svg")) # hide

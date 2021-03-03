@@ -18,4 +18,5 @@ anim = @animate for i in 1:5
     global xk, yk = xnew, ynew
 end
 
+gif(anim, joinpath(@OUTPUT, "newton.gif"), fps = 0.8) # hide
 @show xk, yk

@@ -15,3 +15,5 @@ plot!(paving.boundary, lab="Paving (boundary)", c=:lightblue)
 plot!(paving.inner, lab="Paving (inner)", c=:yellow)
 
 lens!([0.0, 0.3], [0.0, 0.3], inset = (1, bbox(0.25, 0.35, 0.4, 0.4)))
+
+savefig(joinpath(@OUTPUT, "pavingPolyhedralRefined.svg")) # hide

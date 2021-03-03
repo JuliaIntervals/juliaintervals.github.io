@@ -100,7 +100,7 @@ using Plots
 plot(f, 1-0.1, 1+0.1, lw=2)
 plot!(IntervalBox.(minimisers, f.(minimisers)), legend=false)
 
-#!nb savefig(joinpath(@OUTPUT, "clustering.svg")) #hide
+#!nb savefig(joinpath(@OUTPUT, "clustering.svg")) # hide
 #!nb # \fig{clustering}
 
 # Using a stricter tolerance makes things worse, as we will keep bisecting those fake minimisers,

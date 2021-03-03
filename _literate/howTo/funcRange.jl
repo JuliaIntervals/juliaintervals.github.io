@@ -19,7 +19,7 @@ X = -5..5
 
 plot(f, -5, 5, leg=false)
 plot!(IntervalBox(X, f(X)))
-#!nb savefig(joinpath(@OUTPUT, "range1.svg")) #hide
+#!nb savefig(joinpath(@OUTPUT, "range1.svg")) # hide
 
 #!nb # \fig{range1}
 
@@ -37,7 +37,7 @@ f1(x) = (x+1)^2-1
 
 plot(f1, -5, 5, leg=false)
 plot!(IntervalBox(X, f1(X)))
-#!nb savefig(joinpath(@OUTPUT, "range2.svg")) #hide
+#!nb savefig(joinpath(@OUTPUT, "range2.svg")) # hide
 #!nb #  \fig{range2}
 
 # Despite for this simple example we could analytically solve the dependency problem, this is not possible in general.
@@ -49,8 +49,8 @@ Xs = mince(X, 10)
 Y = f.(Xs)
 plot(f, -5, 5, leg=false)
 plot!(IntervalBox.(Xs, f.(Xs)))
-#!nb savefig(joinpath(@OUTPUT, "range3.svg")) #hide
-#!nb nothing #hide
+#!nb savefig(joinpath(@OUTPUT, "range3.svg")) # hide
+#!nb nothing # hide
 #!nb # \fig{range3}
 
 # Assuming the function $f$ is continuous, we can now compute the function range by taking the union of the computed intervals. This can be done using the function `reduce`
@@ -66,9 +66,9 @@ anim = @animate for i in 0:10
     plot(f, -5, 5, leg=false, ylims=(-5, 40), xlims=(X.lo, X.hi), lw=2)
     plot!(IntervalBox.(Xs, f.(Xs)))
 end
-#!nb gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 2) #hide
+#!nb gif(anim, joinpath(@OUTPUT, "anim_range1.gif"), fps = 2) # hide
 #nb gif(anim, "range1.gif", fps=2)
-#!nb nothing #hide
+#!nb nothing # hide
 #!nb # \fig{anim_range1.gif}
 
 # We are now ready to write our function `range(f, X, tol)` which estimates the range of a function $f$ over an interval $X$.
@@ -99,7 +99,7 @@ Y, N, err = range(f, X, 3)
 @show (Y, N, err)
 plot(f, -5, 5, legend=false)
 plot!(IntervalBox(X, Y))
-#!nb savefig(joinpath(@OUTPUT, "range4.svg")) #hide
+#!nb savefig(joinpath(@OUTPUT, "range4.svg")) # hide
 
 #!nb # \fig{range4}
 
@@ -116,7 +116,7 @@ Y, N, err = range(g, X, 3)
 @show (Y, N, err)
 plot(g, -10, 10, legend=false)
 plot!(IntervalBox(X, Y))
-#!nb savefig(joinpath(@OUTPUT, "range5.svg")) #hide
+#!nb savefig(joinpath(@OUTPUT, "range5.svg")) # hide
 
 #!nb # \fig{range5}
 
@@ -125,9 +125,9 @@ anim = @animate for i in 2 .^(0:10)
     plot(g, -10, 10, leg=false, xlims=(X.lo, X.hi), ylims=(-60, 50), lw=2)
     plot!(IntervalBox.(Xs, g.(Xs)))
 end
-#!nb gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2) #hide
+#!nb gif(anim, joinpath(@OUTPUT, "anim_range2.gif"), fps = 2) # hide
 #nb gif(anim, "anim_range2.gif", fps = 2)
-#!nb nothing #hide
+#!nb nothing # hide
 
 
 #!nb # \fig{anim_range2.gif}

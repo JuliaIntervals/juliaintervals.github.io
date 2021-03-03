@@ -35,7 +35,7 @@ plot(Xoct, lab="Octagon", alpha=.5, c=:orange)
 plot!(paving.inner, c="green", aspect_ratio=:equal, label="inner")
 plot!(paving.boundary, c="gray", label="boundary")
 
-#!nb savefig(joinpath(@OUTPUT, "pavingPolyhedral.svg")) #hide
+#!nb savefig(joinpath(@OUTPUT, "pavingPolyhedral.svg")) # hide
 #!nb # \fig{pavingPolyhedral}
 
 # The function `overapproximate` considers the union of the elements in the boundary of the paving
@@ -72,5 +72,5 @@ plot!(paving.inner, lab="Paving (inner)", c=:yellow)
 
 lens!([0.0, 0.3], [0.0, 0.3], inset = (1, bbox(0.25, 0.35, 0.4, 0.4)))
 
-#!nb savefig(joinpath(@OUTPUT, "pavingPolyhedralRefined.svg")) #hide
+#!nb savefig(joinpath(@OUTPUT, "pavingPolyhedralRefined.svg")) # hide
 #!nb # \fig{pavingPolyhedralRefined}

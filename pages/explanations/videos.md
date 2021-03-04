@@ -4,6 +4,14 @@ This section has a collection of videos about interval arithmetic with Julia
 
 \toc
 
+## Calculating with sets: Interval methods in Julia
+
+Self contained tutorial about interval arithmetic in Julia. Given in JuliaCon 2020. Download the supplementary material \elink{here}{https://github.com/dpsanders/IntervalsJuliaCon2020}
+
+~~~
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LAuRCy9jUU8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+~~~
+
 ## Interval methods with Julia: finding one million roots in one second
 
 Advanced talk about interval arithmetic and its applications. Given as part of the \elink{seminar series in nonlinear analysis}{http://crm.math.ca/camp-nonlinear/#seminars}
@@ -19,14 +27,6 @@ Talk about global optimisation using interval arithmetic. Talk given at the \eli
 
 ~~~
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AuB3pdFmozM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-~~~
-
-## Calculating with sets: Interval methods in Julia
-
-Self contained tutorial about interval arithmetic in Julia. Given in JuliaCon 2020. Download the supplementary material \elink{here}{https://github.com/dpsanders/IntervalsJuliaCon2020}
-
-~~~
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LAuRCy9jUU8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ~~~
 
 ## Rigorous global optimization in pure Julia

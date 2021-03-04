@@ -27,7 +27,9 @@ For instance:
 * \newcommand{\phrase}{This is a long phrase to copy.}
 -->
 \newcommand{\elink}[2]{~~~ <a href="#2" target="_blank">#1</a>~~~}
+
 \newcommand{\github}[1]{~~~ <a href="#1" style="margin-left: auto;" target="_blank"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub repository</a> ~~~}
+
 \newcommand{\note}[1]{@@note @@title ⚠ Note@@ @@content #1 @@ @@}
 
 \newcommand{\title}[1]{

@@ -57,7 +57,7 @@ Xpoly′ = overapproximate(Y, 0.01)
 plot(Xoct, lab="Octagon", alpha=.5, c=:orange, legend=:bottomright)
 
 plot!(Xpoly, lab="Polygon, ε=0.1")
-plot!(Xpoly′, lab="Polygon, ε=0.01")
+plot!(Xpoly′, lab="Polygon, ε=0.01", alpha=1.)
 
 plot!(paving.boundary, lab="Paving (boundary)", c=:lightblue)
 plot!(paving.inner, lab="Paving (inner)", c=:yellow)

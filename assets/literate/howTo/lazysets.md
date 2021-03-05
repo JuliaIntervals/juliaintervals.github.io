@@ -5,13 +5,13 @@ $\mathbb{R}^n$ that satisfies a set of constraints.
 
 Interval constraint programming uses interval boxes. However, if the region we want to approximate
 is not box-shaped, it will require a large number of boxes to be represented accurately.
-To operate with those regions, it is practical to simplify such union of boxeswith another set representation,
+To operate with those regions, it is practical to simplify such union of boxes with another set representation,
 hopefully without information loss, i.e. minimizing the *overapproximation error*.
 
 The package \elink{LazySets.jl}{https://github.com/JuliaReach/LazySets.jl/} can be used to approximate regions
 returned by `IntervalConstraintProgramming.jl` using general set types such as
-\elink{polyhedra}{https://en.wikipedia.org/wiki/Polyhedron}, that is, finite intersections of half-spaces. More generally,
-unions of polyhedra could be used.
+\elink{polyhedra}{https://en.wikipedia.org/wiki/Polyhedron}, that is, finite intersections of half-spaces.
+More generally, unions of polyhedra can be used if the region is not convex.
 
 First let us import the packages we need
 
@@ -31,7 +31,8 @@ X = IntervalBox(-10..10, 2) # our starting box
 paving = pave(S, X, 0.02)
 ```
 
-choose octagon directions
+We will choose octagon directions, meaning that the directions normal to the
+overapproximating polyhedron are parallel to those of an octagon (this method is not restricted to two dimensions):
 
 ```julia:ex3
 Xoct = overapproximate(paving, OctDirections(2))
@@ -48,34 +49,23 @@ savefig(joinpath(@OUTPUT, "pavingPolyhedral.svg")) # hide
 The function `overapproximate` considers the union of the elements in the boundary of the paving
 and then computes the support function of the such union along each chosen direction,
 obtaining the corresponding polyhedron in constraint form.
-In this example we have picked octagonal directions, but specifying custom directions is also possible.
+In this example we have picked octagonal directions, but specifying other sets of directions is also possible
+(see [the documentation](https://juliareach.github.io/LazySets.jl/dev/lib/approximations/#Template-directions) for details).
 
-It is interesting to note that the numer of boxes is much larger than the number of constraints of the approximation:
+When no directions are known a priori, we can also let the algorithm choose the directions by an iterative refinement
+process of the given tolerance $\varepsilon$ (this method only works in two dimensions).
+First we construct $Y$, the (lazy) convex hull of the paving's boundary, then we overapproximate it using polygons:
 
 ```julia:ex4
-length(paving.inner) + length(paving.boundary)
-```
+Y = ConvexHullArray(convert.(Hyperrectangle, paving.boundary))
 
-```julia:ex5
-length(Xoct.constraints)
-```
-
-When no directions are known a priori, we can also overapproximate using an iterative refinement process of
-the given tolerance $\varepsilon$. First we construct $Y$, the (lazy, exact) convex hull of the paving's boundary,
-then we overapproximate it using polygons:
-
-```julia:ex6
-Y = ConvexHullArray(convert.(Hyperrectangle,paving.boundary))
 Xpoly = overapproximate(Y, 0.1)
-@show length(Xpoly.constraints)
-
 Xpoly′ = overapproximate(Y, 0.01)
-@show length(Xpoly′.constraints)
 
 plot(Xoct, lab="Octagon", alpha=.5, c=:orange, legend=:bottomright)
 
 plot!(Xpoly, lab="Polygon, ε=0.1")
-plot!(Xpoly′, lab="Polygon, ε=0.01")
+plot!(Xpoly′, lab="Polygon, ε=0.01", alpha=1.)
 
 plot!(paving.boundary, lab="Paving (boundary)", c=:lightblue)
 plot!(paving.inner, lab="Paving (inner)", c=:yellow)
@@ -86,4 +76,23 @@ savefig(joinpath(@OUTPUT, "pavingPolyhedralRefined.svg")) # hide
 ```
 
 \fig{pavingPolyhedralRefined}
+
+To conclude, we note that in all cases considered the number of initial boxes is much larger than the
+complexity of the approximation if we measure it in terms of the number of constraints:
+
+```julia:ex5
+length(paving.inner) + length(paving.boundary)
+```
+
+```julia:ex6
+length(Xoct.constraints)
+```
+
+```julia:ex7
+length(Xpoly.constraints)
+```
+
+```julia:ex8
+length(Xpoly′.constraints)
+```
 

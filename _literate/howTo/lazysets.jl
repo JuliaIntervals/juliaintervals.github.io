@@ -70,7 +70,7 @@ lens!([0.0, 0.3], [0.0, 0.3], inset = (1, bbox(0.25, 0.35, 0.4, 0.4)))
 # To conclude, we note that in all cases considered the number of initial boxes is much larger than the
 # complexity of the approximation if we measure it in terms of the number of constraints:
 
-length(paving.inner) + length(paving.boundary)
+4*(length(paving.inner) + length(paving.boundary))
 
 #-
 length(Xoct.constraints)
